@@ -1,0 +1,15 @@
+[
+  <% @mats.each do |mat| -%>
+    <% attachment = @attachments_hash[ mat.attachment_id ] -%>
+    {
+      id: <%= mat.id %>,
+      url: '/attachments/<%= attachment.id %>/show_image?method=show_image',
+      title: '<%= attachment.name %>',
+      start: '<%= mat.start_time.to_i %>',
+      end: '<%= mat.start_time.to_i %>',
+      allDay: false,
+      textColor: 'black',
+      borderColor: 'green'
+    },
+  <% end -%>
+]

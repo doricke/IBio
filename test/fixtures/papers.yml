@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pmid: MyString
+  doi: MyString
+  title: MyString
+  authors: MyString
+  reference: MyString
+
+two:
+  pmid: MyString
+  doi: MyString
+  title: MyString
+  authors: MyString
+  reference: MyString

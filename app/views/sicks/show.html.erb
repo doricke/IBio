@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @itype.name if ! @itype.nil? %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @sick.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @sick.end_time %>
+</p>
+
+<%= link_to 'Edit', edit_sick_path(@sick) %> |
+<%= link_to 'Back', sicks_path %>

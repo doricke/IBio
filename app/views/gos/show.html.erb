@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gene:</strong>
+  <%= @go.gene_id %>
+</p>
+
+<p>
+  <strong>Itype:</strong>
+  <%= @go.itype_id %>
+</p>
+
+<p>
+  <strong>Term:</strong>
+  <%= @go.term %>
+</p>
+
+<p>
+  <strong>Pubmed:</strong>
+  <%= @go.pubmed %>
+</p>
+
+<%= link_to 'Edit', edit_go_path(@go) %> |
+<%= link_to 'Back', gos_path %>

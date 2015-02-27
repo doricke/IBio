@@ -1,0 +1,27 @@
+<h1>Environment</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Itype</th>
+      <th>Place</th>
+      <th>Air value</th>
+      <th>Sampled at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @airs.each do |air| %>
+      <tr>
+        <td><%= @itypes_hash[air.itype_id].name if ! air.itype_id.nil? %></td>
+        <td><%= "#{@places_hash[air.place_id].city},#{@places_hash[air.place_id].state}" if ! air.place_id.nil? %></td>
+        <td><%= air.air_value %></td>
+        <td><%= air.sampled_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Air', new_air_path %>

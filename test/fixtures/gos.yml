@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gene_id: 1
+  itype_id: 1
+  term: MyString
+  pubmed: MyString
+
+two:
+  gene_id: 1
+  itype_id: 1
+  term: MyString
+  pubmed: MyString

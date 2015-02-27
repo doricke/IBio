@@ -1,0 +1,2 @@
+module DrugGenesHelper
+end

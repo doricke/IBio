@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_id: 1
+  guid1: MyString
+  start_time: 2013-12-17 14:45:54
+  end_time: 2013-12-17 14:45:54
+
+two:
+  type_id: 1
+  guid1: MyString
+  start_time: 2013-12-17 14:45:54
+  end_time: 2013-12-17 14:45:54

@@ -1,0 +1,33 @@
+<h1>Listing gene_reactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pathway</th>
+      <th>Reaction</th>
+      <th>Gene</th>
+      <th>Role itype</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gene_reactions.each do |gene_reaction| %>
+      <tr>
+        <td><%= gene_reaction.pathway_id %></td>
+        <td><%= gene_reaction.reaction_id %></td>
+        <td><%= gene_reaction.gene_id %></td>
+        <td><%= gene_reaction.role_itype_id %></td>
+        <td><%= link_to 'Show', gene_reaction %></td>
+        <td><%= link_to 'Edit', edit_gene_reaction_path(gene_reaction) %></td>
+        <td><%= link_to 'Destroy', gene_reaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gene reaction', new_gene_reaction_path %>

@@ -1,0 +1,1 @@
+json.extract! @ancestry, :id, :ethnic_id, :percent

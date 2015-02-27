@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  biosequence_id: 1
+  domain_id: 1
+  seq_start: 1
+  seq_end: 1
+
+two:
+  biosequence_id: 1
+  domain_id: 1
+  seq_start: 1
+  seq_end: 1

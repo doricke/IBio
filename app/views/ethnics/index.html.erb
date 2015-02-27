@@ -1,0 +1,25 @@
+<h1>Ethnics</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Region</th>
+      <th>Race</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ethnics.each do |ethnic| %>
+      <tr>
+        <td><%= ethnic.name %></td>
+        <td><%= ethnic.region %></td>
+        <td><%= ethnic.race %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ethnic', new_ethnic_path %>

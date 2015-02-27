@@ -1,0 +1,33 @@
+<h1>Listing data_syncs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Individual</th>
+      <th>Instrument</th>
+      <th>Algorithm</th>
+      <th>Updated at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @data_syncs.each do |data_sync| %>
+      <tr>
+        <td><%= data_sync.individual_id %></td>
+        <td><%= data_sync.instrument_id %></td>
+        <td><%= data_sync.algorithm_id %></td>
+        <td><%= data_sync.updated_at %></td>
+        <td><%= link_to 'Show', data_sync %></td>
+        <td><%= link_to 'Edit', edit_data_sync_path(data_sync) %></td>
+        <td><%= link_to 'Destroy', data_sync, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Data sync', new_data_sync_path %>

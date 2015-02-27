@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @pathway.name %></h1>
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>Pathway Type</th>
+      <th>Control Type</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Control</th>
+      <th>Drugs</th>
+      <th>Genes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reactions.each do |reaction| %>
+      <tr>
+        <td><%= reaction.rank %></td>
+        <td><%= @itypes_hash[reaction.itype_id].name if ! reaction.itype_id.nil? %></td>
+        <td><%= @itypes_hash[reaction.control_itype].name if ! reaction.control_itype.nil? %></td>
+        <td><%= reaction.from %></td>
+        <td><%= reaction.to %></td>
+        <td><%= reaction.control %></td>
+        <td>
+          <% if @drug_reactions.size > 0 -%>
+            <% drug_reaction = @drug_reactions[ reaction.id ] -%>
+            <% if ! drug_reaction.nil? -%>
+              <% drug = Drug.find(drug_reaction.drug_id) -%>
+              <%= link_to "#{drug.name}", {:controller => "drugs", :action => :show, :id => drug.id}, {:method => :get} %>            
+            <% end -%>
+          <% end -%>
+        </td>
+        <td>
+          <% if @gene_reactions.size > 0 -%>
+            <% if ! @gene_reactions[ reaction.id ].nil? -%>
+              <% @gene_reactions[ reaction.id ].each do |gene_reaction| -%>
+                <% gene = Gene.find(gene_reaction.gene_id) -%>
+                <%= link_to "#{gene.name}", {:controller => "genes", :action => :show, :id => gene.id}, {:method => :get} %>            
+              <% end -%>
+            <% end -%>
+          <% end -%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

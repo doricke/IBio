@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<% if ! @sleep.image_id.nil? -%>
+<p>
+  <strong>Image:</strong>
+  <%= @sleep.image_id %>
+</p>
+<% end -%>
+
+<table>
+  <thead></thead>
+  <tbody>
+  <tr>
+  <td><strong>Start time:</strong></td>
+  <td><%= @sleep.start_time %></td>
+ </tr><tr>
+  <td><strong>End time:</strong></td>
+  <td><%= @sleep.end_time %></td>
+ </tr><tr>
+  <td><strong>Seconds asleep:</strong></td>
+  <td><%= @sleep.secs_asleep %></td>
+ </tr><tr>
+  <td><strong>Seconds light sleep:</strong></td>
+  <td><%= @sleep.light_sleep %></td>
+ </tr><tr>
+  <td><strong>Seconds deep sleep:</strong></td>
+  <td><%= @sleep.deep_sleep %></td>
+ </tr><tr>
+  <td><strong>REM sleep:</strong></td>
+  <td><%= @sleep.rem_sleep %></td>
+ </tr><tr>
+  <td><strong>Number of Interruptions:</strong></td>
+  <td><%= @sleep.interruptions %></td>
+ </tr><tr>
+  <td><strong>Qualifier:</strong></td>
+  <td><%= @sleep.qualifier %></td>
+  </tr>
+ </tbody>
+</table>
+<br />
+
+<%= link_to 'Edit', edit_sleep_path(@sleep) %> |
+<%= link_to 'Back', sleeps_path %>

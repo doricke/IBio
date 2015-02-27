@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Locus:</strong>
+  <%= @allele_call.locus_id %>
+</p>
+
+<p>
+  <strong>Experiment:</strong>
+  <%= @allele_call.experiment_id %>
+</p>
+
+<p>
+  <strong>Alleles:</strong>
+  <%= @allele_call.alleles %>
+</p>
+
+
+<%= link_to 'Edit', edit_allele_call_path(@allele_call) %> |
+<%= link_to 'Back', allele_calls_path %>

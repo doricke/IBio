@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Disease:</strong>
+  <%= @disease_gene.disease_id %>
+</p>
+
+<p>
+  <strong>Gene:</strong>
+  <%= @disease_gene.gene_id %>
+</p>
+
+<%= link_to 'Edit', edit_disease_gene_path(@disease_gene) %> |
+<%= link_to 'Back', disease_genes_path %>

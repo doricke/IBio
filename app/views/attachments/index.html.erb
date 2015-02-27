@@ -1,0 +1,179 @@
+    <style>
+        ul.navbar {
+            float: left;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            height: 210px;
+            list-style: none;
+        }
+
+        li.bubbles a{
+            text-decoration: none;
+        }
+
+        .bubbles {
+            font-family: Calibri, Helvetica, serif;
+            display: inline;
+            float: left;
+            width: 90px;
+            height: 175px;
+            padding: 2px 2px;
+            margin: 2px;
+            border: 2px solid;
+            text-align: center;
+
+            border-top-right-radius: 25px;
+            -moz-border-radius-topright: 25px;
+            -webkit-border-top-right-radius: 25px;
+
+            border-top-left-radius: 25px;
+            -moz-border-radius-topleft: 25px;
+            -webkit-border-top-left-radius: 25px;
+
+            border-bottom-right-radius: 25px;
+            -moz-border-radius-bottomright: 25px;
+            -webkit-border-bottom-right-radius: 25px;
+
+            border-bottom-left-radius: 25px;
+            -moz-border-radius-bottomleft: 25px;
+            -webkit-border-bottom-left-radius: 25px;
+        }
+
+        li.blue{
+            color: rgb(45,99,115);
+            border-color: rgb(45,99,115);
+            background-color: rgb(185,205,230);
+        }
+        li.purple{
+            color: rgb(113,20,113);
+            border-color: rgb(113,20,113);
+            background-color: rgb(238,230,255);
+        }
+        li.orange{
+            color: rgb(226,115,25);
+            border-color: rgb(226,115,25);
+            background-color: rgb(193,223,179);
+        }
+
+        li.stackedImagesLi {
+            display:table-cell;
+            text-align:center;
+            vertical-align:middle;
+        }
+
+        div.stackedImagesLi {
+            display:table-cell;
+            vertical-align:middle;
+            height: 24px;
+            margin:5px auto;
+        }
+    </style>
+
+<!--
+      <td><%= link_to image_tag('ActiSleep.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'ActiSleep'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('MioLink.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'MioLink'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('Zephyr.jpg', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'Zephyr'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('Actigraph.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'Actigraph'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('Moves.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'Moves'}}, {:method => :get} %></td>
+-->
+<h1>Select Device</h1>
+
+<ul class="navbar">
+    <li class='blue bubbles'>
+        <br />
+        <%= link_to image_tag('Basis_watch.png', size: '80x115'), {:controller => "attachments", :action => 'basis', :data => {device: 'Basis'}}, {:method => :get} %>
+        <br />
+        <b><%= link_to('Basis Synch', {:controller => :attachments, :action => :basis, :data => {device: 'Basis'}}, {:method => :get}) %></b>
+     </li>
+
+    <li class='orange bubbles'>
+        <br>
+        <%= link_to image_tag('Basis_Peak.png', size: '80x115'), {:controller => "attachments", :action => 'basis', :data => {device: 'Peak'}}, {:method => :get} %>
+        <br />
+        <b><%= link_to('Basis Peak', {:controller => :attachments, :action => :basis, :data => {device: 'Peak'}}, {:method => :get}) %></b>
+    </li>
+
+    <li class='purple bubbles'>
+        <br />
+        <%= link_to image_tag('E3.png', size: '80x115'), {:controller => "attachments", :action => 'new', :data => {device: 'Empatica'}}, {:method => :get} %>
+        <br>
+        <b><%= link_to('Empatica E3', {:controller => "attachments", :method => :new, :data => {device: 'Empatica'}}, {:method => :get}) %></b>
+     </li>
+
+    <li class='blue bubbles'>
+        <br />
+        <%= link_to image_tag('Fitbit.png', size: '80x115'), {:controller => "attachments", :action => 'new', :data => {device: 'Fitbit'}}, {:method => :get} %>
+        <br>
+        <b><%= link_to('Fitbit', {:controller => "attachments", :method => :new, :data => {device: 'Fitbit'}}, {:method => :get}) %></b>
+    </li>
+
+    <li class='orange bubbles'>
+        <br />
+        <%= link_to image_tag('JawboneUp.png', size: '80x115'), {:controller => "attachments", :action => :new, :data => {device: 'Jawbone'}}, {:method => :get} %>
+        <br />
+        <b><%= link_to('Jawbone Up', {:controller => :attachments, :method => :new, :data => {device: 'Jawbone'}}, {:method => :get}) %></b>
+    </li> 
+
+    <li class='purple bubbles'>
+        <br />
+        <%= link_to image_tag('Zephyr_Bioharness.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'Zephyr'}}, {:method => :get} %>
+        <br>
+        <b><%= link_to('Zephyr Bioharness', {:controller => "attachments", :method => :new, :data => {device: 'Zephyr'}}, {:method => :get}) %></b>
+     </li>
+</ul>
+<br />
+<br />
+<ul class="navbar">
+<!--
+    <li class='blue bubbles'>
+        <br />
+        <%= link_to image_tag('Adidas.png', size: '80x115'), {:controller => "attachments", :action => 'new', :data => {device: 'Adidas'}}, {:method => :get} %>
+        <br>
+        <b><%= link_to('Adidas', {:controller => "attachments", :method => :new, :data => {device: 'Adidas'}}, {:method => :get}) %></b>
+    </li>
+
+    <li class='blue bubbles'>
+        <br />
+        <%= link_to image_tag('Polar_Loop.jpeg', size: '80x115'), {:controller => "attachments", :action => 'new', :data => {device: 'Polar'}}, {:method => :get} %>
+        <br>
+        <b><%= link_to('Polar Loop', {:controller => "attachments", :method => :new, :data => {device: 'Polar'}}, {:method => :get}) %></b>
+    </li>
+-->
+    <li class='blue bubbles'>
+        <br />
+        <%= link_to image_tag('MyTracks_icon.png', size: '80x80'), {:controller => "attachments", :action => :new, :data => {device: 'MyTracks'}}, {:method => :get} %>
+        <br />
+        <b><%= link_to('MyTracks app', {:controller => :attachments, :method => :new, :data => {device: 'MyTracks'}}, {:method => :get}) %></b>
+     </li>
+
+    <li class='orange bubbles'>
+        <br>
+        <%= link_to image_tag('SleepCycle.png', size: '80x50'), {:controller => "attachments", :action => :new, :data => {device: 'SleepCycle'}}, {:method => :get} %>
+        <br />
+        <b><%= link_to('Sleep Cycle app', {:controller => :attachments, :method => :new, :data => {device: 'SleepCycle'}}, {:method => :get}) %></b>
+    </li>
+
+    <li class='orange bubbles'>
+        <br>
+        <%= link_to image_tag('Vocal.png', size: '80x60'), {:controller => "attachments", :action => :new, :data => {device: 'Vocal'}}, {:method => :get} %>
+        <br />
+        <b><%= link_to('Vocal wav', {:controller => :attachments, :method => :new, :data => {device: 'Vocal'}}, {:method => :get}) %></b>
+    </li>
+
+    <li class='orange bubbles'>
+        <br>
+        <%= link_to image_tag('Vocal.png', size: '80x60'), {:controller => "attachments", :action => :new, :data => {device: 'Vocal'}}, {:method => :get} %>
+        <br />
+        <b><%= link_to('Vocal .mat', {:controller => :attachments, :method => :new, :data => {device: 'Vocal'}}, {:method => :get}) %></b>
+    </li>
+
+    <li class='orange bubbles'>
+        <br>
+        <%= link_to image_tag('23andMe.png', size: '80x80'), {:controller => "attachments", :action => :new, :data => {device: '23andMe'}}, {:method => :get} %>
+        <br />
+        <b><%= link_to('23andMe SNPs', {:controller => :attachments, :method => :new, :data => {device: '23amd<e'}}, {:method => :get}) %></b>
+    </li>
+</ul>
+
+

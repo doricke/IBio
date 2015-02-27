@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gene:</strong>
+  <%= @msa.gene_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @msa.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @msa.category %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @msa.description %>
+</p>
+
+<p>
+  <strong>Msa type:</strong>
+  <%= @msa.msa_type %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @msa.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_msa_path(@msa) %> |
+<%= link_to 'Back', msas_path %>

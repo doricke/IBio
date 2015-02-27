@@ -1,0 +1,38 @@
+<h1>Structure Sequences</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Structure</th>
+      <th>Biosequence</th>
+      <th>Chain</th>
+      <th>Resolution</th>
+      <th>Start</th>
+      <th>End</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @structure_sequences.each do |structure_sequence| %>
+      <tr>
+        <% structure = Structure.find(structure_sequence.structure_id) -%>
+        <td><%= structure.name %></td>
+        <td><%= structure_sequence.biosequence_id %></td>
+        <td><%= structure_sequence.chain %></td>
+        <td><%= structure_sequence.resolution %></td>
+        <td><%= structure_sequence.aa_start%></td>
+        <td><%= structure_sequence.aa_end %></td>
+        <td><%= link_to 'Show', structure_sequence %></td>
+        <td><%= link_to 'Edit', edit_structure_sequence_path(structure_sequence) %></td>
+        <td><%= link_to 'Destroy', structure_sequence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Structure sequence', new_structure_sequence_path %>

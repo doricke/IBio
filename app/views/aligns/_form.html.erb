@@ -1,0 +1,37 @@
+<%= form_for(@align) do |f| %>
+  <% if @align.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@align.errors.count, "error") %> prohibited this align from being saved:</h2>
+
+      <ul>
+      <% @align.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :msa_id %><br>
+    <%= f.number_field :msa_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sequence %><br>
+    <%= f.number_field :biosequence_id %>
+  </div>
+  <div class="field">
+    <%= f.label :align_rank %><br>
+    <%= f.number_field :align_rank %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.datetime_select :updated_at %>
+  </div>
+  <div class="field">
+    <%= f.label :align_sequence %><br>
+    <%= f.text_field :align_sequence %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

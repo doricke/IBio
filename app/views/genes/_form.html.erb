@@ -1,0 +1,49 @@
+<%= form_for(@gene) do |f| %>
+  <% if @gene.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gene.errors.count, "error") %> prohibited this gene from being saved:</h2>
+
+      <ul>
+      <% @gene.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+ <thead></thead>
+ <tbody>
+  <tr>
+  <div class="field">
+    <td><%= f.label :name %></td>
+    <td><%= f.text_field :name %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :ncbi_gene_id %></td>
+    <td><%= f.text_field :ncbi_gene_id %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :chromosome %></td>
+    <td><%= f.text_field :chromosome %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :chromosome_start %></td>
+    <td><%= f.number_field :chromosome_start %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :chromosome_end %></td>
+    <td><%= f.number_field :chromosome_end %></td>
+  </div>
+  </tr>
+ </tbody>
+</table>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ethnic.name %>
+</p>
+
+<p>
+  <strong>Race:</strong>
+  <%= @ethnic.race %>
+</p>
+
+<%= link_to 'Edit', edit_ethnic_path(@ethnic) %> |
+<%= link_to 'Back', ethnics_path %>

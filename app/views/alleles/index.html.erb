@@ -1,0 +1,37 @@
+<h1>Alleles</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Locus</th>
+      <th>Ethnic</th>
+      <th>Name</th>
+      <th>Seq</th>
+      <th>Regular expression</th>
+      <th>Allele frequency</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alleles.each do |allele| %>
+      <tr>
+        <td><%= allele.locus_id %></td>
+        <td><%= allele.ethnic_id %></td>
+        <td><%= allele.name %></td>
+        <td><%= allele.seq %></td>
+        <td><%= allele.regular_expression %></td>
+        <td><%= allele.allele_frequency %></td>
+        <td><%= link_to 'Show', allele %></td>
+        <td><%= link_to 'Edit', edit_allele_path(allele) %></td>
+        <td><%= link_to 'Destroy', allele, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Allele', new_allele_path %>

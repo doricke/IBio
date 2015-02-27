@@ -1,0 +1,41 @@
+<h1>Measurements</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Result</th>
+      <th>Normal</th>
+      <th>Unit</th>
+      <th>Note</th>
+      <th>Created at</th>
+      <% if session[:is_owner] -%>
+        <th></th>
+        <th></th>
+        <th></th>
+      <% end -%>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @measurements.each do |measurement| %>
+      <tr>
+        <td><%= @itypes_hash[measurement.itype_id].name if ! measurement.itype_id.nil? %></td>
+        <td align="center"><%= measurement.result %></td>
+        <td><%= @normals_hash[measurement.normal_id].ref_range if ! measurement.normal_id.nil? %></td>
+        <td><%= @units_hash[measurement.unit_id].name if ! measurement.unit_id.nil? %></td>
+        <td><%= measurement.note_id %></td>
+        <td><%= local_time(measurement.created_at) %></td>
+        <% if session[:is_owner] -%>
+          <td><%= link_to 'Show', measurement %></td>
+          <td><%= link_to 'Edit', edit_measurement_path(measurement) %></td>
+          <td><%= link_to 'Destroy', measurement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end -%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Measurement', new_measurement_path %>

@@ -1,0 +1,38 @@
+<%= form_for(@itype) do |f| %>
+  <% if @itype.errors.any? -%>
+    <div id="error_explanation">
+      <h2><%= pluralize(@itype.errors.count, "error") %> prohibited this type from being saved:</h2>
+
+      <ul>
+      <% @itype.errors.full_messages.each do |msg| -%>
+        <li><%= msg %></li>
+      <% end -%>
+      </ul>
+    </div>
+  <% end -%>
+
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+  <div class="field">
+    <td><%= f.label :name %></td>
+    <td><%= f.text_field :name %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :category %></td>
+    <td><%= f.text_field :category %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :unit %></td>
+    <td><%= f.collection_select(:unit_id, @units, :id, :name, {:include_blank => "No units"}) %></td>
+  </div>
+    </tr>
+  </tbody>
+</table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end -%>

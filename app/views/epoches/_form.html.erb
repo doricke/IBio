@@ -1,0 +1,45 @@
+<%= form_for(@epoch) do |f| %>
+  <% if @epoch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@epoch.errors.count, "error") %> prohibited this epoch from being saved:</h2>
+
+      <ul>
+      <% @epoch.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :month %><br>
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :day %><br>
+    <%= f.number_field :day %>
+  </div>
+  <div class="field">
+    <%= f.label :hour %><br>
+    <%= f.number_field :hour %>
+  </div>
+  <div class="field">
+    <%= f.label :minute %><br>
+    <%= f.number_field :minute %>
+  </div>
+  <div class="field">
+    <%= f.label :second %><br>
+    <%= f.number_field :second %>
+  </div>
+  <div class="field">
+    <%= f.label :usec %><br>
+    <%= f.number_field :usec %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

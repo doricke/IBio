@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  msa_id: 1
+  biosequence_id: 1
+  align_rank: 1
+  updated_at: 2013-12-17 14:46:15
+  align_sequence: MyString
+
+two:
+  msa_id: 1
+  biosequence_id: 1
+  align_rank: 1
+  updated_at: 2013-12-17 14:46:15
+  align_sequence: MyString

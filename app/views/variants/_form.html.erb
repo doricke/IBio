@@ -1,0 +1,45 @@
+<%= form_for(@variant) do |f| %>
+  <% if @variant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@variant.errors.count, "error") %> prohibited this variant from being saved:</h2>
+
+      <ul>
+      <% @variant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :biosequence_id %><br>
+    <%= f.number_field :biosequence_id %>
+  </div>
+  <div class="field">
+    <%= f.label :disease_id %><br>
+    <%= f.number_field :disease_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sequence_type %><br>
+    <%= f.text_field :sequence_type %>
+  </div>
+  <div class="field">
+    <%= f.label :mutation %><br>
+    <%= f.text_field :mutation %>
+  </div>
+  <div class="field">
+    <%= f.label :mutation_type %><br>
+    <%= f.text_field :mutation_type %>
+  </div>
+  <div class="field">
+    <%= f.label :sequence_start %><br>
+    <%= f.number_field :sequence_start %>
+  </div>
+  <div class="field">
+    <%= f.label :sequence_end %><br>
+    <%= f.number_field :sequence_end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

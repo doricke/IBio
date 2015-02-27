@@ -1,0 +1,29 @@
+<h1>Allele calls</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Locus</th>
+      <th>Alleles</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @allele_calls.each do |allele_call| %>
+      <tr>
+        <td><%= allele_call.locus_id %></td>
+        <td><%= allele_call.alleles %></td>
+        <td><%= link_to 'Show', allele_call %></td>
+        <td><%= link_to 'Edit', edit_allele_call_path(allele_call) %></td>
+        <td><%= link_to 'Destroy', allele_call, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Allele call', new_allele_call_path %>

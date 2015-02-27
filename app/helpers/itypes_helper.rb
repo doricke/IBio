@@ -1,0 +1,2 @@
+module ItypesHelper
+end

@@ -1,0 +1,34 @@
+
+<%= form_for(@attachment) do |f| %>
+  <% if @attachment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attachment.errors.count, "error") %> prohibited this attachment from being saved:</h2>
+
+      <ul>
+      <% @attachment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end -%>
+      </ul>
+    </div>
+  <% end -%>
+
+<br />
+<br />
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+  <div class="field">
+    <td><%= f.label :file %></td>
+    <td><%= f.file_field("datafile") %></td>
+  </div>
+    </tr>
+  </tbody>
+</table>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end -%>
+
+

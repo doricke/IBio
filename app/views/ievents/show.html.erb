@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @ievent.activity_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @itype.name if ! @itype.nil? %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ievent.name %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @ievent.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @ievent.end_time %>
+</p>
+
+<%= link_to 'Edit', edit_ievent_path(@ievent) %> |
+<%= link_to 'Back', ievents_path %>

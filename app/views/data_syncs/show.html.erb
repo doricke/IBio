@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Individual:</strong>
+  <%= @data_sync.individual_id %>
+</p>
+
+<p>
+  <strong>Instrument:</strong>
+  <%= @data_sync.instrument_id %>
+</p>
+
+<p>
+  <strong>Algorithm:</strong>
+  <%= @data_sync.algorithm_id %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @data_sync.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_data_sync_path(@data_sync) %> |
+<%= link_to 'Back', data_syncs_path %>

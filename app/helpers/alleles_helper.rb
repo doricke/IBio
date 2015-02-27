@@ -1,0 +1,2 @@
+module AllelesHelper
+end

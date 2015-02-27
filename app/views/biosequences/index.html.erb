@@ -1,0 +1,20 @@
+<h1>Sequences</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @biosequences.each do |id, name| %>
+      <tr>
+        <td><%= name %></td>
+        <td><%= link_to('Show', {:controller => :biosequences, :id => id, :action => :show}, {:method => :get}) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

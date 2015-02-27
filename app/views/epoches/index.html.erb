@@ -1,0 +1,39 @@
+<h1>Listing epoches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Day</th>
+      <th>Hour</th>
+      <th>Minute</th>
+      <th>Second</th>
+      <th>Usec</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @epoches.each do |epoch| %>
+      <tr>
+        <td><%= epoch.year %></td>
+        <td><%= epoch.month %></td>
+        <td><%= epoch.day %></td>
+        <td><%= epoch.hour %></td>
+        <td><%= epoch.minute %></td>
+        <td><%= epoch.second %></td>
+        <td><%= epoch.usec %></td>
+        <td><%= link_to 'Show', epoch %></td>
+        <td><%= link_to 'Edit', edit_epoch_path(epoch) %></td>
+        <td><%= link_to 'Destroy', epoch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Epoch', new_epoch_path %>

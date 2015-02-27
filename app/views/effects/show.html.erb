@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Biosequence:</strong>
+  <%= @effect.biosequence_id %>
+</p>
+
+<p>
+  <strong>Variant:</strong>
+  <%= @effect.variant_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @effect.name %>
+</p>
+
+<p>
+  <strong>Impact:</strong>
+  <%= @effect.impact %>
+</p>
+
+<p>
+  <strong>Function class:</strong>
+  <%= @effect.function_class %>
+</p>
+
+<p>
+  <strong>Codon change:</strong>
+  <%= @effect.codon_change %>
+</p>
+
+<p>
+  <strong>Aa change:</strong>
+  <%= @effect.aa_change %>
+</p>
+
+<%= link_to 'Edit', edit_effect_path(@effect) %> |
+<%= link_to 'Back', effects_path %>

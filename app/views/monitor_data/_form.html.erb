@@ -1,0 +1,63 @@
+<%= form_for(@monitor_datum) do |f| %>
+  <% if @monitor_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@monitor_datum.errors.count, "error") %> prohibited this monitor_datum from being saved:</h2>
+
+      <ul>
+      <% @monitor_datum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+  <thead />
+  <tbody>
+    <tr>
+  <div class="field">
+    <td><%= f.label :instrument_id %></td>
+    <td><%= f.collection_select(:instrument_id, @instruments, :id, :name) %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :attachment_id %></td>
+    <td><%= @attachment.name %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :itype_id %></td>
+    <td><%= @itype.name %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :start_time %></td>
+    <td><%= @monitor_datum.start_time %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :end_time %></td>
+    <td><%= @monitor_datum.end_time %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :points_per_second %></td>
+    <td><%= @monitor_datum.points_per_second %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :points_per_hour %></td>
+    <td><%= @monitor_datum.points_per_hour %></td>
+  </div>
+    </tr>
+  </tbody>
+</table>
+<br />
+  <div class="field">
+    <%= f.label :data_vector %>
+    <%= f.text_area :data_vector, :cols => "120", :rows => "40" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

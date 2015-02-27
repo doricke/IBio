@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  drug_id: 1
+  gene_id: 1
+  cpic_dosing: false
+  pharm_gbk_id: MyString
+
+two:
+  drug_id: 1
+  gene_id: 1
+  cpic_dosing: false
+  pharm_gbk_id: MyString

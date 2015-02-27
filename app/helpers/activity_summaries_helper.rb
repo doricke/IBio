@@ -1,0 +1,2 @@
+module ActivitySummariesHelper
+end

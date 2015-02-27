@@ -1,0 +1,33 @@
+<h1>Sequence Domains</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Biosequence</th>
+      <th>Domain</th>
+      <th>Seq start</th>
+      <th>Seq end</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @biosequence_domains.each do |biosequence_domain| %>
+      <tr>
+        <td><%= biosequence_domain.biosequence_id %></td>
+        <td><%= biosequence_domain.domain_id %></td>
+        <td><%= biosequence_domain.seq_start %></td>
+        <td><%= biosequence_domain.seq_end %></td>
+        <td><%= link_to 'Show', biosequence_domain %></td>
+        <td><%= link_to 'Edit', edit_biosequence_domain_path(biosequence_domain) %></td>
+        <td><%= link_to 'Destroy', biosequence_domain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Biosequence domain', new_biosequence_domain_path %>

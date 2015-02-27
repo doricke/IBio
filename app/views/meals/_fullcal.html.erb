@@ -1,0 +1,113 @@
+<style>
+.event {
+    //shared event css
+}
+
+.greenEvent {
+    background-color:#00FF00;
+}
+
+.redEvent {
+    background-color:#FF0000;
+}
+</style>
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+  
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    var day_delta = 0;
+    var minute_delta = 0;
+    
+    var calendar = $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      weekMode: 'liquid',
+      // defaultView: 'agendaWeek',
+      defaultView: 'month',
+      selectable: true,
+      selectHelper: true,
+      slotMinutes: 15,
+      snapMinutes: 5,
+      defaultEventMinutes: 15,
+      eventClick: function(event, element){},
+      eventDrop: function(event,dayDelta,minuteDelta,allDay,revertFunc){
+        $.ajax({
+            url: '/meals/json_copy',
+            type: 'POST',
+            data:{
+              consumed_at: event.start.toString(),
+              meal_id: meal.id,
+            },
+            error: function(){
+              revertEventDrop(revertFunc);
+            }    
+        });
+      },     
+      eventResize: function(event,dayDelta,minuteDelta,revertFunc){
+        $.ajax({
+            url: '/activities/json_resize',
+            type: 'POST',
+            data:{
+              start_time: event.start.toString(),
+              end_time: event.end.toString(),
+              activity_id: event.id,
+              day_delta: dayDelta,
+              minute_delta: minuteDelta,
+            },
+            error: function(){
+              revertEventResize(revertFunc);
+            } 
+          });
+      },      
+      select: function(start, end, allDay) {
+          $.ajax({
+            url: '/meals/new2',
+            type: 'POST',
+            dataType: 'html',
+            data:{
+              consumed_at: start.toString(),
+            },
+            error: function(){
+              var status = $.ajax({
+              url: '/meals/return_session',
+              async: false
+              }).responseText;
+              if (status == 'false') {
+                alert("Your meal failed to create due to an illegal operation.");
+              }
+            },
+            success: function(){
+            },
+          });          
+        
+        calendar.fullCalendar('unselect');
+      },
+      editable: true,
+      events: <%= render :partial => 'meals', :locals => {:meals => @meals} %>
+      // eventBorderColor: 'red'
+    }); 
+  });
+</script>
+<style type='text/css'>
+
+  body {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 13px;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    }
+
+  #calendar {
+    width: 900px;
+    margin: 0 auto;
+    }
+
+</style>
+<div id='calendar'></div>

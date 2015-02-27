@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @itype.name if ! @itype.nil? %>
+</p>
+
+<p>
+  <strong>Ethnic:</strong>
+  <%= @normal.ethnic_id %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @normal.note_id %>
+</p>
+
+<p>
+  <strong>Normal low:</strong>
+  <%= @normal.normal_low %>
+</p>
+
+<p>
+  <strong>Normal high:</strong>
+  <%= @normal.normal_high %>
+</p>
+
+<p>
+  <strong>Ref range:</strong>
+  <%= @normal.ref_range %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @normal.sex %>
+</p>
+
+<p>
+  <strong>Age low:</strong>
+  <%= @normal.age_low %>
+</p>
+
+<p>
+  <strong>Age high:</strong>
+  <%= @normal.age_high %>
+</p>
+
+<%= link_to 'Edit', edit_normal_path(@normal) %> |
+<%= link_to 'Back', normals_path %>

@@ -1,0 +1,39 @@
+<h1>Listing effects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Biosequence</th>
+      <th>Variant</th>
+      <th>Name</th>
+      <th>Impact</th>
+      <th>Function class</th>
+      <th>Codon change</th>
+      <th>Aa change</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @effects.each do |effect| %>
+      <tr>
+        <td><%= effect.biosequence_id %></td>
+        <td><%= effect.variant_id %></td>
+        <td><%= effect.name %></td>
+        <td><%= effect.impact %></td>
+        <td><%= effect.function_class %></td>
+        <td><%= effect.codon_change %></td>
+        <td><%= effect.aa_change %></td>
+        <td><%= link_to 'Show', effect %></td>
+        <td><%= link_to 'Edit', edit_effect_path(effect) %></td>
+        <td><%= link_to 'Destroy', effect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Effect', new_effect_path %>

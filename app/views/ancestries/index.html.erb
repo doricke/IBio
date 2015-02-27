@@ -1,0 +1,36 @@
+<h1>Ancestries</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Ethnic</th>
+      <th>Percent</th>
+      <th>Source</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ancestries.each do |ancestry| %>
+      <tr>
+        <% ethnic_name = "" -%>
+        <% if ancestry.ethnic_id -%>
+          <% ethnic = @ethnics_hash[ ancestry.ethnic_id ] -%>
+          <% ethnic_name = ethnic.name -%>
+          <% ethnic_name = ethnic.region if ethnic.region && (ethnic.region.size > 0) -%>
+          <% ethnic_name = ethnic.race if ethnic.race && (ethnic.race.size > 0) -%>
+        <% end -%>
+        <td><%= ethnic_name %></td>
+        <td align="center"><%= ancestry.percent %></td>
+        <td align="center"><%= @itypes_hash[ancestry.itype_id].name if ancestry.itype_id %></td>
+        <td><%= link_to 'Edit', edit_ancestry_path(ancestry) %></td>
+        <td><%= link_to 'Delete', ancestry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ancestry', new_ancestry_path %>

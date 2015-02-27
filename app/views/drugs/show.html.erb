@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @drug.name %></h1>
+
+<% if ! @drug.note_id.nil? -%>
+<p>
+  <strong>Note:</strong>
+  <%= @drug.note_id %>
+</p>
+<% end -%>
+
+<% if @drug_genes.size > 0 %>
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Drug</th>
+      <th>Gene</th>
+      <th>Cpic dosing</th>
+      <th>Pharm gbk</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drug_genes.each do |drug_gene| %>
+      <tr>
+        <td><%= drug_gene.drug.name %></td>
+        <td><%= drug_gene.gene.namne %></td>
+        <td><%= drug_gene.cpic_dosing %></td>
+        <td><%= drug_gene.pharm_gbk_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else -%>
+No Drug - Genes interactions listed.<br />
+<% end -%>
+<br />
+<% if @drug_reactions.size > 0 %>
+<% shown = {} -%>
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Pathways</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @drug_reactions.each do |drug_reaction| %>
+     <% if shown[drug_reaction.pathway_id].nil? %>
+      <tr>
+        <td><%= link_to @pathways_hash[drug_reaction.pathway_id].name, {:controller => "pathways", :action => "show", :id => drug_reaction.pathway_id}, {:method => :get} %></td>
+        <% shown[drug_reaction.pathway_id] = true -%>
+      </tr>
+     <% end -%>
+    <% end -%>
+  </tbody>
+</table>
+<% else %>
+No Drug - Pathways interactions listed.
+<% end -%>
+
+<br />
+<%= link_to 'Back', drugs_path %>

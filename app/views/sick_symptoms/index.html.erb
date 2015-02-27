@@ -1,0 +1,35 @@
+<h1>Symptoms</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Sick</th>
+      <th>Symptom</th>
+      <th>Measurement</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sick_symptoms.each do |sick_symptom| %>
+      <tr>
+        <td><%= sick_symptom.sick_id %></td>
+        <td><%= @symptoms_hash[sick_symptom.symptom_id].name if ! sick_symptom.symptom_id.nil? %></td>
+        <td><%= sick_symptom.measurement %></td>
+        <td><%= sick_symptom.start_time %></td>
+        <td><%= sick_symptom.end_time %></td>
+        <td><%= link_to 'Show', sick_symptom %></td>
+        <td><%= link_to 'Edit', edit_sick_symptom_path(sick_symptom) %></td>
+        <td><%= link_to 'Destroy', sick_symptom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sick symptom', new_sick_symptom_path %>

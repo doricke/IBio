@@ -1,0 +1,33 @@
+<%= form_for(@synonym) do |f| %>
+  <% if @synonym.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@synonym.errors.count, "error") %> prohibited this synonym from being saved:</h2>
+
+      <ul>
+      <% @synonym.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :itype_id %><br>
+    <%= f.number_field :itype_id %>
+  </div>
+  <div class="field">
+    <%= f.label :source_id %><br>
+    <%= f.number_field :source_id %>
+  </div>
+  <div class="field">
+    <%= f.label :synonym_name %><br>
+    <%= f.text_field :synonym_name %>
+  </div>
+  <div class="field">
+    <%= f.label :table_name %><br>
+    <%= f.text_field :table_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

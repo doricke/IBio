@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  individual_id: 1
+  instrument_id: 1
+  algorithm_id: 1
+  updated_at: 2014-06-02 14:03:37
+
+two:
+  individual_id: 1
+  instrument_id: 1
+  algorithm_id: 1
+  updated_at: 2014-06-02 14:03:37

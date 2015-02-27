@@ -1,0 +1,25 @@
+<h1>Instruments</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Instrument type</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instruments.each do |instrument| %>
+      <tr>
+        <td><%= instrument.id %></td>
+        <td><%= instrument.name %></td>
+        <td><%= instrument.instrument_type %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Instrument', new_instrument_path %>

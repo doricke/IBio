@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  algorithm_name: MyString
+  version: MyString
+  updated_at: 2014-06-02 14:00:29
+
+two:
+  algorithm_name: MyString
+  version: MyString
+  updated_at: 2014-06-02 14:00:29

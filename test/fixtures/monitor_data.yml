@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instrument_id: 1
+  individual_id: 1
+  attachment_id: 1
+  image_id: 1
+  itype_id: 1
+  start_time: 2014-02-08 14:05:41
+  end_time: 2014-02-08 14:05:41
+  points_per_second: 1
+  points_per_hour: 1
+  data_vector: MyText
+
+two:
+  instrument_id: 1
+  individual_id: 1
+  attachment_id: 1
+  image_id: 1
+  itype_id: 1
+  start_time: 2014-02-08 14:05:41
+  end_time: 2014-02-08 14:05:41
+  points_per_second: 1
+  points_per_hour: 1
+  data_vector: MyText

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= @panel.attachment_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @type.name if ! @type.nil? %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @panel.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @panel.end_time %>
+</p>
+
+<%= link_to 'Edit', edit_panel_path(@panel) %> |
+<%= link_to 'Back', panels_path %>

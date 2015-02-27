@@ -1,0 +1,41 @@
+<%= form_for(@data_range) do |f| %>
+  <% if @data_range.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@data_range.errors.count, "error") %> prohibited this data_range from being saved:</h2>
+
+      <ul>
+      <% @data_range.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :itype_id %><br>
+    <%= f.number_field :itype_id %>
+  </div>
+  <div class="field">
+    <%= f.label :table_name %><br>
+    <%= f.text_field :table_name %>
+  </div>
+  <div class="field">
+    <%= f.label :lower %><br>
+    <%= f.text_field :lower %>
+  </div>
+  <div class="field">
+    <%= f.label :upper %><br>
+    <%= f.text_field :upper %>
+  </div>
+  <div class="field">
+    <%= f.label :qualifier %><br>
+    <%= f.text_field :qualifier %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

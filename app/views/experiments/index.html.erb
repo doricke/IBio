@@ -1,0 +1,29 @@
+<h1>Experiments</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Instrument</th>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Created at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @experiments.each do |experiment| %>
+      <tr>
+        <td><%= @instruments_hash[experiment.instrument_id].name %></td>
+        <td><%= @itypes_hash[experiment.itype_id].name if (! experiment.itype_id.nil?) && (! @itypes_hash[experiment.itype_id].nil?) %></td>
+        <td><%= experiment.name %></td>
+        <td><%= local_time(experiment.created_at) %></td>
+        <td><%= link_to 'Show', experiment %></td>
+        <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
+        <td><%= link_to 'Destroy', experiment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

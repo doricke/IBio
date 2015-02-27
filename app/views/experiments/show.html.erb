@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instrument:</strong>
+  <%= @experiment.instrument_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @itype.name if ! @itype.nil? %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @experiment.note_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @experiment.name %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= local_time(@experiment.created_at) %>
+</p>
+
+<%= link_to 'Edit', edit_experiment_path(@experiment) %> |
+<%= link_to 'Back', experiments_path %>

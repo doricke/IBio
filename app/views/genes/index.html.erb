@@ -1,0 +1,38 @@
+<h1>Genes</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Ncbi Gene ID</th>
+      <th>Loci</th>
+      <th>Reactions</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @genes.each do |gene| -%>
+      <tr>
+        <td><%= gene.gene_symbol %></td>
+        <td><%= gene.name %></td>
+        <td><%= gene.ncbi_gene_id %></td>
+        <td>
+          <% if (! @loci[ gene.id ].nil?) && (@loci[ gene.id ].size > 0) -%>
+            <% @loci[ gene.id ].each do |locus| -%>
+              <%= link_to "#{locus.name}", {:controller => "locus", :action => :show, :id => locus.id}, {:method => :get} %>
+            <% end -%>
+          <% end -%>
+        </td>
+        <td>
+          <% if (! @gene_reactions[ gene.id ].nil?) && (@gene_reactions[ gene.id ].size > 0) -%>
+            <% @gene_reactions[ gene.id ].each do |gene_reaction| -%>
+              <%= link_to "#{@pathways_hash[gene_reaction.pathway_id].name}", {:controller => "pathways", :action => :show, :id => gene_reaction.pathway_id}, {:method => :get} %>            
+            <% end -%>
+          <% end -%>
+        </td>
+        <td><%= link_to 'Show', gene %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

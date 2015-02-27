@@ -1,0 +1,49 @@
+<%= form_for(@attribute) do |f| %>
+  <% if @attribute.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attribute.errors.count, "error") %> prohibited this attribute from being saved:</h2>
+
+      <ul>
+      <% @attribute.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+  <thead />
+  <tbody>
+    <tr>
+  <div class="field">
+    <td><%= f.label :name %></td>
+    <td><%= f.text_field :name %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :category %></td>
+    <td><%= f.text_field :category %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :amount %></td>
+    <td><%= f.text_field :amount %></td>
+  </div>
+  <div class="field">
+    <td><%= f.label :unit_id %></td>
+    <td><%= f.collection_select(:unit_id, @units, :id, :name) %></td>
+  </div>
+    </tr><tr>
+  <div class="field">
+    <td><%= f.label :measured_at %></td>
+    <td><td><%= f.date_select :measured_at %></td>
+  </div>
+    </tr>
+  </tbody>
+</table>
+<br />
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

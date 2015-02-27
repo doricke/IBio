@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead />
+  <tbody>
+    <% if ! @itype.nil? -%>
+      <tr>
+        <td><strong>Type:</strong></td>
+        <td><%= @itype.name %></td>
+      </tr><tr>
+    <% end -%>
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td><%= @locus.name %></td>
+    </tr>
+    <% if ! @allele_call.nil? -%>
+      <tr>
+        <td><strong>Alleles:</strong></td>
+        <td><%= @allele_call.alleles %></td>
+      </tr>
+    <% end -%>
+    <% if ! @locus.chromosome.nil? -%>
+      <tr>
+        <td><strong>Chromosome:</strong></td>
+        <td><%= @locus.chromosome %></td>
+      </tr>
+    <% end -%>
+    <% if ! @locus.position.nil? -%>
+      <tr>
+        <td><strong>Position:</strong></td>
+        <td><%= @locus.position %></td>
+      </tr>
+    <% end -%>
+    <% if ! @disease.nil? -%>
+      <tr>
+        <td><strong>Disease:</strong></td>
+        <td><%= @disease.name %></td>
+      </tr>
+    <% end -%>
+    <% if ! @gene.nil? -%>
+      <tr>
+        <td><strong>Gene:</strong></td>
+        <td><%= @gene.name %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+<br />
+
+<%= link_to 'Edit', edit_locu_path(@locus) %> |
+<%= link_to 'Back', locus_path %>

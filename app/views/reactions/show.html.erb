@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pathway:</strong>
+  <%= @reaction.pathway_id %>
+</p>
+
+<p>
+  <strong>Itype:</strong>
+  <%= @reaction.itype_id %>
+</p>
+
+<p>
+  <strong>Control itype:</strong>
+  <%= @reaction.control_itype %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= @reaction.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @reaction.to %>
+</p>
+
+<p>
+  <strong>Control:</strong>
+  <%= @reaction.control %>
+</p>
+
+<%= link_to 'Edit', edit_reaction_path(@reaction) %> |
+<%= link_to 'Back', reactions_path %>

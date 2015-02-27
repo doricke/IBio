@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Structure:</strong>
+  <%= @structure_sequence.structure_id %>
+</p>
+
+<p>
+  <strong>Biosequence:</strong>
+  <%= @structure_sequence.biosequence_id %>
+</p>
+
+<p>
+  <strong>Chain:</strong>
+  <%= @structure_sequence.chain %>
+</p>
+
+<%= link_to 'Edit', edit_structure_sequence_path(@structure_sequence) %> |
+<%= link_to 'Back', structure_sequences_path %>

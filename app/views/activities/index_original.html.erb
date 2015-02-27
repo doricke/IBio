@@ -1,0 +1,45 @@
+<h1>Activities</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Image</th>
+      <th>Attachment</th>
+      <th>Note</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Intensity</th>
+      <th>Qualifier</th>
+      <th></th>
+      <!-- th></th -->
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.activity_name %></td>
+        <td><%= @itypes_hash[activity.itype_id].name if activity.itype_id %></td>
+        <td><%= activity.image_id %></td>
+        <td><%= activity.attachment.name if activity.attachment_id %></td>
+        <td><%= activity.note.comment if ! activity.note_id.nil? %></td>
+        <td><%= activity.start_time %></td>
+        <td><%= activity.end_time %></td>
+        <td align="center"><%= activity.intensity %></td>
+        <td align="center"><%= activity.qualifier %></td>
+        <td><%= link_to 'Show', activity %></td>
+        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Activity', new_activity_path %>
+<%= link_to 'full calendar', {:controller => "activities", :action => "fullcal"}, {:method => :get} %>

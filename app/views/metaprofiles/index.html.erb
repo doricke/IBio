@@ -1,0 +1,31 @@
+<h1>Metaprofiles</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Organism</th>
+      <th>Count</th>
+      <th>Measured at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @metaprofiles.each do |metaprofile| %>
+      <tr>
+        <td><%= metaprofile.organism_id %></td>
+        <td><%= metaprofile.count %></td>
+        <td><%= metaprofile.measured_at %></td>
+        <td><%= link_to 'Show', metaprofile %></td>
+        <td><%= link_to 'Edit', edit_metaprofile_path(metaprofile) %></td>
+        <td><%= link_to 'Destroy', metaprofile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Metaprofile', new_metaprofile_path %>

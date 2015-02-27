@@ -1,0 +1,29 @@
+<%= form_for(@metaprofile) do |f| %>
+  <% if @metaprofile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@metaprofile.errors.count, "error") %> prohibited this metaprofile from being saved:</h2>
+
+      <ul>
+      <% @metaprofile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :organism_id %><br>
+    <%= f.number_field :organism_id %>
+  </div>
+  <div class="field">
+    <%= f.label :count %><br>
+    <%= f.number_field :count %>
+  </div>
+  <div class="field">
+    <%= f.label :measured_at %><br>
+    <%= f.datetime_select :measured_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Drug:</strong>
+  <%= @drug_gene.drug_id %>
+</p>
+
+<p>
+  <strong>Gene:</strong>
+  <%= @drug_gene.gene_id %>
+</p>
+
+<p>
+  <strong>Cpic dosing:</strong>
+  <%= @drug_gene.cpic_dosing %>
+</p>
+
+<p>
+  <strong>Pharm gbk:</strong>
+  <%= @drug_gene.pharm_gbk_id %>
+</p>
+
+<%= link_to 'Edit', edit_drug_gene_path(@drug_gene) %> |
+<%= link_to 'Back', drug_genes_path %>

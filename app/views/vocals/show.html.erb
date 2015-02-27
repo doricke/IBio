@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Individual:</strong>
+  <%= @vocal.individual_id %>
+</p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= @vocal.attachment_id %>
+</p>
+
+<p>
+  <strong>Speech text:</strong>
+  <%= @vocal.speech_text %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @vocal.start_time %>
+</p>
+
+<%= link_to 'Edit', edit_vocal_path(@vocal) %> |
+<%= link_to 'Back', vocals_path %>

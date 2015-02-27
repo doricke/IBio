@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  itype_id: 1
+  source_id: 1
+  synonym_name: MyString
+  table_name: MyString
+
+two:
+  itype_id: 1
+  source_id: 1
+  synonym_name: MyString
+  table_name: MyString

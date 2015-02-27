@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  individual_id: 1
+  logitude: 1.5
+  latitude: 1.5
+  timepoint: 2013-12-17 14:45:44
+
+two:
+  individual_id: 1
+  logitude: 1.5
+  latitude: 1.5
+  timepoint: 2013-12-17 14:45:44

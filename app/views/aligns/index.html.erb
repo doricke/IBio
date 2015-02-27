@@ -1,0 +1,35 @@
+<h1>Aligns</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Msa</th>
+      <th>Biosequence</th>
+      <th>Align rank</th>
+      <th>Updated at</th>
+      <th>Align sequence</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aligns.each do |align| %>
+      <tr>
+        <td><%= align.msa_id %></td>
+        <td><%= align.biosequence_id %></td>
+        <td><%= align.align_rank %></td>
+        <td><%= align.updated_at %></td>
+        <td><%= align.align_sequence %></td>
+        <td><%= link_to 'Show', align %></td>
+        <td><%= link_to 'Edit', edit_align_path(align) %></td>
+        <td><%= link_to 'Destroy', align, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Align', new_align_path %>

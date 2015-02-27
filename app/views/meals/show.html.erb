@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Consumed at:</strong>
+  <%= @meal.consumed_at %>
+</p>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Food Item</th>
+      <th>Amount</th>
+      <th>Units</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @food_items.each do |food_item| %>
+      <tr>
+        <td><%= @foods_hash[ food_item.food_id ].name %></td>
+        <td><%= food_item.amount %></td>
+        <td><%= @units_hash[ food_item.unit_id ].name %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_meal_path(@meal) %> |
+<%= link_to 'Back', meals_path %>

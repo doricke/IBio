@@ -1,0 +1,28 @@
+
+<%= form_tag(id: @place.id, action: :show2) do %>
+
+<h2><%= "#{@place.city}, #{@place.state}" %></h2>
+
+<%= high_chart(@place.city, @chart) %>
+<%= javascript_include_tag "highcharts/modules/exporting.js" %>
+
+<% count = 0 -%>
+<table><thead /><tbody><tr>
+<% @selected.each do |id, select| -%>
+  <td>
+    <%= check_box_tag("selected[#{id}]", true, @selected[id]) %> 
+    <%= @itypes_hash[id.to_i].name %>
+    <% count += 1 -%>
+  </td>
+  <% if count >= 5 -%>
+    </tr><tr><% count = 0 -%>  
+  <% end -%>      
+<% end -%>
+</tr></tbody></table>
+
+  <div class="actions">
+    <%= submit_tag 'Update View' %>
+  </div>
+<% end -%>
+
+<%= javascript_include_tag 'highcharts' %>

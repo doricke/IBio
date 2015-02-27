@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Algorithm name:</strong>
+  <%= @algorithm.algorithm_name %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @algorithm.version %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @algorithm.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_algorithm_path(@algorithm) %> |
+<%= link_to 'Back', algorithms_path %>

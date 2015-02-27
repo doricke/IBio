@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  drug_id: 1
+  unit_it: 1
+  guid1: MyString
+  dose: 1.5
+  daily: 1.5
+  start_time: 2013-12-17 14:45:49
+  end_time: 2013-12-17 14:45:49
+
+two:
+  drug_id: 1
+  unit_it: 1
+  guid1: MyString
+  dose: 1.5
+  daily: 1.5
+  start_time: 2013-12-17 14:45:49
+  end_time: 2013-12-17 14:45:49

@@ -1,0 +1,31 @@
+<h1>Solvents</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Sequence</th>
+      <th>Position</th>
+      <th>Accessibility</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @solvents.each do |solvent| %>
+      <tr>
+        <td><%= solvent.biosequence_id %></td>
+        <td><%= solvent.position %></td>
+        <td><%= solvent.accessibility %></td>
+        <td><%= link_to 'Show', solvent %></td>
+        <td><%= link_to 'Edit', edit_solvent_path(solvent) %></td>
+        <td><%= link_to 'Destroy', solvent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Solvent', new_solvent_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instrument:</strong>
+  <%= @instrument.name %>
+</p>
+
+<p>
+  <strong>Itype:</strong>
+  <%= @itype.name %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @monitor_datum.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @monitor_datum.end_time %>
+</p>
+
+<p>
+  <strong>Points per second:</strong>
+  <%= @monitor_datum.points_per_second %>
+</p>
+
+<p>
+  <strong>Points per hour:</strong>
+  <%= @monitor_datum.points_per_hour %>
+</p>
+
+<p>
+  <strong>Data vector:</strong>
+  <%= @monitor_datum.data_vector %>
+</p>
+
+<%= link_to 'Edit', edit_monitor_datum_path(@monitor_datum) %> |
+<%= link_to 'Back', monitor_data_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  individual_id: 1
+  vocal_id: 1
+  attachment_id: 1
+  algorithm_id: 1
+  score: 1.5
+  start_time: 2014-06-02 14:01:28
+  updated_at: 2014-06-02 14:01:28
+
+two:
+  individual_id: 1
+  vocal_id: 1
+  attachment_id: 1
+  algorithm_id: 1
+  score: 1.5
+  start_time: 2014-06-02 14:01:28
+  updated_at: 2014-06-02 14:01:28

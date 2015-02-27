@@ -1,0 +1,35 @@
+<h1>Listing papers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pmid</th>
+      <th>Doi</th>
+      <th>Title</th>
+      <th>Authors</th>
+      <th>Reference</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @papers.each do |paper| %>
+      <tr>
+        <td><%= paper.pmid %></td>
+        <td><%= paper.doi %></td>
+        <td><%= paper.title %></td>
+        <td><%= paper.authors %></td>
+        <td><%= paper.reference %></td>
+        <td><%= link_to 'Show', paper %></td>
+        <td><%= link_to 'Edit', edit_paper_path(paper) %></td>
+        <td><%= link_to 'Destroy', paper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Paper', new_paper_path %>

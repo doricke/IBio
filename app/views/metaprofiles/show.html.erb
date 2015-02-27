@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Organism:</strong>
+  <%= @metaprofile.organism_id %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @metaprofile.count %>
+</p>
+
+<p>
+  <strong>Measured at:</strong>
+  <%= @metaprofile.measured_at %>
+</p>
+
+<%= link_to 'Edit', edit_metaprofile_path(@metaprofile) %> |
+<%= link_to 'Back', metaprofiles_path %>

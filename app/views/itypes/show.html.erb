@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @itype.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @itype.category %>
+</p>
+
+<p>
+  <strong>Units:</strong>
+  <%= @unit.name if ! @unit.nil? %>
+</p>
+
+<%= link_to 'Edit', edit_itype_path(@itype) %> |
+<%= link_to 'Back', itypes_path %>

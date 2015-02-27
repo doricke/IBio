@@ -1,0 +1,29 @@
+<%= form_for(@algorithm) do |f| %>
+  <% if @algorithm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@algorithm.errors.count, "error") %> prohibited this algorithm from being saved:</h2>
+
+      <ul>
+      <% @algorithm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :algorithm_name %><br>
+    <%= f.text_field :algorithm_name %>
+  </div>
+  <div class="field">
+    <%= f.label :version %><br>
+    <%= f.text_field :version %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.datetime_select :updated_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

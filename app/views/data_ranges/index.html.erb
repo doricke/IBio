@@ -1,0 +1,37 @@
+<h1>Listing data_ranges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Itype</th>
+      <th>Table name</th>
+      <th>Lower</th>
+      <th>Upper</th>
+      <th>Qualifier</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @data_ranges.each do |data_range| %>
+      <tr>
+        <td><%= data_range.itype_id %></td>
+        <td><%= data_range.table_name %></td>
+        <td><%= data_range.lower %></td>
+        <td><%= data_range.upper %></td>
+        <td><%= data_range.qualifier %></td>
+        <td><%= data_range.description %></td>
+        <td><%= link_to 'Show', data_range %></td>
+        <td><%= link_to 'Edit', edit_data_range_path(data_range) %></td>
+        <td><%= link_to 'Destroy', data_range, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Data range', new_data_range_path %>

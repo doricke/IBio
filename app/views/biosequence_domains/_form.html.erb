@@ -1,0 +1,33 @@
+<%= form_for(@biosequence_domain) do |f| %>
+  <% if @biosequence_domain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@biosequence_domain.errors.count, "error") %> prohibited this biosequence_domain from being saved:</h2>
+
+      <ul>
+      <% @biosequence_domain.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :biosequence_id %><br>
+    <%= f.number_field :biosequence_id %>
+  </div>
+  <div class="field">
+    <%= f.label :domain_id %><br>
+    <%= f.number_field :domain_id %>
+  </div>
+  <div class="field">
+    <%= f.label :seq_start %><br>
+    <%= f.number_field :seq_start %>
+  </div>
+  <div class="field">
+    <%= f.label :seq_end %><br>
+    <%= f.number_field :seq_end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

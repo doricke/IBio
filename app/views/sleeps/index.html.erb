@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to('Box plots', {:controller => :sleeps, :action => :boxplots}, {:method => :get}) %> | 
+<%= link_to('Bland-Altman', {:controller => :sleeps, :action => :bland_altman}, {:method => :get}) %>
+
+<%= render 'index', locals: {instruments_hash: @instruments_hash, sleeps: @sleeps, chart: @chart, selected: @selected} %>

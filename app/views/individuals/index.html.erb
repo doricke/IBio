@@ -1,0 +1,29 @@
+<h1>Individuals</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Sex</th>
+      <th>Code name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @individuals.each do |individual| %>
+      <tr>
+        <td><%= individual.sex %></td>
+        <td><%= individual.code_name %></td>
+        <td><%= link_to 'Show', individual %></td>
+        <td><%= link_to 'Edit', edit_individual_path(individual) %></td>
+        <td><%= link_to 'Destroy', individual, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Individual', new_individual_path %>

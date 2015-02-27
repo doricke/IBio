@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  individual_id: 1
+  attachment_id: 1
+  speech_text: MyString
+  start_time: 2014-05-02 12:47:28
+
+two:
+  individual_id: 1
+  attachment_id: 1
+  speech_text: MyString
+  start_time: 2014-05-02 12:47:28

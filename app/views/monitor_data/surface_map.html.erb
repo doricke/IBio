@@ -1,0 +1,24 @@
+<h1>Surface Map
+<% if @day %>
+    for the week of
+    <%= @day.strftime('%x') %>
+<% end %>
+</h1>
+
+<%= form_tag(action: :surface_map) do %>
+  <table>
+    <thead></thead>
+    <tbody>
+      <tr>
+        <td>Date:</td>
+        <td><%= date_field_tag ('date') %></td>
+        <td><%= submit_tag('Select Date') %></td>
+        <td><%= collection_select(:instrument, :instrument_id, @instruments, :id, :name, {:selected => @instrument_id} ) %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end -%>
+
+<div id="surface1" class="surfaceMap"></div>
+
+<%= javascript_include_tag 'jsurface3d_init' %>

@@ -1,0 +1,27 @@
+<h1>iTypes</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Unit</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @itypes.each do |itype| -%>
+      <tr>
+        <td><%= itype.name %></td>
+        <td><%= itype.category %></td>
+        <td><%= @units_hash[itype.unit_id].name if ! itype.unit_id.nil? %></td>
+        <td><%= link_to 'Edit', edit_itype_path(itype) %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New iType', new_itype_path %>

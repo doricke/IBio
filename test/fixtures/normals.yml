@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ethnic_id: 1
+  note_id: 1
+  normal_low: 1.5
+  normal_high: 1.5
+  ref_range: MyString
+  sex: MyString
+  age_low: 1
+  age_high: 1
+
+two:
+  ethnic_id: 1
+  note_id: 1
+  normal_low: 1.5
+  normal_high: 1.5
+  ref_range: MyString
+  sex: MyString
+  age_low: 1
+  age_high: 1

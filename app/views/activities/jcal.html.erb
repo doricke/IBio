@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>	
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag "demo_page"%>
+  <%= stylesheet_link_tag "demo_table_jui"%>
+  <%= stylesheet_link_tag 'pro_dropdown_2' %>
+  <%= stylesheet_link_tag 'jquery-ui-1.8.2.custom' %>
+  <%= stylesheet_link_tag 'theme' %>
+  <%= stylesheet_link_tag 'fullcalendar' %>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'prototype' %>
+  <%= yield :tinymce %>
+  <%= javascript_include_tag 'scriptaculous' %>
+  <%= javascript_include_tag 'effects' %>
+  <%= javascript_include_tag 'controls' %>
+  <%= yield :tinymce_init %>
+  <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag "jquery-ui-1.8.2.custom.min" %>
+  <%= javascript_include_tag 'stuHover' %>
+  <%= javascript_include_tag 'jquery.dataTables' %>
+  <%= javascript_include_tag 'fullcalendar.min' %>
+  <%= javascript_include_tag 'jquery-ui-custom' %>
+  <%= javascript_include_tag 'fullcalendar' %>
+  <%= javascript_include_tag 'datetimepicker' %>
+  <title>Reservations: <%= controller.action_name %></title>
+</head>
+
+<body>
+<%= error_messages_for :reservation %>
+<% unless flash[:error].blank? %>
+	<h2 align="center", style="color: #ff0000"><%= flash[:error] %></h2>
+<% end %>
+
+
+<%= render :partial => 'jcal', :locals => {:types => @types} %>
+<% end %>
+<div id="newResForm" style="display:none; text-align:left;">
+	<label>Activity Name:<br /><input type="text" name="activityName" value="" size="30" /></label><br />
+	<label>Intensity:<br /><input type="text" name="intensity" value="" size="30"/></label><br />
+	<label>Qualifier:<br /><input type="text" name="qualifier" value="" size="30"/></label><br />
+	<label>Notes:<br />
+		<textarea name="notes" rows="5" cols="40"></textarea>
+	</label><br />
+</div>
+<div id="newResForm2" style="display:none; text-align:left;">
+  <label>Activity Name:<br /><input type="text" name="activityName" value="" size="30" /></label><br />
+  <label>Intensity:<br /><input type="text" name="intensity" value="" size="30"/></label><br />
+  <label>Qualifier:<br /><input type="text" name="qualifier" value="" size="30"/></label><br />
+	<label>Start:<br /><input id="datetimepicker" type="text" name="start" size="25" />
+				<a href="javascript:NewCal('datetimepicker','MMMddyyyy', true)"><img src="../images/cal.gif" width="16" height="16" border="0" alt="pick a date" /></a>
+	</label><br />
+	<label>end:<br /><input id="datetimepicker2" type="text" name="end" size="25" />
+				<a href="javascript:NewCal('datetimepicker2','MMMddyyyy', true)"><img src="../images/cal.gif" width="16" height="16" border="0" alt="pick a date" /></a>
+	</label><br />
+	<label>Notes:<br /><textarea name="notes" rows="5" cols="40"></textarea></label><br />
+</div>
+</body>
+</html>
+
+

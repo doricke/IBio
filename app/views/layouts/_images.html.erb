@@ -1,0 +1,165 @@
+    <style>
+        ul.navbar {
+            float: left;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            height: 210px;
+            list-style: none;
+        }
+
+        li.bubbles a{
+            text-decoration: none;
+        }
+
+        .bubbles {
+            font-family: Calibri, Helvetica, serif;
+            display: inline;
+            float: left;
+            width: 90px;
+            height: 175px;
+            padding: 2px 2px;
+            margin: 2px;
+            border: 2px solid;
+            text-align: center;
+
+            border-top-right-radius: 25px;
+            -moz-border-radius-topright: 25px;
+            -webkit-border-top-right-radius: 25px;
+
+            border-top-left-radius: 25px;
+            -moz-border-radius-topleft: 25px;
+            -webkit-border-top-left-radius: 25px;
+
+            border-bottom-right-radius: 25px;
+            -moz-border-radius-bottomright: 25px;
+            -webkit-border-bottom-right-radius: 25px;
+
+            border-bottom-left-radius: 25px;
+            -moz-border-radius-bottomleft: 25px;
+            -webkit-border-bottom-left-radius: 25px;
+        }
+
+        li.blue{
+            color: rgb(45,99,115);
+            border-color: rgb(45,99,115);
+            background-color: rgb(185,205,230);
+        }
+        li.purple{
+            color: rgb(113,20,113);
+            border-color: rgb(113,20,113);
+            background-color: rgb(238,230,255);
+        }
+        li.orange{
+            color: rgb(226,115,25);
+            border-color: rgb(226,115,25);
+            background-color: rgb(193,223,179);
+        }
+
+        li.stackedImagesLi {
+            display:table-cell;
+            text-align:center;
+            vertical-align:middle;
+        }
+
+        div.stackedImagesLi {
+            display:table-cell;
+            vertical-align:middle;
+            height: 24px;
+            margin:5px auto;
+        }
+    </style>
+
+<% if ! session[:individual_id].nil? -%>
+<ul class="navbar">
+    <li class='blue bubbles'>
+        <b><%= link_to('Individual', {:controller => :attributes, :method => :index}, {:method => :get}) %></b>
+        <%= link_to image_tag('dna_helix.png', size: '80x50'), {:controller => "locus", :action => 'index'}, {:method => :get} %>
+        <b><%= link_to('Ancestry', {:controller => :ancestries, :method => :index}, {:method => :get}) %></b>
+        <br />
+        <b><%= link_to('Exomes', {:controller => :variants, :method => :index}, {:method => :get}) %></b>
+        <br />
+        <b><%= link_to('Genes', {:controller => :genes, :method => :index}, {:method => :get}) %></b>
+        <br />
+        <b><%= link_to('Diseases', {:controller => :diseases, :method => :index}, {:method => :get}) %></b>
+        <br />
+        <b><%= link_to('Diseases:Genes', {:controller => :disease_genes, :method => :index}, {:method => :get}) %></b>
+    </li>
+
+    <li class='purple bubbles'>
+        <b>Traits</b>
+        <br />
+        <b><%= link_to('Heart Rate', {:controller => :monitor_data, :method => :index}, {:method => :get}) %></b>
+        <br>
+        <b><%= link_to('Summary', {:controller => "activity_summaries", :method => :index}, {:method => :get}) %></b>
+        <br>
+        <b><%= link_to('Vocal', {:controller => :vocals, :method => :index}, {:method => :get}) %></b>
+        <b><%= link_to('.mat', {:controller => :mats, :method => :index}, {:method => :get}) %></b>
+        <br>
+        <b><%= link_to('Pathways', {:controller => :pathways, :method => :index}, {:method => :get}) %></b>
+        <br>
+        <b>miRNA</b>
+        <br>
+        <b><%= link_to('Clinical', {:controller => :measurements, :method => :index}, {:method => :get}) %></b>
+    </li>
+
+    <li class='orange bubbles'>
+        <b><%= link_to('Activity', {:controller => :activities, :method => :index}, {:method => :get}) %></b>
+        <br>
+          <%= link_to image_tag('walk_track.png', size: '80x135'), {:controller => "activities", :action => 'index'}, {:method => :get} %>
+       <b><%= link_to 'Events', {:controller => "ievents", :method => "index"},  {:method => :get} %></b>
+    </li>
+ 
+    <%= link_to(
+                "<li class='orange bubbles'>
+        Sleep
+        <br>
+        #{image_tag('cot.png', size: '80x95')}
+    </li>".html_safe, {:controller => :sleeps, :method => :index}, {:method => :get}) %>
+
+    <li class='orange bubbles'>
+        <b><%= link_to('Food', {:controller => :foods, :method => :index}, {:method => :get}) %></b>
+        <br>
+        <%= link_to image_tag('fruits.png', size: '80x80'), {:controller => "meals", :action => 'index'}, {:method => :get} %>
+    </li>
+
+    <li class='orange bubbles stackedImagesLi'>
+        <b><%= link_to "Rx", {:controller => "drugs", :action => "index"}, {:method => :get} %></b>/<b><%= link_to "Exposures", {:controller => "places", :action => "index"}, {:method => :get} %></b>
+        <br>
+        <div class='stackedImages'>
+          <%= link_to image_tag('prescription_bottle.png', :height => '70', :width => '40'), {:controller => "prescriptions", :action => 'index'}, {:method => :get} %>
+        </div>
+        <div class='stackedImages'>
+          <%= link_to image_tag('smoke.png', size: '80x60'), {:controller => "places", action: 'index'}, {:method => :get} %>
+        </div>
+        <b><%= link_to "Drugs", {:controller => "drugs", :action => "index"}, {:method => :get} %></b>
+    </li>
+            
+    <li class='orange bubbles stackedImagesLi'>
+        <b><%= link_to('Pathogens', {:controller => :sicks, :method => :index}, {:method => :get}) %></b>
+        <br>
+        <div class='stackedImages'>
+          <%= link_to image_tag('pathogens1.png', size: '60x60'), {:controller => "sicks", action: 'index'}, {:method => :get} %>
+        </div>
+        <div class='stackedImages'>
+          <%= link_to image_tag('bacteria.png', size: '80x60'), {:controller => "sicks", action: 'index'}, {:method => :get} %>
+        </div>
+    </li>
+
+    <li class='purple bubbles'>
+        <b>Links</b>
+        <br />
+        <b><%= link_to('Data Upload', {:controller => :attachments, :action => :index}, {:method => :get}) %></b>
+        <br />
+        <b><%= link_to('Change PW', {:controller => :logins, :action => 'change_pw'}, {:method => :post}) %></b>
+        <b><%= link_to('Logout', {:controller => :logins, :action => 'logout'}, {:method => :get}) %></b>
+        <!-- %= link_to "Images", {:controller => "images", :action => "index"}, {:method => :get} % -->
+    </li>
+    <!-- li><%= link_to "Experiments", {:controller => "experiments", :action => "index"}, {:method => :get} %></li -->    
+    <!-- li><%= link_to "Ethnic", {:controller => "ethnics", :action => "index"}, {:method => :get} %></li -->    
+    <!-- li><%= link_to "Relatives", {:controller => "relateds", :action => "index"}, {:method => :get} %></li -->
+ 
+</ul>
+<% end -%>
+<br />
+<br />

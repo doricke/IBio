@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @attribute.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @attribute.category %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @attribute.amount %>
+  <%= @unit.name if ! @unit.nil? %>
+</p>
+
+<p>
+  <strong>Measured at:</strong>
+  <%= local_time(@attribute.measured_at) %>
+</p>
+
+<%= link_to 'Edit', edit_attribute_path(@attribute) %> |
+<%= link_to 'Back', attributes_path %>

@@ -1,0 +1,37 @@
+<h1>Diseases</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>MIM</th>
+      <th>Name</th>
+      <th>Genes</th>
+      <th>Loci</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @diseases.each do |disease| %>
+      <tr>
+        <td><%= disease.mim_id %></td>
+        <td><%= disease.name %></td>
+        <td>
+          <% if ! @disease_genes[ disease.id ].nil? -%>
+            <% @disease_genes[ disease.id ].each do |gene_id| -%>
+              <%= link_to "#{@genes_hash[gene_id].gene_symbol}", {:controller => "genes", :action => :show, :id => gene_id}, {:method => :get} %>
+            <% end -%>
+          <% end -%>
+        </td>
+        <td>
+          <% if ! @loci[ disease.id ].nil? -%>
+            <% @loci[ disease.id ].each do |locus| -%>
+              <%= link_to "#{locus.name}", {:controller => "locus", :action => :show, :id => locus.id}, {:method => :get} %>            
+            <% end -%>
+          <% end -%>
+        </td>
+        <td><%= @notes_hash[disease.note_id].comment if ! disease.note_id.nil? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<% if @activity.note_id -%>
+<p>
+  <strong>Note:</strong>
+  <%= @activity.note_id %>
+</p>
+<% end -%>
+
+<p>
+  <strong><%= @activity.activity_name %></strong>,
+  <%= @activity.start_time.localtime.strftime("%l:%M to") %>
+  <%= @activity.end_time.localtime.strftime("%l:%M %p, %b %d, %Y") %>
+</p>
+
+<% if @locations.size > 0 %>
+  <%= render :partial => "map" %>
+<% end -%>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>
+
+

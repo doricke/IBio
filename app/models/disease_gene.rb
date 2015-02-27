@@ -1,0 +1,41 @@
+
+################################################################################
+# Copyright (C) 2015  Darrell O. Ricke, PhD
+# Author::    	Darrell O. Ricke, Ph.D.  (mailto: Darrell.Ricke@ll.mit.edu)
+# Copyright:: 	Copyright (c) 2014 MIT Lincoln Laboratory
+# License::   	GNU GPL license  (http://www.gnu.org/licenses/gpl.html)
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+################################################################################
+
+class DiseaseGene < ActiveRecord::Base
+  has_many :disease
+  has_many :gene
+  
+  # Method creates a hash indexed by disease_id of array of gene_ids
+  def self.disease_to_genes
+    disease_genes = DiseaseGene.all
+    disease2gene = {}
+    disease_genes.each do |disease_gene|
+      if disease2gene[ disease_gene.disease_id ].nil?
+        disease2gene[ disease_gene.disease_id ] = [disease_gene.gene_id]
+      else
+        disease2gene[ disease_gene.disease_id ] << disease_gene.gene_id
+      end  # if
+    end  # do
+    return disease2gene
+  end  # disease_to_genes
+
+end  # class DiseaseGene

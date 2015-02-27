@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_id: 1
+  name: MyString
+  chromosome: MyString
+  position: 1
+  flank5: MyString
+  flank3: MyString
+
+two:
+  type_id: 1
+  name: MyString
+  chromosome: MyString
+  position: 1
+  flank5: MyString
+  flank3: MyString

@@ -1,0 +1,23 @@
+<h1>Drugs</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drugs.each do |drug| %>
+      <tr>
+        <td><%= drug.name %></td>
+        <td><%= link_to 'Show', drug %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add Drug', new_drug_path %>

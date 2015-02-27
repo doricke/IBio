@@ -1,0 +1,56 @@
+<h1>Places</h1>
+
+  <%= javascript_include_tag 'd3.min.js' %>
+  <%= javascript_include_tag 'topojson.js' %>
+  <%= javascript_include_tag 'datamaps.usa.min.js' %>
+
+<div id="container" style="position: relative; width: 800px; height: 500px;"></div>
+
+<%= javascript_tag do %>
+    var map = new Datamap({
+    element: document.getElementById('container'),
+    // projection: 'mercator',
+      scope: 'usa',
+      fills: {'defaultFill': 'silver', '1': 'blue'},
+      done: function(datamap) {
+        datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+          alert(geography.properties.name);
+        });
+      }
+    });
+
+    map.bubbles(<%= raw(@all_places) %>,
+    {
+      popupTemplate: function(geo, data) {
+      return '<div class="hoverinfo">' + data.name + '<br>Latitude: ' + data.latitude + '<br>Longitude: ' + data.longitude + '</div>'
+    }
+    });
+<% end -%>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>State</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td><%= place.city %></td>
+        <td><%= place.state %></td>
+        <td><%= place.longitude %></td>
+        <td><%= place.latitude %></td>
+        <td><%= link_to 'Show', place %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Place', new_place_path %>

@@ -1,0 +1,43 @@
+<%= form_for(@meal) do |f| %>
+  <% if @meal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
+
+      <ul>
+      <% @meal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :consumed_at %><br>
+    <%= f.datetime_select :consumed_at %>
+  </div>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Food Item</th>
+        <th>Amount</th>
+        <th>Units</th>      
+      </tr>
+    </thead>
+    <tbody>
+      <% @food_items.each do |food_item| %>
+        <%= fields_for "food_items[]", food_item do |fi| %>
+          <tr>
+            <td><%= fi.collection_select(:food_id, @foods, :id, :name, {:include_blank => true, :selected => food_item.food_id}) %></td>
+            <td><%= fi.number_field :amount %></td>
+            <td><%= fi.collection_select(:unit_id, @units, :id, :name, {:include_blank => true, :selected => food_item.unit_id}) %></td>
+          </tr>
+        <% end -%>  
+      <% end -%>
+    </tbody>
+  </table>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

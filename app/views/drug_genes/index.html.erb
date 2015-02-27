@@ -1,0 +1,27 @@
+<h1>Listing drug_genes</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Drug</th>
+      <th>Gene</th>
+      <th>Cpic dosing</th>
+      <th>Pharm gbk</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drug_genes.each do |drug_gene| %>
+      <tr>
+        <td><%= drug_gene.drug_id %></td>
+        <td><%= drug_gene.gene_id %></td>
+        <td><%= drug_gene.cpic_dosing %></td>
+        <td><%= drug_gene.pharm_gbk_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Drug gene', new_drug_gene_path %>

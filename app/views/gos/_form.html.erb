@@ -1,0 +1,33 @@
+<%= form_for(@go) do |f| %>
+  <% if @go.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@go.errors.count, "error") %> prohibited this go from being saved:</h2>
+
+      <ul>
+      <% @go.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :gene_id %><br>
+    <%= f.number_field :gene_id %>
+  </div>
+  <div class="field">
+    <%= f.label :itype_id %><br>
+    <%= f.number_field :itype_id %>
+  </div>
+  <div class="field">
+    <%= f.label :term %><br>
+    <%= f.text_field :term %>
+  </div>
+  <div class="field">
+    <%= f.label :pubmed %><br>
+    <%= f.text_field :pubmed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

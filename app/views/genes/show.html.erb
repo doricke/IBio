@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<% if ! @gene.note_id.nil? %>
+<p>
+  <strong>Note:</strong>
+  <%= @gene.note_id %>
+</p>
+<% end -%>
+
+<table border="on">
+ <thead></thead>
+ <tbody>
+  <tr>
+    <td><strong>Name:</strong></td>
+    <td><%= @gene.name %></td>
+  </tr><tr>
+    <td><strong>Symbol:</strong></td>
+    <td><%= @gene.gene_symbol %></td>
+  </tr><tr>
+    <td><strong>Ncbi gene:</strong></td>
+    <td><%= @gene.ncbi_gene_id %></td>
+  </tr><tr>
+    <td><strong>Chromosome:</strong></td>
+    <td><%= @gene.chromosome %></td>
+  </tr><tr>
+    <td><strong>Chromosome start:</strong></td>
+    <td><%= @gene.chromosome_start %></td>
+  </tr><tr>
+    <td><strong>Chromosome end:</strong></td>
+    <td><%= @gene.chromosome_end %></td>
+  </tr><tr>
+    <td><strong>Description:</strong></td>
+    <td><%= @gene.description %></td>
+  </tr><tr>
+    <td><strong>Synonyms:</strong></td>
+    <td><%= @gene.synonyms %></td>
+  </tr><tr>
+    <td><strong>Updated at:</strong></td>
+    <td><%= local_time(@gene.updated_at) %></td>
+  </tr>
+  <% if @disease_genes.size > 0 -%>
+    <tr>
+      <td><strong>Diseases:</strong></td>
+      <td>
+        <% @disease_genes.each do |disease_gene| -%>
+          <% disease = Disease.find(disease_gene.disease_id) -%>
+          <%= link_to "#{disease.name}", {:controller => "diseases", :action => :show, :id => disease.id}, {:method => :get} %>
+        <% end -%>
+      </td>
+    </tr>
+  <% end -%>
+  <% if @biosequences.size > 0 -%>
+    <tr>
+      <td><strong>Sequences:</strong></td>
+      <td>
+        <% @biosequences.each do |biosequence| -%>
+          <%= link_to "#{biosequence.name}", {:controller => "biosequences", :action => :show, :id => biosequence.id}, {:method => :get} %>        
+        <% end -%>
+      </td>
+    </tr>
+  <% end -%>
+ </tbody>
+</table>
+<br />
+
+<%= link_to 'Edit', edit_gene_path(@gene) %> |
+<%= link_to 'Back', genes_path %>

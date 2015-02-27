@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Individual:</strong>
+  <%= @device.individual_id %>
+</p>
+
+<p>
+  <strong>Instrument:</strong>
+  <%= @device.instrument_id %>
+</p>
+
+<p>
+  <strong>Wear at:</strong>
+  <%= @device.wear_at %>
+</p>
+
+<p>
+  <strong>Serial no:</strong>
+  <%= @device.serial_no %>
+</p>
+
+<%= link_to 'Edit', edit_device_path(@device) %> |
+<%= link_to 'Back', devices_path %>

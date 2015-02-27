@@ -1,0 +1,29 @@
+<%= form_for(@structure_sequence) do |f| %>
+  <% if @structure_sequence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@structure_sequence.errors.count, "error") %> prohibited this structure_sequence from being saved:</h2>
+
+      <ul>
+      <% @structure_sequence.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :structure_id %><br>
+    <%= f.number_field :structure_id %>
+  </div>
+  <div class="field">
+    <%= f.label :biosequence_id %><br>
+    <%= f.number_field :biosequence_id %>
+  </div>
+  <div class="field">
+    <%= f.label :chain %><br>
+    <%= f.text_field :chain %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

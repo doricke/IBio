@@ -1,0 +1,25 @@
+<%= form_for(@allele_call) do |f| %>
+  <% if @allele_call.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@allele_call.errors.count, "error") %> prohibited this allele_call from being saved:</h2>
+
+      <ul>
+      <% @allele_call.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :locus_id %><br>
+    <%= f.number_field :locus_id %>
+  </div>
+  <div class="field">
+    <%= f.label :alleles %><br>
+    <%= f.text_field :alleles %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,55 @@
+<%= form_for(@food) do |f| %>
+  <% if @food.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@food.errors.count, "error") %> prohibited this food from being saved:</h2>
+
+      <ul>
+      <% @food.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table border="on">
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td><%= f.label :category %></td>
+      <td><%= f.collection_select(:itype_id, @itypes, :id, :name, {:include_blank => "No category"}) %></td>
+    </tr><tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name %></td>
+    </tr><tr>
+      <td><%= f.label :calories %></td>
+      <td><%= f.text_field :calories %></td>
+    </tr><tr>
+      <td><%= f.label :protein %></td>
+      <td><%= f.text_field :protein %></td>
+    </tr><tr>
+      <td><%= f.label :fats %></td>
+      <td><%= f.text_field :fats %></td>
+    </tr><tr>
+      <td><%= f.label :saturated_fat %></td>
+      <td><%= f.text_field :saturated_fat %></td>
+    </tr><tr>
+      <td><%= f.label :cholesterol %></td>
+      <td><%= f.text_field :cholesterol %></td>
+    </tr><tr>
+      <td><%= f.label :weight %></td>
+      <td><%= f.text_field :weight %></td>
+    </tr><tr>
+      <td><%= f.label :amount %></td>
+      <td><%= f.text_field :amount %></td>
+    </tr><tr>
+      <td><%= f.label :units %></td>
+      <td><%= f.collection_select(:unit_id, @units, :id, :name, {:include_blank => "No units"}) %></td>
+    </tr>
+  </tbody>
+</table>
+<br />
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

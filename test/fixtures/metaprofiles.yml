@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organism_id: 1
+  guid1: MyString
+  count: 1
+  measured_at: 2013-12-17 14:45:46
+
+two:
+  organism_id: 1
+  guid1: MyString
+  count: 1
+  measured_at: 2013-12-17 14:45:46

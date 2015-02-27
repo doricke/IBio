@@ -1,0 +1,20 @@
+<h1>Listing pathways</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pathways.each do |pathway| %>
+      <tr>
+        <td><%= pathway.name %></td>
+        <td><%= link_to 'Show', pathway %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

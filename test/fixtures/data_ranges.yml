@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  itype_id: 1
+  table_name: MyString
+  lower: 1.5
+  upper: 1.5
+  qualifier: MyString
+  description: MyString
+
+two:
+  itype_id: 1
+  table_name: MyString
+  lower: 1.5
+  upper: 1.5
+  qualifier: MyString
+  description: MyString

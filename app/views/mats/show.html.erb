@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Individual:</strong>
+  <%= @mat.individual_id %>
+</p>
+
+<p>
+  <strong>Vocal:</strong>
+  <%= @mat.vocal_id %>
+</p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= @mat.attachment_id %>
+</p>
+
+<p>
+  <strong>Algorithm:</strong>
+  <%= @mat.algorithm_id %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @mat.score %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @mat.start_time %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @mat.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_mat_path(@mat) %> |
+<%= link_to 'Back', mats_path %>

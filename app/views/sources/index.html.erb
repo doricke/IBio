@@ -1,0 +1,31 @@
+<h1>Sources</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Tablename</th>
+      <th>Updated at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sources.each do |source| %>
+      <tr>
+        <td><%= source.name %></td>
+        <td><%= source.table_name %></td>
+        <td><%= local_time(source.updated_at) %></td>
+        <td><%= link_to 'Show', source %></td>
+        <td><%= link_to 'Edit', edit_source_path(source) %></td>
+        <td><%= link_to 'Destroy', source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Source', new_source_path %>

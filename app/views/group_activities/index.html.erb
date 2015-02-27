@@ -1,0 +1,29 @@
+<h1>Group Activities</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Activity</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_activities.each do |group_activity| %>
+      <tr>
+        <td><%= group_activity.group_id %></td>
+        <td><%= group_activity.activity_id %></td>
+        <td><%= link_to 'Show', group_activity %></td>
+        <td><%= link_to 'Edit', edit_group_activity_path(group_activity) %></td>
+        <td><%= link_to 'Destroy', group_activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group activity', new_group_activity_path %>

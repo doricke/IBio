@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @itype.name if ! @itype.nil? %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @attachment.name %>
+</p>
+
+<p>
+  <strong>Content type:</strong>
+  <%= @attachment.content_type %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= local_time(@attachment.created_at) %>
+</p>
+
+<p>
+  <strong>Is parsed:</strong>
+  <%= @attachment.is_parsed %>
+</p>
+
+<%= link_to 'Back', attachments_path %>

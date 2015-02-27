@@ -1,0 +1,367 @@
+<script type='text/javascript'>
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		var types = '<%= @types -%>'   // get the resource_id from the controller
+		var individual_id = "<%= session[:individual_id] -%>" // get the current logged on user id.
+
+		function revertEventDrop(revertFunc){
+			var status = $.ajax({
+							url: '/activities/return_activity',
+							async: false
+							}).responseText;
+							if (status == 'false') {
+								alert("Your activity failed to move due to an illegal operation.");
+								revertFunc();
+							}
+				} // revertEventDrop
+				
+		function revertEventResize(revertFunc){
+			var status = $.ajax({
+							url: '/reservations/return_activity',
+							async: false
+							}).responseText;
+							if (status == 'false') {
+								alert("Your activity failed to resize due to an illegal operation.");
+								revertFunc();
+							}
+				} // revertEventResize
+				
+		function revertEventUpdate(revertFunc){
+			var status = $.ajax({
+							url: '/reservations/return_activity',
+							async: false
+							}).responseText;
+							if (status == 'false') {
+								alert("Your activity failed to update due to an illegal operation.");
+								revertFunc();
+							}
+				} // revertEventUpdate
+		
+		var calendar = $('#calendar').fullCalendar({
+			theme: true,
+			header: {
+				center: 'title',
+			},
+			selectable: true,
+			selectHelper: true,
+			select: function(start, end, allDay){     // Creating a new reservation.
+				
+				var view = $('#calendar').fullCalendar('getView');
+				if (view.name == 'month'){
+					$calView = $('#newResForm2');
+				}
+				else {
+					$calView = $('#newResForm');
+				}
+				
+				// initialize the dialog
+				$calView.dialog({
+				draggable: false,
+				width: 450,
+				title: 'New Activity Form',
+				open: function(){$(this).find('input[name=activityName]').val(name).attr('disabled', true);
+								 $(this).find('input[name=group]').val(group).attr('disabled', true);
+								 $(this).find('input[name=email]').val(email).attr('disabled', true);
+								 $(this).find('input[name=phone]').val(phone).attr('disabled', true);
+								 $(this).find('input[name=repeats]').val("0").attr('disabled', false);
+								},  // autofill with user name.
+				close: function(){ $(this).find('input[name=activityName]').val(""); 
+								   $(this).find('input[name=studyName]').val("");
+								   $(this).find('input[name=sampleInfo]').val("");
+								   $(this).find('textarea[name=notes]').val("");
+								   $(this).find('input[name=repeats]').val("");
+								   if (view.name == 'month'){
+								   	$(this).find('input[name=start]').val("");
+									$(this).find('input[name=end]').val("");
+								   }
+								 }, // event when dialog is closed.
+				autoOpen: false,
+				buttons: {"Submit": function() {
+					var title = $(this).find('input[name=userName]').val() // looks for the first element and return a jquery object. converted to val
+					var studyName = $(this).find('input[name=studyName]').val();
+					var sampleInfo = $(this).find('input[name=sampleInfo]').val();
+					var problems = $(this).find('textarea[name=notes]').val();
+					//var repeats	= $(this).find('input[name=repeats]').val();
+					if (/(^[0-9]{1}$|^[1-2]{1}[0-9]{1}$|^30$)/.test($(this).find('input[name=repeats]').val())){
+						var repeats	= $(this).find('input[name=repeats]').val();
+					}
+					else {
+						alert("The value you entered is invalid. Must be a number between 0 to 30 inclusive.");
+						return
+					}
+					if (view.name == 'month'){
+						start = $(this).find('input[name=start]').val();
+						end = $(this).find('input[name=end]').val();
+					}
+					
+					if (title) {
+					$.ajax({
+						url: '/reservations/json_create',
+						type: 'POST',
+						data:{
+							user_name: title,
+							resource_id: resource_id,
+							resv_start: start.toString(),
+							resv_end: end.toString(),
+							study_name: studyName,
+							sample_info: sampleInfo,
+							problems: problems,
+							repeats: repeats
+						},
+						error: function(){
+							var status = $.ajax({
+							url: '/reservations/return_session',
+							async: false
+							}).responseText;
+							if (status == 'false') {
+								alert("Your activity failed to create due to an illegal operation.");
+								//location.reload(true);
+								$('#calendar').fullCalendar('removeEvents');
+								$('#calendar').fullCalendar('refetchEvents');
+							}
+							else {
+								alert("Activity was successfully created.");
+								//location.reload(true);
+								$('#calendar').fullCalendar('removeEvents');
+								$('#calendar').fullCalendar('refetchEvents');
+							}
+						},
+						success: function(){
+							alert("Activity was successfully created.");
+							//location.reload(true);
+							$('#calendar').fullCalendar('removeEvents');
+							$('#calendar').fullCalendar('refetchEvents');
+						},
+					});
+					calendar.fullCalendar('renderEvent',
+					{
+						title: title,
+						start: start,
+						end: end,
+						allDay: allDay
+					},
+					true
+					);
+				 }
+				 $calView.dialog('close');
+				 $calView.dialog('destroy');
+				}, "cancel": function(){
+					$calView.dialog('close');
+				    $calView.dialog('destroy');
+				}}
+
+				});
+				
+				$calView.dialog('open');
+				
+
+				calendar.fullCalendar('unselect');
+			},
+			eventClick: function(event, element){  // Edit an existing reservation.
+				
+				var view = $('#calendar').fullCalendar('getView');
+				if (view.name == 'month'){
+					$calView = $('#newResForm2');
+					calView = '#newResForm2 ';
+				}
+				else {
+					$calView = $('#newResForm');
+					calView = '#newResForm ';
+				}
+				
+				var $userName = $(calView + 'input[name=userName]').attr('disabled', true); // a jquery object to hold the juery result 
+				var $group = $(calView + 'input[name=group]').attr('disabled', true);
+				var $email = $(calView + 'input[name=email]').attr('disabled', true);
+				var $phone = $(calView + 'input[name=phone]').attr('disabled', true);
+				var $studyName = $(calView + 'input[name=studyName]');
+				var $sampleInfo = $(calView + 'input[name=sampleInfo]');
+				var $problems = $(calView + 'textarea[name=problems]');
+				var $repeats = $(calView + 'input[name=repeats]').attr('disabled', true); 
+				if (view.name == 'month'){
+						var $start = $(calView + 'input[name=start]');
+						var $end = $(calView + 'input[name=end]');
+					}
+				
+				var buttonObj = {"close": function(){
+						$calView.dialog('close');
+					    $calView.dialog('destroy');
+					}
+				}; // close the button array object
+				
+				if (userid == event.user_id){         //check the if current user own that reservation.
+					buttonObj['Save'] = function() {
+					var studyName = $studyName.val();
+					var sampleInfo = $sampleInfo.val();
+					var problems = $problems.val();
+					if (view.name == 'month'){
+						start = $start.val();
+						end = $end.val();
+						var data = {
+							reservation_id: event.reservation_id,
+							resv_start: start.toString(),
+							resv_end: end.toString(),
+							study_name: studyName,
+							sample_info: sampleInfo,
+							problems: problems
+						};
+					}
+					else{
+						var data = {
+							reservation_id: event.reservation_id,
+							//resv_start: start.toString(),
+							//resv_end: end.toString(),
+							study_name: studyName,
+							sample_info: sampleInfo,
+							problems: problems
+						};	
+					}
+					//event.title = $userName.val(); // looks for the first element and return a jquery object. converted to val
+					$('#calendar').fullCalendar('updateEvent', event);
+					$.ajax({
+						url: '/reservations/json_update',
+						type: 'POST',
+						data: data,
+						error: function(){
+							revertEventUpdate(revertFunc);
+						}
+						
+					});
+					$calView.dialog('close');
+					$calView.dialog('destroy');
+					//location.reload(true);
+					$('#calendar').fullCalendar('removeEvents');
+					$('#calendar').fullCalendar('refetchEvents');
+					};
+					buttonObj['delete'] = function(){
+						answer = confirm("Are you sure?");
+						if (answer){
+							$.ajax({
+								url: '/reservations/json_delete',
+								type: 'POST',
+								data:{
+									reservation_id: event.reservation_id
+									}
+								});
+							}
+						$calView.dialog('close');
+					    $calView.dialog('destroy');
+						//location.reload(true);
+						$('#calendar').fullCalendar('removeEvents');
+						$('#calendar').fullCalendar('refetchEvents');
+					};
+					buttonObj['details'] = function(){
+						window.location = '/reservations/' + event.reservation_id
+						$calView.dialog('close');
+					    $calView.dialog('destroy');
+					};
+				} // if
+				
+				// initialize the dialog
+				$calView.dialog({
+				draggable: false,
+				width: 450,
+				title: 'New Activity Form',
+				open: function(){ $userName.val(event.title);
+								  $group.val(event.group);
+								  $email.val(event.email);
+								  $phone.val(event.phone);
+								  $studyName.val(event.studyName);
+								  $sampleInfo.val(event.sampleInfo);
+								  //$problems.val($(event.problems).text());
+								  $problems.val(event.problems);
+								  $repeats.val("0");
+								  if (view.name == 'month'){
+								  	$start.val(event.start);
+									$end.val(event.end);
+								  }
+								  },  // the event when dialog is open
+				close: function(){
+								   $userName.val("");
+								   $group.val("");
+								   $email.val("");
+								   $phone.val("");
+								   $studyName.val("");
+								   $sampleInfo.val("");
+								   $problems.val("");
+								   $repeats.val("");
+								   if (view.name == 'month'){
+								   	$start.val("");
+									$end.val("");
+								   }
+								}, // the event when the dialog is closed
+				autoOpen: false,
+				buttons: buttonObj
+					
+				});
+				$calView.dialog('open');
+			},
+			eventResize: function(event,dayDelta,minuteDelta,revertFunc){
+				if (userid != event.user_id){
+					alert("You do not have permission to resize this reservation.");
+					revertFunc();
+					return;
+				}
+				$.ajax({
+						url: '/reservations/json_resize',
+						type: 'POST',
+						data:{
+							resv_start: event.start.toString(),
+							resv_end: event.end.toString(),
+							reservation_id: event.reservation_id,
+						},
+						error: function(){
+							revertEventResize(revertFunc);
+						}
+						
+					});
+			},
+			eventDrop: function(event,dayDelta,minuteDelta,allDay,revertFunc){
+				if (userid != event.user_id){
+					alert("You do not have permission to move this reservation.");
+					revertFunc();
+					return;
+				}
+				$.ajax({
+						url: '/reservations/json_resize',
+						type: 'POST',
+						data:{
+							resv_start: event.start.toString(),
+							resv_end: event.end.toString(),
+							reservation_id: event.reservation_id,
+						},
+						error: function(){
+							revertEventDrop(revertFunc);
+						}
+						
+					});
+					
+			},
+			editable: true,
+			defaultView: 'agendaWeek',
+			events: '/reservations/json_test'
+		});	
+	});
+</script>
+<style type='text/css'>
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 13px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+	#calendar {
+		width: 900px;
+		margin: 0 auto;
+		}
+
+</style>
+
+<div id='calendar'></div>
+

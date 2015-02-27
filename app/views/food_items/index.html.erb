@@ -1,0 +1,35 @@
+<h1>Food items</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Meal</th>
+      <th>Food</th>
+      <th>Unit</th>
+      <th>Amount</th>
+      <th>Calories</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @food_items.each do |food_item| %>
+      <tr>
+        <td><%= food_item.meal_id %></td>
+        <td><%= food_item.food_id %></td>
+        <td><%= food_item.unit_id %></td>
+        <td><%= food_item.amount %></td>
+        <td><%= food_item.calories %></td>
+        <td><%= link_to 'Show', food_item %></td>
+        <td><%= link_to 'Edit', edit_food_item_path(food_item) %></td>
+        <td><%= link_to 'Destroy', food_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Food item', new_food_item_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Biosequence:</strong>
+  <%= @biosequence_domain.biosequence_id %>
+</p>
+
+<p>
+  <strong>Domain:</strong>
+  <%= @biosequence_domain.domain_id %>
+</p>
+
+<p>
+  <strong>Seq start:</strong>
+  <%= @biosequence_domain.seq_start %>
+</p>
+
+<p>
+  <strong>Seq end:</strong>
+  <%= @biosequence_domain.seq_end %>
+</p>
+
+<%= link_to 'Edit', edit_biosequence_domain_path(@biosequence_domain) %> |
+<%= link_to 'Back', biosequence_domains_path %>

@@ -1,0 +1,33 @@
+<h1>Drinks</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Unit it</th>
+      <th>Amount</th>
+      <th>Consumed at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drinks.each do |drink| %>
+      <tr>
+        <td><%= drink.food_id %></td>
+        <td><%= drink.unit_it %></td>
+        <td><%= drink.amount %></td>
+        <td><%= drink.consumed_at %></td>
+        <td><%= link_to 'Show', drink %></td>
+        <td><%= link_to 'Edit', edit_drink_path(drink) %></td>
+        <td><%= link_to 'Destroy', drink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Drink', new_drink_path %>

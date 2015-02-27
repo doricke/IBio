@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Drug:</strong>
+  <%= @drug_reaction.drug_id %>
+</p>
+
+<p>
+  <strong>Pathway:</strong>
+  <%= @drug_reaction.pathway_id %>
+</p>
+
+<p>
+  <strong>Reaction:</strong>
+  <%= @drug_reaction.reaction_id %>
+</p>
+
+<%= link_to 'Edit', edit_drug_reaction_path(@drug_reaction) %> |
+<%= link_to 'Back', drug_reactions_path %>

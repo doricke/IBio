@@ -1,0 +1,14 @@
+[
+  <% @meals.each do |meal| %>
+    {
+      id: <%= meal.id %>,
+      url: '<%= meal_path(meal) %>',
+      title: 'food',
+      start: '<%= meal.consumed_at.to_i %>',
+      end: '<%= meal.consumed_at.to_i %>',
+      allDay: false,
+      textColor: 'black',
+      borderColor: 'green',
+    },
+  <% end -%>
+]

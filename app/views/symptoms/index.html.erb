@@ -1,0 +1,27 @@
+<h1>Symptoms</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @symptoms.each do |symptom| %>
+      <tr>
+        <td><%= symptom.name %></td>
+        <td><%= link_to 'Show', symptom %></td>
+        <td><%= link_to 'Edit', edit_symptom_path(symptom) %></td>
+        <td><%= link_to 'Destroy', symptom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Symptom', new_symptom_path %>

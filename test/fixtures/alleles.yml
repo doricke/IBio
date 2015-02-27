@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  locus_id: 1
+  ethnic_id: 1
+  name: MyString
+  seq: MyString
+  regular_expression: MyString
+  allele_frequency: 1.5
+
+two:
+  locus_id: 1
+  ethnic_id: 1
+  name: MyString
+  seq: MyString
+  regular_expression: MyString
+  allele_frequency: 1.5

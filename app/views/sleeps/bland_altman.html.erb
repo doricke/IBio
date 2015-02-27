@@ -1,0 +1,155 @@
+<h1>Bland-Altman Sleep Plots</h1>
+
+<%= javascript_include_tag 'highcharts' %>
+<%= javascript_include_tag "highcharts/highcharts-more.js" %>
+<%= javascript_include_tag "highcharts/modules/exporting.js" %>
+
+<div id="highcharts">
+</div>
+<script>
+    $(
+            highchartInit
+    );
+
+    function highchartInit() {
+
+        function populateChart(dataStruct, key, id){
+            function findAvg(){
+                var sum = 0;
+                $.each(dataStruct[key], function(idx, val){
+                    sum += val['y'];
+                });
+                return sum/dataStruct[key].length;
+            }
+
+            function findStdDev(){
+                var sqSum = 0;
+                $.each(dataStruct[key], function(idx, val){
+                    sqSum += Math.pow((val['y'] - avg ), 2);
+                });
+                return Math.pow(sqSum/dataStruct[key].length, 0.5);
+            }
+
+            var avg     = dataStruct[key]['avg'];
+            var stdDev  = dataStruct[key]['stdDev'];
+            var pearson = dataStruct[key]['pearson'];
+
+            $("#" + id).highcharts({
+                chart: {
+                    type: 'scatter',
+                    zoomType: 'xy'
+                },
+                title: {
+                    text: key,
+                    style: {color: 'black', fontSize: '24px', fontWeight: 'bold'}
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>Mean</b>: ' + this.x +
+                                '<br><b>Difference: </b>' + this.y +
+                                '<br><b>Date range: </b>' + this.point.date_range;
+                    }
+                },
+                xAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'Mean',
+                        style: {color: 'black', fontSize: '20px', fontWeight: 'bold'}
+                    },
+                    min: 2,
+                    max: 10,
+                    labels: { style: {color: 'black', fontSize: '20px'} }
+                },
+                yAxis: {
+                    title: {
+                        text: key.replace("vs", "-"),
+                        style: {color: 'black', fontSize: '20px', fontWeight: 'bold'} 
+                    },
+                    labels: { style: {color: 'black', fontSize: '20px'} },
+                    min: -3,
+                    max: 3,
+                    plotLines: [
+                        {
+                            color: 'red',
+                            width: 2,
+                            value: avg + stdDev,
+                            label: {
+                                style: {
+                                    fontFamily: 'Lucida Console',
+                                    fontSize: '18px'
+                                },
+                                text: "Diff +1 SD: " + (avg + stdDev).toFixed(2)
+                            }
+                        },
+                        {
+                            color: 'red',
+                            width: 2,
+                            value: avg - stdDev,
+                            label: {
+                                style: {
+                                    fontFamily: 'Lucida Console',
+                                    fontSize: '18px'
+                                },
+                                text: "Diff -1 SD: " + (avg - stdDev).toFixed(2)
+                            }
+                        },
+                        {
+                            color: 'black',
+                            width: 2,
+                            value: avg,
+                            label: {
+                                style: {
+                                    fontFamily: 'Lucida Console',
+                                    fontSize: '18px'
+                                },
+                                text: "Diff Mean: " + (avg).toFixed(2)
+                            }
+                        }
+                    ]
+                },
+                plotOptions: {
+                    scatter: {
+                        states: {
+                            hover: {
+                                marker: {
+                                    enabled: false
+                                }
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    data: dataStruct[key]['series'],
+                    turboThreshold: 0
+                }]             
+            },
+            function(chart){
+                chart.renderer.text('SD: ' + stdDev.toFixed(2) +
+                    '<br>Pearson\'s r: ' + pearson.toFixed(2), 665, 35)
+                    .css({
+                        color: 'black',
+                        fontSize: '14px',
+                        fontWeight: 'bold'
+                    })
+                    .add();;
+			});
+        }
+
+        function makeChart(dataStruct, key){
+            var id = key.replace(/ /g, "-");
+            var chartDiv = document.createElement("div");
+            $(chartDiv).attr("id", id);
+            chartDiv.style.cssText = "min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto";
+            $("#highcharts").append(chartDiv);
+            $("#" + id).after("<hr>");
+            populateChart(dataStruct, key, id);
+        }
+
+        $.each(gon.data, function(key, value){
+            makeChart(gon.data, key);
+        });
+    }
+</script>

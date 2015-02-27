@@ -1,0 +1,63 @@
+<h1>Monitor data</h1>
+
+<%= javascript_include_tag :highcharts %>
+<%= javascript_include_tag :highstock %>
+<%= javascript_include_tag "highcharts/modules/exporting.js" %>
+
+<div id="container" style="height: 640px">
+<!-- %= high_stock("Summary", @chart) % -->
+<%= high_chart("Summary", @chart) %>
+</div>
+<%= form_tag(action: :index2) do %>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+    <%= fields_for "selected[]", MonitorDatum.new do |fi| %>
+      <td><%= fi.collection_select(:itype_id, @itypes, :id, :name, {:selected => @selected_id}) %></td>
+    <% end -%>  
+      <td><label>Start Date:</label></td>
+      <td><%= date_select :date_start, params[:date_start], selected: @date_start %></td>
+      <td><label>End Date:</label></td>
+      <td><%= date_select :date_end, params[:date_end], selected: @date_end %></td>
+  <div class="actions">
+    <td><%= submit_tag 'Update View' %></td>
+  </div>
+    </tr><tr>
+      <td>Date start:</td><td><%= @date_start %></td>
+      <td>Date end:</td><td><%= @date_end %></td>
+    </tr>
+  </tbody>
+</table>
+<% end -%>
+<br />
+
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Instrument</th>
+      <th>Itype</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Points per second</th>
+      <th>Points per hour</th>
+      <!-- th>Data</th -->
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @monitor_data.each do |monitor_datum| %>
+      <tr>
+        <td><%= @instruments_hash[monitor_datum.instrument_id].name if ! monitor_datum.instrument_id.nil? %></td>
+        <td><%= @itypes_hash[monitor_datum.itype_id].name if ! monitor_datum.itype_id.nil? %></td>
+        <td><%= monitor_datum.start_time %></td>
+        <td><%= local_time(monitor_datum.end_time) %></td>
+        <td><%= monitor_datum.points_per_second %></td>
+        <td><%= monitor_datum.points_per_hour %></td>
+        <!-- td><%= monitor_datum.data_vector %></td -->
+        <td><%= link_to 'Show', monitor_datum %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

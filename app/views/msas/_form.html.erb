@@ -1,0 +1,41 @@
+<%= form_for(@msa) do |f| %>
+  <% if @msa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@msa.errors.count, "error") %> prohibited this msa from being saved:</h2>
+
+      <ul>
+      <% @msa.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :gene_id %><br>
+    <%= f.number_field :gene_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :msa_type %><br>
+    <%= f.text_field :msa_type %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.datetime_select :updated_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

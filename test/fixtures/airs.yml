@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  itype_id: 1
+  place_id: 1
+  air_value: 1.5
+  sampled_at: 2014-05-13 14:50:23
+
+two:
+  itype_id: 1
+  place_id: 1
+  air_value: 1.5
+  sampled_at: 2014-05-13 14:50:23

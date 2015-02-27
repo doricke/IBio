@@ -1,0 +1,29 @@
+<h1>Reactions</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>Pathway Type</th>
+      <th>Control Type</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Control</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reactions.each do |reaction| %>
+      <tr>
+        <td><%= reaction.rank %></td>
+        <td><%= @itypes_hash[reaction.itype_id].name if ! reaction.itype_id.nil? %></td>
+        <td><%= @itypes_hash[reaction.control_itype].name if ! reaction.control_itype.nil? %></td>
+        <td><%= reaction.from %></td>
+        <td><%= reaction.to %></td>
+        <td><%= reaction.control %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

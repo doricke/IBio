@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sick_id: 1
+  symptom_id: 1
+  start_time: 2013-12-17 14:45:52
+  end_time: 2013-12-17 14:45:52
+
+two:
+  sick_id: 1
+  symptom_id: 1
+  start_time: 2013-12-17 14:45:52
+  end_time: 2013-12-17 14:45:52

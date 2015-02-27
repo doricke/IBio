@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Itype:</strong>
+  <%= @air.itype_id %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @air.place_id %>
+</p>
+
+<p>
+  <strong>Air value:</strong>
+  <%= @air.air_value %>
+</p>
+
+<p>
+  <strong>Sampled at:</strong>
+  <%= @air.sampled_at %>
+</p>
+
+<%= link_to 'Edit', edit_air_path(@air) %> |
+<%= link_to 'Back', airs_path %>

@@ -1,0 +1,1 @@
+json.extract! @monitor_datum, :id, :instrument_id, :individual_id, :attachment_id, :image_id, :itype_id, :start_time, :end_time, :points_per_second, :points_per_hour, :data_vector, :created_at, :updated_at

@@ -1,0 +1,35 @@
+<h1>Attributes</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th>Unit</th>
+      <th>Measured at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attributes.each do |attribute| %>
+      <tr>
+        <td><%= attribute.name %></td>
+        <td><%= attribute.category %></td>
+        <td align="center"><%= attribute.amount %></td>
+        <td align="center"><%= @units_hash[attribute.unit_id].name if ! attribute.unit_id.nil? %></td>
+        <td align="center"><%= local_time(attribute.measured_at) %></td>
+        <td><%= link_to 'Show', attribute %></td>
+        <td><%= link_to 'Edit', edit_attribute_path(attribute) %></td>
+        <td><%= link_to 'Destroy', attribute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attribute', new_attribute_path %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Logitude:</strong>
+  <%= @gelocation.logitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @gelocation.latitude %>
+</p>
+
+<p>
+  <strong>Timepoint:</strong>
+  <%= @gelocation.timepoint %>
+</p>
+
+<%= link_to 'Edit', edit_gelocation_path(@gelocation) %> |
+<%= link_to 'Back', gelocations_path %>

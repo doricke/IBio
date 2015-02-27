@@ -1,0 +1,45 @@
+<h1>Sleeping</h1>
+
+<%= high_chart("Fitbit", @chart) %>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Image</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Asleep</th>
+      <th>Light</th>
+      <th>Deep</th>
+      <th>REM</th>
+      <th>Interruptions</th>
+      <th>Qualifier</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sleeps.each do |sleep| %>
+      <tr>
+        <td><%= @instruments_hash[sleep.instrument_id].name if sleep.instrument_id %>
+        <td><%= sleep.image_id %></td>
+        <td><%= sleep.start_time %></td>
+        <td><%= sleep.end_time %></td>
+        <td><%= sleep.secs_asleep %></td>
+        <td><%= sleep.light_sleep %></td>
+        <td><%= sleep.deep_sleep %></td>
+        <td><%= sleep.rem_sleep %></td>
+        <td><%= sleep.interruptions %></td>
+        <td><%= sleep.qualifier %></td>
+        <td><%= link_to 'Show', sleep %></td>
+        <td><%= link_to 'Edit', edit_sleep_path(sleep) %></td>
+        <td><%= link_to 'Destroy', sleep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+ 

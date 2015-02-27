@@ -1,0 +1,25 @@
+<%= form_for(@ethnic) do |f| %>
+  <% if @ethnic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ethnic.errors.count, "error") %> prohibited this ethnic from being saved:</h2>
+
+      <ul>
+      <% @ethnic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :race %><br>
+    <%= f.text_field :race %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

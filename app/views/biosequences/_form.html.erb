@@ -1,0 +1,53 @@
+<%= form_for(@biosequence) do |f| %>
+  <% if @biosequence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@biosequence.errors.count, "error") %> prohibited this biosequence from being saved:</h2>
+
+      <ul>
+      <% @biosequence.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :source_id %><br>
+    <%= f.number_field :source_id %>
+  </div>
+  <div class="field">
+    <%= f.label :gene_id %><br>
+    <%= f.number_field :gene_id %>
+  </div>
+  <div class="field">
+    <%= f.label :organism_id %><br>
+    <%= f.number_field :organism_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :copy_number %><br>
+    <%= f.number_field :copy_number %>
+  </div>
+  <div class="field">
+    <%= f.label :exons %><br>
+    <%= f.text_field :exons %>
+  </div>
+  <div class="field">
+    <%= f.label :aa_sequence %><br>
+    <%= f.text_field :aa_sequence %>
+  </div>
+  <div class="field">
+    <%= f.label :mrna_sequence %><br>
+    <%= f.text_area :mrna_sequence %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.datetime_select :updated_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

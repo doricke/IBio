@@ -1,0 +1,77 @@
+<h1>Sleeping</h1>
+
+<%= javascript_include_tag "highcharts.js" %>
+<%= javascript_include_tag "highcharts/highcharts-more.js" %>
+<%= javascript_include_tag "highcharts/modules/exporting.js" %>
+<%= high_chart("Fitbit", @chart) %>
+
+<%= form_tag(action: :index2) do %>
+<% count = 0 -%>
+<table>
+  <thead />
+  <tbody>
+    <tr>
+      <% @selected.each do |name, select| -%>
+        <td>  
+          <%= check_box_tag("selected[#{name}]", true, @selected[name]) %> 
+          <%= name %>
+          <% count += 1 -%>
+        </td>
+        <% if count >= 5 -%>
+          </tr><tr><% count = 0 -%>  
+        <% end -%>      
+      <% end -%>
+    </tr>
+  </tbody>
+</table>
+  <div class="actions">
+    <%= submit_tag 'Update View' %>
+  </div>
+<% end -%>
+
+<br />
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Asleep min.</th>
+      <th>Light</th>
+      <th>Deep</th>
+      <th>REM</th>
+      <th>Interruptions</th>
+      <th>Qualifier</th>
+      <th>Wake up</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sleeps.each do |sleep| %>
+      <tr>
+        <td><%= @instruments_hash[sleep.instrument_id].name if sleep.instrument_id %>
+        <td><%= local_time(sleep.start_time) %></td>
+        <td><%= local_time(sleep.end_time) %></td>
+        <td align="right"><%= sleep.secs_asleep/60 %></td>
+        <td><%= sleep.light_sleep/60 if ! sleep.light_sleep.nil? %></td>
+        <td><%= sleep.deep_sleep/60 if ! sleep.deep_sleep.nil? %></td>
+        <td><%= sleep.rem_sleep/60 if ! sleep.rem_sleep.nil? %></td>
+        <td align="center"><%= sleep.interruptions %></td>
+        <td align="center"><%= sleep.qualifier %></td>
+        <td>
+          <% if (! sleep.wake_up.nil?) && (sleep.wake_up.size > 0) -%>
+            :-<%= sleep.wake_up %>
+          <% end -%>
+        </td>
+        <td><%= link_to 'Show', sleep %></td>
+        <td><%= link_to 'Edit', edit_sleep_path(sleep) %></td>
+        <td><%= link_to 'Destroy', sleep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+ 

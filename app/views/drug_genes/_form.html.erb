@@ -1,0 +1,33 @@
+<%= form_for(@drug_gene) do |f| %>
+  <% if @drug_gene.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@drug_gene.errors.count, "error") %> prohibited this drug_gene from being saved:</h2>
+
+      <ul>
+      <% @drug_gene.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :drug_id %><br>
+    <%= f.number_field :drug_id %>
+  </div>
+  <div class="field">
+    <%= f.label :gene_id %><br>
+    <%= f.number_field :gene_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cpic_dosing %><br>
+    <%= f.check_box :cpic_dosing %>
+  </div>
+  <div class="field">
+    <%= f.label :pharm_gbk_id %><br>
+    <%= f.text_field :pharm_gbk_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

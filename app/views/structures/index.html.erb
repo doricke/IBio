@@ -1,0 +1,31 @@
+<h1>Structures</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Pdb length</th>
+      <th>Pdb</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @structures.each do |structure| %>
+      <tr>
+        <td><%= structure.name %></td>
+        <td><%= structure.pdb_length %></td>
+        <td><%= structure.pdb %></td>
+        <td><%= link_to 'Show', structure %></td>
+        <td><%= link_to 'Edit', edit_structure_path(structure) %></td>
+        <td><%= link_to 'Destroy', structure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Structure', new_structure_path %>

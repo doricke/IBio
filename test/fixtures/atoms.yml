@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  structure_id: 1
+  chain: MyString
+  aa_residue: MyString
+  integer: MyString
+  aa_name: 
+  atom_start: 1
+  atom_end: 1
+
+two:
+  structure_id: 1
+  chain: MyString
+  aa_residue: MyString
+  integer: MyString
+  aa_name: 
+  atom_start: 1
+  atom_end: 1

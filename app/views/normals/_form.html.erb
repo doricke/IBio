@@ -1,0 +1,53 @@
+<%= form_for(@normal) do |f| %>
+  <% if @normal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@normal.errors.count, "error") %> prohibited this normal from being saved:</h2>
+
+      <ul>
+      <% @normal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type_id %><br>
+    <%= f.collection_select(:itype_id, @itypes, :id, :name, {:include_blank => "No type"}) %> 
+  </div>
+  <div class="field">
+    <%= f.label :ethnic_id %><br>
+    <%= f.number_field :ethnic_id %>
+  </div>
+  <div class="field">
+    <%= f.label :note_id %><br>
+    <%= f.number_field :note_id %>
+  </div>
+  <div class="field">
+    <%= f.label :normal_low %><br>
+    <%= f.text_field :normal_low %>
+  </div>
+  <div class="field">
+    <%= f.label :normal_high %><br>
+    <%= f.text_field :normal_high %>
+  </div>
+  <div class="field">
+    <%= f.label :ref_range %><br>
+    <%= f.text_field :ref_range %>
+  </div>
+  <div class="field">
+    <%= f.label :sex %><br>
+    <%= f.text_field :sex %>
+  </div>
+  <div class="field">
+    <%= f.label :age_low %><br>
+    <%= f.number_field :age_low %>
+  </div>
+  <div class="field">
+    <%= f.label :age_high %><br>
+    <%= f.number_field :age_high %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

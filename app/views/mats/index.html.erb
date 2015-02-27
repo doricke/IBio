@@ -1,0 +1,27 @@
+<h1>Vocal Matlab .mat files</h1>
+
+<%= render :partial => 'fullcal', :locals => {:activities => @mats, :attachments_hash => @attachments_hash} %>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Attachment</th>
+      <th>Score</th>
+      <th>Start time</th>
+      <th>Updated at</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mats.each do |mat| %>
+      <tr>
+        <td><%= mat.attachment_id %></td>
+         <td><%= mat.score %></td>
+        <td><%= local_time(mat.start_time) %></td>
+        <td><%= local_time(mat.updated_at) %></td>
+        <td><%= link_to 'Download', :controller => :attachments, :id => mat.attachment_id, :method => :download, :action => :download if ! mat.attachment_id.nil? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

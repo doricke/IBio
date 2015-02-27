@@ -1,0 +1,26 @@
+<h1>Basis Data Upload Form</h1>
+<%= form_tag({:action => 'basis_load'}, {:method => "post"})%>
+ <%= hidden_field_tag(:device, @device) %>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td><label>Basis login name:</label></td>
+      <td><%= text_field_tag :email_name, '', size: 40 %></td>
+    </tr><tr>
+      <td><label for="basis_password">Basis Password:</label></td>
+      <td><%= password_field_tag :password, params[:password], :size => 40 %></td>
+    </tr><tr>
+      <td><label>Start Date:</label></td>
+      <td><%= date_select :date_start, params[:date_start] %></td>
+    </tr><tr>
+      <td><label>End Date:</label></td>
+      <td><%= date_select :date_end, params[:date_end] %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= submit_tag "Retrieve Results" %>
+
+
+

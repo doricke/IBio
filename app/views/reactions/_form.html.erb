@@ -1,0 +1,41 @@
+<%= form_for(@reaction) do |f| %>
+  <% if @reaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reaction.errors.count, "error") %> prohibited this reaction from being saved:</h2>
+
+      <ul>
+      <% @reaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pathway_id %><br>
+    <%= f.number_field :pathway_id %>
+  </div>
+  <div class="field">
+    <%= f.label :itype_id %><br>
+    <%= f.number_field :itype_id %>
+  </div>
+  <div class="field">
+    <%= f.label :control_itype %><br>
+    <%= f.number_field :control_itype %>
+  </div>
+  <div class="field">
+    <%= f.label :from %><br>
+    <%= f.text_field :from %>
+  </div>
+  <div class="field">
+    <%= f.label :to %><br>
+    <%= f.text_field :to %>
+  </div>
+  <div class="field">
+    <%= f.label :control %><br>
+    <%= f.text_field :control %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

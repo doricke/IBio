@@ -1,0 +1,39 @@
+<h1>Locations</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Altitude</th>
+      <th>Bearing</th>
+      <th>Speed</th>
+      <th>Created at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.activity_id %></td>
+        <td><%= location.latitude %></td>
+        <td><%= location.longitude %></td>
+        <td><%= location.altitude %></td>
+        <td><%= location.bearing %></td>
+        <td><%= location.speed %></td>
+        <td><%= local_time(location.created_at) %></td>
+        <td><%= link_to 'Show', location %></td>
+        <td><%= link_to 'Edit', edit_location_path(location) %></td>
+        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Location', new_location_path %>

@@ -1,0 +1,31 @@
+<h1>Wellness</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sicks.each do |sick| %>
+      <tr>
+        <td><%= @itypes_hash[sick.type_id].name if ! sick.type_id.nil? %></td>
+        <td><%= sick.start_time %></td>
+        <td><%= sick.end_time %></td>
+        <td><%= link_to 'Show', sick %></td>
+        <td><%= link_to 'Edit', edit_sick_path(sick) %></td>
+        <td><%= link_to 'Destroy', sick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entry', new_sick_path %>

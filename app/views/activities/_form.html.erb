@@ -1,0 +1,53 @@
+<%= form_for(@activity, :html => {:multipart=>true}) do |f| %>
+  <% if @activity.errors.any? -%>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end -%>
+
+  <div class="field">
+    <%= f.label :itype_id %><br>
+    <%= f.collection_select(:itype_id, @itypes, :id, :name, {:include_blank => "No activity"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :image_id %><br>
+    <%= f.file_field("image") %>
+  </div>
+  <div class="field">
+    <%= f.label :attachment_id %><br>
+    <%= f.file_field("datafile") %>
+  </div>
+  <div class="field">
+    <%= f.label :note_id %><br>
+    <%= f.number_field :note_id %>
+  </div>
+  <div class="field">
+    <%= f.label :activity_name %><br>
+    <%= f.text_field :activity_name %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.datetime_select :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br>
+    <%= f.datetime_select :end_time %>
+  </div>
+  <div class="field">
+    <%= f.label :intensity %><br>
+    <%= f.number_field :intensity %>
+  </div>
+  <div class="field">
+    <%= f.label :qualifier %><br>
+    <%= f.text_field :qualifier %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

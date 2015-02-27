@@ -1,0 +1,64 @@
+<%= form_for(@sleep) do |f| %>
+  <% if @sleep.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sleep.errors.count, "error") %> prohibited this sleep from being saved:</h2>
+
+      <ul>
+      <% @sleep.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+  <thead></thead>
+  <tbody>
+  <tr>
+  <div class="field">
+    <td><%= f.label :start_time %></td>
+    <td><%= f.datetime_select :start_time %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :end_time %></td>
+    <td><%= f.datetime_select :end_time %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :asleep %></td>
+    <td><%= f.time_select :secs_asleep %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :light_sleep %></td>
+    <td><%= f.time_select :light_sleep %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :deep_sleep %></td>
+    <td><%= f.time_select :deep_sleep %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :rem_sleep %></td>
+    <td><%= f.time_select :rem_sleep %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :interruptions %></td>
+    <td><%= f.number_field :interruptions %></td>
+  </div>
+  </tr><tr>
+  <div class="field">
+    <td><%= f.label :qualifier %></td>
+    <td><%= f.text_field :qualifier %></td>
+  </div>
+  </tr>
+ </tbody>
+</table>
+<br />
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

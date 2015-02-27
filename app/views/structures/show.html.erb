@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @structure.name %>
+</p>
+
+<p>
+  <strong>Pdb length:</strong>
+  <%= @structure.pdb_length %>
+</p>
+
+<p>
+  <strong>Pdb:</strong>
+  <%= @structure.pdb %>
+</p>
+
+<%= link_to 'Edit', edit_structure_path(@structure) %> |
+<%= link_to 'Back', structures_path %>

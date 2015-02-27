@@ -1,0 +1,56 @@
+<h1>Files</h1>
+
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td><%= link_to image_tag('ActiSleep.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'ActiSleep'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('Basis_watch.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'Basis'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('E3.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'Empatica'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('MioLink.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'MioLink'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('Zephyr.jpg', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'Zephyr'}}, {:method => :get} %></td>
+    </tr><tr>
+      <td><%= link_to image_tag('Actigraph.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'Actigraph'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('JawboneUp.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'Jawbone'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('Moves.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'Moves'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('MyTracks.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'MyTracks'}}, {:method => :get} %></td>
+      <td><%= link_to image_tag('SleepCycle.png', size: '160x60'), {:controller => "attachments", :action => 'new', :data => {:device => 'SleepCycle'}}, {:method => :get} %></td>
+    
+    </tr>
+  </tbody>
+</table>
+
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Instrument</th>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Content type</th>
+      <th>Created at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attachments.each do |attachment| %>
+      <tr>
+        <td><%= @instruments_hash[attachment.instrument_id].name if ! attachment.instrument_id.nil? %></td>
+        <td><%= @itypes_hash[attachment.itype_id].name if ! attachment.itype_id.nil? %></td>
+        <td><%= attachment.name %></td>
+        <td><%= attachment.content_type %></td>
+        <td><%= local_time(attachment.created_at) %></td>
+        <td><%= link_to 'Download', :id => attachment.id, :method => :download, :action => :download %></td>
+        <td><%= link_to 'Play', :id => attachment.id, :method => :show_image, :action => :show_image if (! attachment.content_type.nil?) && attachment.content_type.include?( "audio" ) %></td>
+        <td><%= link_to 'Remove', attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attachment', new_attachment_path %>

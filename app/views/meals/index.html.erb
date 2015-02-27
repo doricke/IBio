@@ -1,0 +1,31 @@
+<h1>Meals</h1>
+
+<%= link_to 'New Meal', new_meal_path %>
+
+<%= render :partial => 'fullcal', :locals => {:meals => @meals} %>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Consumed at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meals.each do |meal| %>
+      <tr>
+        <td><%= local_time(meal.consumed_at) %></td>
+        <td><%= link_to 'Show', meal %></td>
+        <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
+        <td><%= link_to 'Delete', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meal', new_meal_path %>

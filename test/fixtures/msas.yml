@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gene_id: 1
+  name: MyString
+  category: MyString
+  description: MyString
+  msa_type: MyString
+  updated_at: 2013-12-17 14:46:16
+
+two:
+  gene_id: 1
+  name: MyString
+  category: MyString
+  description: MyString
+  msa_type: MyString
+  updated_at: 2013-12-17 14:46:16

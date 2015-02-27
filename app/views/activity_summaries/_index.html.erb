@@ -1,0 +1,68 @@
+<h1>Activity Summaries</h1>
+
+<%= javascript_include_tag "highcharts.js" %>
+<%= javascript_include_tag "highcharts/highcharts-more.js" %>
+<%= javascript_include_tag "highcharts/modules/exporting.js" %>
+
+<div id="container" style="height: 640px">
+<%= high_chart("Summary", @chart) %>
+<!-- %= high_stock("Summary", @chart) % -->
+
+</div>
+
+<%= form_tag(action: :index2) do %>
+<% count = 0 -%>
+<table>
+  <thead />
+  <tbody>
+    <tr>
+      <% @selected.each do |name, select| -%>
+        <td>  
+          <%= check_box_tag("selected[#{name}]", true, @selected[name]) %> 
+          <%= name %>
+          <% count += 1 -%>
+        </td>
+        <% if count >= 5 -%>
+          </tr><tr><% count = 0 -%>  
+        <% end -%>      
+      <% end -%>
+    </tr>
+  </tbody>
+</table>
+  <div class="actions">
+    <%= submit_tag 'Update View' %>
+  </div>
+<% end -%>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <!-- th>Image</th -->
+      <th>Instrument</th>
+      <th>Type</th>
+      <!-- th>Sleep</th -->
+      <th>Name</th>
+      <th>Qualifier</th>
+      <th>Amount</th>
+      <th>Start time</th>
+      <th>End time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activity_summaries.each do |activity_summary| -%>
+      <tr>
+        <!-- td><%= activity_summary.image_id %></td -->
+        <td><%= @instruments_hash[activity_summary.instrument_id].name if activity_summary.instrument_id %></td>
+        <td><%= @itypes_hash[activity_summary.itype_id].name if activity_summary.itype_id %></td>
+        <!-- td><%= activity_summary.sleep_id %></td -->
+        <td><%= activity_summary.name %></td>
+        <td><%= activity_summary.qualifier %></td>
+        <td><%= activity_summary.amount %></td>
+        <td><%= local_time(activity_summary.start_time) %></td>
+        <td><%= local_time(activity_summary.end_time) %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+

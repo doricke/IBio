@@ -1,0 +1,36 @@
+<title>jQuery File Upload Example</title>
+</head>
+<body>
+<%= csrf_meta_tag %>
+<%= javascript_include_tag "jquery.filestyle.js" %>
+<input id="fileupload" type="file" name="files[]" data-url="zap" multiple>
+<input type="hidden" name="csrf-token" value="<%= form_authenticity_token.to_s %>" >
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<%= javascript_include_tag "jquery.ui.widget.js" %>
+<%= javascript_include_tag "jquery.iframe-transport.js" %>
+<%= javascript_include_tag "jquery.fileupload.js" %>
+<div id="fileuploader">Upload</div>
+<script>
+$("input[type=file]").filestyle({ 
+     image: "Basis_watch.png",
+     imageheight : 80,
+     imagewidth : 80,
+     width : 250
+ });
+</script>
+<script>
+$(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });
+            data.submit();
+        }
+    });
+});
+</script>
+<%= form_tag "/attachments/zap2", method: "post", id: "fileupload", 'data-url' => 'zap2' do %>
+  <div><%= file_field_tag "files[]", multiple: true %></div>
+<% end -%>

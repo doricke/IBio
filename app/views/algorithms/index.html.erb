@@ -1,0 +1,31 @@
+<h1>Listing algorithms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Algorithm name</th>
+      <th>Version</th>
+      <th>Updated at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @algorithms.each do |algorithm| %>
+      <tr>
+        <td><%= algorithm.algorithm_name %></td>
+        <td><%= algorithm.version %></td>
+        <td><%= algorithm.updated_at %></td>
+        <td><%= link_to 'Show', algorithm %></td>
+        <td><%= link_to 'Edit', edit_algorithm_path(algorithm) %></td>
+        <td><%= link_to 'Destroy', algorithm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Algorithm', new_algorithm_path %>

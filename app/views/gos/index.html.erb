@@ -1,0 +1,33 @@
+<h1>Listing gos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gene</th>
+      <th>Itype</th>
+      <th>Term</th>
+      <th>Pubmed</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gos.each do |go| %>
+      <tr>
+        <td><%= go.gene_id %></td>
+        <td><%= go.itype_id %></td>
+        <td><%= go.term %></td>
+        <td><%= go.pubmed %></td>
+        <td><%= link_to 'Show', go %></td>
+        <td><%= link_to 'Edit', edit_go_path(go) %></td>
+        <td><%= link_to 'Destroy', go, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Go', new_go_path %>

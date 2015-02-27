@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  source_id: 1
+  gene_id: 1
+  organism_id: 1
+  name: MyString
+  copy_number: 1
+  exons: MyString
+  aa_sequence: MyString
+  mrna_sequence: MyText
+  updated_at: 2013-12-17 14:46:05
+
+two:
+  source_id: 1
+  gene_id: 1
+  organism_id: 1
+  name: MyString
+  copy_number: 1
+  exons: MyString
+  aa_sequence: MyString
+  mrna_sequence: MyText
+  updated_at: 2013-12-17 14:46:05

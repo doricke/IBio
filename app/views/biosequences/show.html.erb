@@ -1,0 +1,228 @@
+<%= javascript_include_tag 'JSmol.min.nojq' %>
+
+<h1>
+    Protein Conservation Structure Viewer <%= @structure.name %>
+</h1>
+
+<p id="notice"><%= notice %></p>
+
+<table class="table table-hover table-condensed">
+    <thead></thead>
+    <tbody><tr>
+        <td><h1><%= @biosequence.name %></h1></td>
+        <td><%= link_to("#{@gene.ncbi_gene_id}", "http://www.ncbi.nlm.nih.gov/gene/#{@gene.ncbi_gene_id}") %></td>
+        <td><%= link_to('GC', "http://www.genecards.org/cgi-bin/carddisp.pl?gene=#{@gene.name}&search=#{@biosequence.name}") %></td>
+        <td><%= link_to('SP', "http://www.uniprot.org/uniprot/#{@biosequence.accession}") if ! @biosequence.accession.nil? %></td>
+        <td><%= local_time(@biosequence.updated_at) %></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<br>
+
+<% unless @structure.nil? -%>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+                <h3><%= @structure.name %></h3>
+                <% @structures.each do |id, structure| -%>
+                    <%= link_to "#{structure[1]}", {:id => @biosequence.id, :str_id => structure[0], :action => :show} %>
+                <% end -%>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+                <script type="text/javascript">
+                    var Info = {
+                        width: 600,
+                        height: 600,
+                        use: "HTML5",
+                        j2sPath: "/jsmolj2s",
+                        console: "jmolApplet0_infodiv"
+                    };
+                    var jmolApplet0 = Jmol.getApplet("jmolApplet0", Info);
+                    Jmol.script(jmolApplet0,"background black;load <%= @structure.id %>/get_pdb;restrict amino")
+                </script>
+                <br>
+                <a href="javascript:Jmol.script(jmolApplet0,'spin on')">spin</a>
+                <a href="javascript:Jmol.script(jmolApplet0,'spin off')">off</a>
+                <a href="javascript:Jmol.script(jmolApplet0,'select *;color CPK')">CPK colors</a>
+                <a href="javascript:initColors();">Conservation colors</a>
+                <a href="javascript:Jmol.script(jmolApplet0,'select *;restrict amino;cartoons off;spacefill only')">spacefill</a>
+                <a href="javascript:Jmol.script(jmolApplet0,'select *;restrict amino;cartoons off;wireframe -0.1')">wire</a>
+                <a href="javascript:Jmol.script(jmolApplet0,'select *;restrict amino;cartoons off;spacefill 23%;wireframe 0.15')">ball&stick</a>
+                <a href="javascript:Jmol.script(jmolApplet0,'select amino;cartoons only')">cartoons</a>
+                <a href="javascript:Jmol.script(jmolApplet0,'set cartoonFancy true')">fancy</a>
+                <a href="javascript:Jmol.script(jmolApplet0,'set cartoonFancy false')">not fancy</a>
+                <a href="javascript:Jmol.script(jmolApplet0,'write PNGJ jmol.png')">save image</a>
+                <br>
+                <div>
+                    <br />
+                    <div id="conservation-slider"></div>
+                </div>
+            </div>
+
+            <div class="col-md-3 pull-left">
+              <b>Personal Variants</b><br />
+              <table><thead /><tbody><tr>
+                <% count = 0 -%>
+                <% @variants.each do |variant| -%>
+                  <% if (! @residues[ variant.sequence_start ].nil?) && (variant.guid2 == session[:guid2]) -%>
+                    <td align="center">
+                        <a href="#" data-residue="<%= @residues[variant.sequence_start][0] %>" data-conservation="<%= @residues[variant.sequence_start][1]%>"><%= variant.sequence_start %></a>
+                    <%= @biosequence.aa_sequence[(variant.sequence_start-1)...variant.sequence_end] %>-><%= variant.mutation %></td>
+                    <% count += 1 -%>
+                    <% if (count >= 5) -%>
+                      </tr><tr><% count = 0 -%>
+                    <% end -%>
+                  <% end -%>
+                <% end -%>
+                <% if (count == 0) -%>
+                  No personal variants
+                <% end -%>
+                </tr></tbody></table>
+                <b>Variants</b>
+                <br />
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed">
+                        <tbody>
+                        <tr>
+                            <% count = 0 -%>
+                            <% @variants.each do |variant| -%>
+                                <% unless @residues[ variant.sequence_start ].nil? -%>
+                                    <td align="center">
+                                        <a href="#" data-residue="<%= @residues[variant.sequence_start][0] %>" data-conservation="<%= @residues[variant.sequence_start][1]%>"><%= variant.sequence_start %></a>
+                                        <%= @biosequence.aa_sequence[(variant.sequence_start-1)...variant.sequence_end] %>-><%= variant.mutation %></td>
+                                    <% count += 1 -%>
+                                    <% if (count >= 5) -%>
+                                        </tr>
+                                        <tr>
+                                            <% count = 0 -%>
+                                    <% end -%>
+                                <% end -%>
+                            <% end -%>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end -%>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+            <% if @variants.size > 0 -%>
+                <h3>Variants</h3>
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Variant</th>
+                    <th>Note</th>
+                    </thead>
+                    <tbody>
+                    <% @variants.each do |variant| -%>
+                        <tr>
+                            <% if @residues[ variant.sequence_start ].nil? -%>
+                                <td align="right"><%= variant.sequence_start %></td>
+                            <% else -%>
+                                <td align="right"><a href="#" data-residue="<%= @residues[variant.sequence_start][0] %>" data-conservation="<%= @residues[variant.sequence_start][1]%>"><%= variant.sequence_start %></a></td>
+                            <% end -%>
+                            <td align="right"><%= variant.sequence_end %></td>
+                            <td align="center"><%= @biosequence.aa_sequence[(variant.sequence_start-1)...variant.sequence_end] %>-><%= variant.mutation %></td>
+                            <td>
+                                <% unless variant.note_id.nil? -%>
+                                    <% note = Note.find(variant.note_id) -%>
+                                    <%= note.comment %>
+                                <% end -%>
+                            </td>
+                        </tr>
+                    <% end -%>
+                    </tbody>
+                </table>
+            <% end -%>
+        </div>
+
+
+        <div class="col-md-3">
+            <% if @structure_sequences.size > 0 -%>
+                <h3>Structures</h3>
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <th>Name</th>
+                    <th>Resolution</th>
+                    <th>Chain</th>
+                    </thead>
+                    <tbody>
+                    <% @structure_sequences.each do |structure_sequence| -%>
+                        <tr>
+                            <td><%= link_to "#{@structures[structure_sequence.structure_id][1]}", {:id => @biosequence.id, :str_id => structure_sequence.structure_id, :action => :show} %></td>
+                            <td align="center"><%= structure_sequence.resolution %> &Aring;</td>
+                            <td><%= structure_sequence.chain %>: <%= structure_sequence.aa_start %>-<%= structure_sequence.aa_end %></td>
+                        </tr>
+                    <% end -%>
+                    </tbody>
+                </table>
+            <% end -%>
+        </div>
+
+        <div class="col-md-3">
+            <% unless @biosequence.aa_sequence.nil? -%>
+                <br />
+                <h3>Protein sequence</h3>
+                <br />
+                <code>
+                    <%= @biosequence.aa_sequence.scan(/.{1,80}/).join('<br />').html_safe %>
+                </code>
+            <% end -%>
+
+            <% if @sequence_domains.size > 0 -%>
+                <h3>Domains</h3>
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <th>Name</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    </thead>
+                    <tbody>
+                    <% @sequence_domains.each do |sequence_domain| -%>
+                        <tr>
+                            <% domain = Domain.find(sequence_domain.domain_id) -%>
+                            <td><%= domain.name %></td>
+                            <td align="right"><%= sequence_domain.seq_start %></td>
+                            <td align="right"><%= sequence_domain.seq_end %></td>
+                        </tr>
+                    <% end -%>
+                    </tbody>
+                </table>
+            <% end -%>
+
+            <% unless @biosequence.mrna_sequence.nil? -%>
+                <p>
+                <h3>mRNA sequence</h3>
+                <%= @biosequence.mrna_sequence.scan(/.{1,80}/).join('<br />').html_safe %>
+                </p>
+            <% end -%>
+        </div>
+    </div>
+</div>
+
+<%= javascript_include_tag 'conservation_viewer' %>

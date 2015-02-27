@@ -1,0 +1,31 @@
+<h1>Relatives</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Family</th>
+      <th>Type</th>
+      <th>Relation</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @relateds.each do |related| %>
+      <tr>
+        <td><%= related.family_id %></td>
+        <td><%= @itypes_hash[related.itype_id].name if ! related.itype_id.nil? %></td>
+        <td><%= related.relation %></td>
+        <td><%= link_to 'Show', related %></td>
+        <td><%= link_to 'Edit', edit_related_path(related) %></td>
+        <td><%= link_to 'Destroy', related, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Related', new_related_path %>

@@ -1,0 +1,113 @@
+activities/_fullcal_tracker.html.erb:		var types = '<%= @types -%>'   // get the resource_id from the controller
+activities/_jcal.html.erb:		var types = '<%= @types -%>'   // get the resource_id from the controller
+activities/index_original.html.erb:<%= link_to 'full calendar', {:controller => "activities", :action => "fullcal"}, {:method => :get} %>
+activities/jcal.html.erb:  <title>Reservations: <%= controller.action_name %></title>
+attachments/_form.html.erb:        <%= link_to image_tag('Basis_watch.png', size: '90x135'), {:controller => "attachments", :action => 'basis'}, {:method => :get} %>
+attachments/_form.html.erb:        <b><%= link_to('Basis Synch', {:controller => :attachments, :method => :basis}, {:method => :get}) %></b>
+attachments/_form.html.erb:        <%= link_to image_tag('Basis_watch.png', size: '90x135'), {:controller => "attachments", :action => 'basis'}, {:method => :get} %>
+attachments/_form.html.erb:        <b><%= link_to('Basis Peak', {:controller => :attachments, :method => :basis}, {:method => :get}) %></b>
+attachments/_form.html.erb:        <%= link_to image_tag('E3.png', size: '90x135'), {:controller => "attachments", :action => 'index'}, {:method => :get} %>
+attachments/_form.html.erb:        <b><%= link_to('Empatica E3', {:controller => "attachments", :method => :index}, {:method => :get}) %></b>
+attachments/_form.html.erb:        <b><%= link_to('Fitbit', {:controller => :attachments, :action => :new}, {:method => :get}) %></b>
+attachments/_form.html.erb:        <%= link_to image_tag('JawboneUp.png', size: '90x135'), {:controller => "attachments", :action => 'index'}, {:method => :get} %>
+attachments/_form.html.erb:        <b><%= link_to('Jawbone Up', {:controller => :attachments, :method => :index}, {:method => :get}) %></b>
+attachments/_form.html.erb:        <%= link_to image_tag('MyTracks_icon.png', size: '90x80'), {:controller => "attachments", :action => 'basis'}, {:method => :get} %>
+attachments/_form.html.erb:        <b><%= link_to('MyTracks app', {:controller => :attachments, :method => :basis}, {:method => :get}) %></b>
+attachments/_form.html.erb:        <%= link_to image_tag('SleepCycle.png', size: '90x60'), {:controller => "attachments", :action => 'basis'}, {:method => :get} %>
+attachments/_form.html.erb:        <b><%= link_to('Sleep Cycle app', {:controller => :attachments, :method => :basis}, {:method => :get}) %></b>
+attachments/_form.html.erb:        <%= link_to image_tag('Vocal.png', size: '90x60'), {:controller => "attachments", :action => 'basis'}, {:method => :get} %>
+attachments/_form.html.erb:        <b><%= link_to('Vocal wav', {:controller => :attachments, :method => :basis}, {:method => :get}) %></b>
+attachments/_form.html.erb:        <%= link_to image_tag('Vocal.png', size: '90x60'), {:controller => "attachments", :action => 'basis'}, {:method => :get} %>
+attachments/_form.html.erb:        <b><%= link_to('Vocal .mat', {:controller => :attachments, :method => :basis}, {:method => :get}) %></b>
+attachments/_form.html.erb:        <%= link_to image_tag('23andMe.png', size: '90x80'), {:controller => "attachments", :action => 'basis'}, {:method => :get} %>
+attachments/_form.html.erb:        <b><%= link_to('23andMe SNPs', {:controller => :attachments, :method => :basis}, {:method => :get}) %></b>
+attachments/index.html.erb:      <td><%= link_to image_tag('ActiSleep.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'ActiSleep'}}, {:method => :get} %></td>
+attachments/index.html.erb:      <td><%= link_to image_tag('Basis_watch.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'Basis'}}, {:method => :get} %></td>
+attachments/index.html.erb:      <td><%= link_to image_tag('E3.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'Empatica'}}, {:method => :get} %></td>
+attachments/index.html.erb:      <td><%= link_to image_tag('MioLink.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'MioLink'}}, {:method => :get} %></td>
+attachments/index.html.erb:      <td><%= link_to image_tag('Zephyr.jpg', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {device: 'Zephyr'}}, {:method => :get} %></td>
+attachments/index.html.erb:      <td><%= link_to image_tag('Actigraph.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'Actigraph'}}, {:method => :get} %></td>
+attachments/index.html.erb:      <td><%= link_to image_tag('JawboneUp.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'Jawbone'}}, {:method => :get} %></td>
+attachments/index.html.erb:      <td><%= link_to image_tag('Moves.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'Moves'}}, {:method => :get} %></td>
+attachments/index.html.erb:      <td><%= link_to image_tag('MyTracks.png', size: '80x80'), {:controller => "attachments", :action => 'new', :data => {:device => 'MyTracks'}}, {:method => :get} %></td>
+attachments/index.html.erb:      <td><%= link_to image_tag('SleepCycle.png', size: '160x60'), {:controller => "attachments", :action => 'new', :data => {:device => 'SleepCycle'}}, {:method => :get} %></td>
+biosequences/index.html.erb:        <td><%= link_to('Show', {:controller => :biosequences, :id => id, :action => :show}, {:method => :get}) %></td>
+disease_genes/index.html.erb:        <td><%= link_to "#{@genes_hash[disease_gene.gene_id].gene_symbol}", {:controller => "genes", :action => :show, :id => disease_gene.gene_id}, {:method => :get} %></td>
+disease_genes/index.html.erb:        <td><%= link_to "#{@diseases_hash[disease_gene.disease_id].mim_id}", {:controller => "diseases", :action => :show, :id => disease_gene.disease_id}, {:method => :get} %></td>
+disease_genes/index.html.erb:        <td><%= link_to "#{@diseases_hash[disease_gene.disease_id].name}", {:controller => "diseases", :action => :show, :id => disease_gene.disease_id}, {:method => :get} %></td>
+diseases/index.html.erb:              <%= link_to "#{@genes_hash[gene_id].gene_symbol}", {:controller => "genes", :action => :show, :id => gene_id}, {:method => :get} %>
+diseases/index.html.erb:              <%= link_to "#{locus.name}", {:controller => "locus", :action => :show, :id => locus.id}, {:method => :get} %>            
+drugs/show.html.erb:        <td><%= link_to @pathways_hash[drug_reaction.pathway_id].name, {:controller => "pathways", :action => "show", :id => drug_reaction.pathway_id}, {:method => :get} %></td>
+genes/index.html.erb:              <%= link_to "#{locus.name}", {:controller => "locus", :action => :show, :id => locus.id}, {:method => :get} %>
+genes/index.html.erb:              <%= link_to "#{@pathways_hash[gene_reaction.pathway_id].name}", {:controller => "pathways", :action => :show, :id => gene_reaction.pathway_id}, {:method => :get} %>            
+genes/show.html.erb:          <%= link_to "#{disease.name}", {:controller => "diseases", :action => :show, :id => disease.id}, {:method => :get} %>
+genes/show.html.erb:          <%= link_to "#{biosequence.name}", {:controller => "biosequences", :action => :show, :id => biosequence.id}, {:method => :get} %>        
+layouts/_buttons.html.erb:      <li><%= link_to 'Activity', {:controller => "activities",  :method => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:      <li><%= link_to 'Events', {:controller => "ievents", :method => "index"},  {:method => :get} %></li>
+layouts/_buttons.html.erb:      <li><%= link_to 'Summaries', {:controller => "activity_summaries",  :method => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:      <li><%= link_to 'Sleep', {:controller => "sleeps", :method => "index"},  {:method => :get} %></li>
+layouts/_buttons.html.erb:      <li><%= link_to 'Vocal', {:controller => "vocals",  :method => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:      <li><%= link_to "Food", {:controller => "foods", :action => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:      <li><%= link_to 'Meals', {:controller => "meals",  :method => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:      <!-- li><%= link_to 'Drinks', {:controller => "drinks",  :method => "index"},  {:method => :get} %></li -->
+layouts/_buttons.html.erb:      <li><%= link_to "Attributes", {:controller => "attributes", :action => "index"}, {:method => :get} %></li>    
+layouts/_buttons.html.erb:      <li><%= link_to 'Panels', {:controller => "panels",  :method => "index"},  {:method => :get} %></li>
+layouts/_buttons.html.erb:      <li><%= link_to 'Wellness', {:controller => "sicks", :method => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:      <li><%= link_to 'Medicine', {:controller => "prescriptions", :method => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:       <li><%= link_to "Logout", {:controller => "logins", :action => "logout"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:    <li><%= link_to 'Genes', {:controller => "genes",  :method => "index"},  {:method => :get} %></li>
+layouts/_buttons.html.erb:    <li><%= link_to 'Pathways', {:controller => "pathways",  :method => "index"},  {:method => :get} %></li>
+layouts/_buttons.html.erb:    <li><%= link_to 'Diseases', {:controller => "diseases", :action => :index}, {:method => :get} %></li>
+layouts/_buttons.html.erb:    <li><%= link_to 'Disease Genes', {:controller => "disease_genes",  :method => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:    <li><%= link_to "Drugs", {:controller => "drugs", :action => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:    <li><%= link_to "Loci", {:controller => "locus", :action => "index"}, {:method => :get} %></li>    
+layouts/_buttons.html.erb:    <li><%= link_to 'Variants', {:controller => "variants", :method => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:    <!-- li><%= link_to "Experiments", {:controller => "experiments", :action => "index"}, {:method => :get} %></li -->    
+layouts/_buttons.html.erb:    <li><%= link_to "Ancestry", {:controller => "ancestries", :action => "index"}, {:method => :get} %></li>    
+layouts/_buttons.html.erb:    <!-- li><%= link_to "Ethnic", {:controller => "ethnics", :action => "index"}, {:method => :get} %></li -->    
+layouts/_buttons.html.erb:    <!-- li><%= link_to "Relatives", {:controller => "relateds", :action => "index"}, {:method => :get} %></li -->
+layouts/_buttons.html.erb:    <li><%= link_to "Images", {:controller => "images", :action => "index"}, {:method => :get} %></li>
+layouts/_buttons.html.erb:    <li><%= link_to 'Data Upload', {:controller => "attachments", :method => "index"},  {:method => :get} %></li>
+layouts/_images.html.erb:        <b><%= link_to('Individual', {:controller => :attributes, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <%= link_to image_tag('dna_helix.png', size: '80x50'), {:controller => "locus", :action => 'index'}, {:method => :get} %>
+layouts/_images.html.erb:        <b><%= link_to('Ancestry', {:controller => :ancestries, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Exomes', {:controller => :variants, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Genes', {:controller => :genes, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Diseases', {:controller => :diseases, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Diseases:Genes', {:controller => :disease_genes, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Heart Rate', {:controller => :monitor_data, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Summary', {:controller => "activity_summaries", :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Vocal', {:controller => :vocals, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('.mat', {:controller => :mats, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Pathways', {:controller => :pathways, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Clinical', {:controller => :measurements, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Activity', {:controller => :activities, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:          <%= link_to image_tag('walk_track.png', size: '90x135'), {:controller => "activities", :action => 'index'}, {:method => :get} %>
+layouts/_images.html.erb:       <b><%= link_to 'Events', {:controller => "ievents", :method => "index"},  {:method => :get} %></b>
+layouts/_images.html.erb:    </li>".html_safe, {:controller => :sleeps, :method => :index}, {:method => :get}) %>
+layouts/_images.html.erb:        <b><%= link_to('Food', {:controller => :foods, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <%= link_to image_tag('fruits.png', size: '90x90'), {:controller => "meals", :action => 'index'}, {:method => :get} %>
+layouts/_images.html.erb:        <b><%= link_to "Rx", {:controller => "drugs", :action => "index"}, {:method => :get} %></b>/<b><%= link_to "Exposures", {:controller => "places", :action => "index"}, {:method => :get} %></b>
+layouts/_images.html.erb:          <%= link_to image_tag('prescription_bottle.png', :height => '70', :width => '40'), {:controller => "prescriptions", :action => 'index'}, {:method => :get} %>
+layouts/_images.html.erb:          <%= link_to image_tag('smoke.png', size: '90x60'), {:controller => "places", action: 'index'}, {:method => :get} %>
+layouts/_images.html.erb:        <b><%= link_to "Drugs", {:controller => "drugs", :action => "index"}, {:method => :get} %></b>
+layouts/_images.html.erb:        <b><%= link_to('Pathogens', {:controller => :sicks, :method => :index}, {:method => :get}) %></b>
+layouts/_images.html.erb:          <%= link_to image_tag('pathogens1.png', size: '60x60'), {:controller => "sicks", action: 'index'}, {:method => :get} %>
+layouts/_images.html.erb:          <%= link_to image_tag('bacteria.png', size: '80x60'), {:controller => "sicks", action: 'index'}, {:method => :get} %>
+layouts/_images.html.erb:        <b><%= link_to('Data Upload', {:controller => :attachments, :action => :new}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Change PW', {:controller => :logins, :action => 'change_pw'}, {:method => :post}) %></b>
+layouts/_images.html.erb:        <b><%= link_to('Logout', {:controller => :logins, :action => 'logout'}, {:method => :get}) %></b>
+layouts/_images.html.erb:        <!-- %= link_to "Images", {:controller => "images", :action => "index"}, {:method => :get} % -->
+layouts/_images.html.erb:    <!-- li><%= link_to "Experiments", {:controller => "experiments", :action => "index"}, {:method => :get} %></li -->    
+layouts/_images.html.erb:    <!-- li><%= link_to "Ethnic", {:controller => "ethnics", :action => "index"}, {:method => :get} %></li -->    
+layouts/_images.html.erb:    <!-- li><%= link_to "Relatives", {:controller => "relateds", :action => "index"}, {:method => :get} %></li -->
+mats/index.html.erb:        <td><%= link_to 'Download', :controller => :attachments, :id => mat.attachment_id, :method => :download, :action => :download if ! mat.attachment_id.nil? %></td>
+monitor_data/index.html.erb:<%= link_to('Bland-Altman', {:controller => :monitor_data, :action => :bland_altman}, {:method => :get}) %>
+pathways/show.html.erb:              <%= link_to "#{drug.name}", {:controller => "drugs", :action => :show, :id => drug.id}, {:method => :get} %>            
+pathways/show.html.erb:                <%= link_to "#{gene.name}", {:controller => "genes", :action => :show, :id => gene.id}, {:method => :get} %>            
+sleeps/index.html.erb:<%= link_to('Box plots', {:controller => :sleeps, :action => :boxplots}, {:method => :get}) %> | 
+sleeps/index.html.erb:<%= link_to('Bland-Altman', {:controller => :sleeps, :action => :bland_altman}, {:method => :get}) %>
+variants/index.html.erb:        <td><%= link_to "#{@biosequences_hash[variant.biosequence_id].name}", {:controller => "biosequences", :action => :show, :id => variant.biosequence_id}, {:method => :get} %></td>
+variants/index.html.erb:        <td><%= link_to "#{@diseases_hash[variant.disease_id].name}", {:controller => "diseases", :action => :show, :id => variant.disease_id}, {:method => :get} if ! variant.disease_id.nil? %></td>
+vocals/index.html.erb:        <td><%= link_to 'Play', :controller => :attachments, :id => attachment.id, :method => :show_image, :action => :show_image if (! attachment.nil?) && (! attachment.content_type.nil?) && attachment.content_type.include?( "audio" ) %></td>
+vocals/index.html.erb:        <td><%= link_to 'Download', :controller => :attachments, :id => attachment.id, :method => :download, :action => :download if ! attachment.nil? %></td>

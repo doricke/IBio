@@ -1,0 +1,33 @@
+<h1>Listing devices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Individual</th>
+      <th>Instrument</th>
+      <th>Wear at</th>
+      <th>Serial no</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devices.each do |device| %>
+      <tr>
+        <td><%= device.individual_id %></td>
+        <td><%= device.instrument_id %></td>
+        <td><%= device.wear_at %></td>
+        <td><%= device.serial_no %></td>
+        <td><%= link_to 'Show', device %></td>
+        <td><%= link_to 'Edit', edit_device_path(device) %></td>
+        <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Device', new_device_path %>

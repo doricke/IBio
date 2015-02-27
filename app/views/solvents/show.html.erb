@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sequence:</strong>
+  <%= @solvent.biosequence_id %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @solvent.position %>
+</p>
+
+<p>
+  <strong>Accessibility:</strong>
+  <%= @solvent.accessibility %>
+</p>
+
+<%= link_to 'Edit', edit_solvent_path(@solvent) %> |
+<%= link_to 'Back', solvents_path %>

@@ -1,0 +1,21 @@
+<h1>Disease Genes</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Gene</th>
+      <th>MIM</th>
+      <th>Disease</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @disease_genes.each do |disease_gene| %>
+      <tr>
+        <td><%= link_to "#{@genes_hash[disease_gene.gene_id].gene_symbol}", {:controller => "genes", :action => :show, :id => disease_gene.gene_id}, {:method => :get} %></td>
+        <td><%= link_to "#{@diseases_hash[disease_gene.disease_id].mim_id}", {:controller => "diseases", :action => :show, :id => disease_gene.disease_id}, {:method => :get} %></td>
+        <td><%= link_to "#{@diseases_hash[disease_gene.disease_id].name}", {:controller => "diseases", :action => :show, :id => disease_gene.disease_id}, {:method => :get} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

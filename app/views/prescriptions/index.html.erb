@@ -1,0 +1,37 @@
+<h1>Prescriptions</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Drug</th>
+      <th>Dose</th>
+      <th>Unit</th>
+      <th>Daily</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prescriptions.each do |prescription| %>
+      <tr>
+        <td><%= @drugs_hash[prescription.drug_id].name if ! prescription.drug_id.nil? %></td>
+        <td><%= prescription.dose %></td>
+        <td><%= @units_hash[prescription.unit_it].name if ! prescription.unit_it.nil? %></td>
+        <td><%= prescription.daily %></td>
+        <td><%= local_time(prescription.start_time) %></td>
+        <td><%= local_time(prescription.end_time) %></td>
+        <td><%= link_to 'Show', prescription %></td>
+        <td><%= link_to 'Edit', edit_prescription_path(prescription) %></td>
+        <td><%= link_to 'Destroy', prescription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Prescription', new_prescription_path %>

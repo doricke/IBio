@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead />
+  <tbody>
+    <tr>
+<p>
+  <td><strong>Drug:</strong></td>
+  <td><%= @drug.name if ! @drug.nil? %></td>
+</p>
+    </tr><tr>
+<p>
+  <td><strong>Dose:</strong></td>
+  <td><%= @prescription.dose %></td>
+  <td><%= @unit.name if ! @unit.nil? %></td>
+</p>
+    </tr><tr>
+<p>
+  <td><strong>Daily:</strong></td>
+  <td><%= @prescription.daily %></td>
+</p>
+    </tr><tr>
+<p>
+  <td><strong>Start time:</strong></td>
+  <td><%= local_time(@prescription.start_time) %></td>
+</p>
+    </tr><tr>
+<p>
+  <td><strong>End time:</strong></td>
+  <td><%= local_time(@prescription.end_time) %></td>
+</p>
+    </tr>
+  </tbody>
+</table>
+<br />
+<%= link_to 'Edit', edit_prescription_path(@prescription) %> |
+<%= link_to 'Back', prescriptions_path %>

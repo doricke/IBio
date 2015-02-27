@@ -1,0 +1,72 @@
+<style>
+    #speed-container { position: absolute; top: 4px; }
+    #speed { height: 0; margin-top: 5px; }
+    #timeSlider {
+        top: 4px;
+    }
+</style>
+
+<%= stylesheet_link_tag('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css') %>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- map div -->
+        <div class="col-md-6" style="height:900px" id="map-canvas"></div>
+
+        <!-- slider and graph div-->
+        <div class="col-md-6">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="time" class="col-md-11 col-md-offset-1 text-center"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <button id="timeCtrlBtn" type="button" class="btn btn-default btn-xs pull-right">
+                            <span id="timeCtrlImg" class="glyphicon glyphicon-play"></span>
+                        </button>
+                    </div>
+
+                    <div class="col-md-10">
+                        <div id="timeSlider"></div>
+                    </div>
+
+                    <div class="col-md-1">
+                        <div id="speed-container">
+                            <div id="speed">
+                                <a href="" class="ui-slider-handle">
+                                    <span class="ui-icon ui-icon-signal"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div id="highchartsContainer"></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div id="airchartsContainer"></div>
+                </div>
+                <div>
+                    Air Data Source:
+                    <%= select_tag(:source_id, options_for_select(@closest_places.map{ |p| ["#{p[0].city}, #{p[0].state} - #{p[1]} km", p[0].id] }), id: 'sourceSelector') %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<script src='https://maps.googleapis.com/maps/api/js?libraries=geometry&v=3'></script>
+<script>
+    var slider = $('#timeSlider');
+    var timeCtrlImg = $('#timeCtrlImg');
+    var isAnimating = false;
+    var speed = .5;
+    var targetTime;
+    var highchart;
+    var highchartLine;
+</script>
+<%= javascript_include_tag 'activities_map' %>

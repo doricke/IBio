@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @individual.sex %>
+</p>
+
+<p>
+  <strong>Code name:</strong>
+  <%= @individual.code_name %>
+</p>
+
+<p>
+  <strong>Is public:</strong>
+  <%= @individual.is_public %>
+</p>
+
+
+<%= link_to 'Edit', edit_individual_path(@individual) %> |
+<%= link_to 'Back', individuals_path %>

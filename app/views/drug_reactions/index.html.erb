@@ -1,0 +1,19 @@
+<h1>Drug Reactions</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Drug</th>
+      <th>Pathway</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @drug_reactions.each do |drug_reaction| %>
+      <tr>
+        <td><%= drug_reaction.drug.name %></td>
+        <td><%= drug_reaction.pathway.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

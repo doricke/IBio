@@ -1,0 +1,31 @@
+<h1>Gelocations</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Logitude</th>
+      <th>Latitude</th>
+      <th>Timepoint</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gelocations.each do |gelocation| %>
+      <tr>
+        <td><%= gelocation.logitude %></td>
+        <td><%= gelocation.latitude %></td>
+        <td><%= gelocation.timepoint %></td>
+        <td><%= link_to 'Show', gelocation %></td>
+        <td><%= link_to 'Edit', edit_gelocation_path(gelocation) %></td>
+        <td><%= link_to 'Destroy', gelocation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gelocation', new_gelocation_path %>

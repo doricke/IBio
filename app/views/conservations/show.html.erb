@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Biosequence:</strong>
+  <%= @conservation.biosequence_id %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @conservation.position %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @conservation.level %>
+</p>
+
+<%= link_to 'Edit', edit_conservation_path(@conservation) %> |
+<%= link_to 'Back', conservations_path %>

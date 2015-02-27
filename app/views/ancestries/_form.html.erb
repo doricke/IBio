@@ -1,0 +1,25 @@
+<%= form_for(@ancestry) do |f| %>
+  <% if @ancestry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ancestry.errors.count, "error") %> prohibited this ancestry from being saved:</h2>
+
+      <ul>
+      <% @ancestry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ethnic_id %><br>
+    <%= f.number_field :ethnic_id %>
+  </div>
+  <div class="field">
+    <%= f.label :percent %><br>
+    <%= f.text_field :percent %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Locus:</strong>
+  <%= @allele.locus_id %>
+</p>
+
+<p>
+  <strong>Ethnic:</strong>
+  <%= @allele.ethnic_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @allele.name %>
+</p>
+
+<p>
+  <strong>Seq:</strong>
+  <%= @allele.seq %>
+</p>
+
+<p>
+  <strong>Regular expression:</strong>
+  <%= @allele.regular_expression %>
+</p>
+
+<p>
+  <strong>Allele frequency:</strong>
+  <%= @allele.allele_frequency %>
+</p>
+
+<%= link_to 'Edit', edit_allele_path(@allele) %> |
+<%= link_to 'Back', alleles_path %>

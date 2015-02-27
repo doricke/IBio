@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @location.activity_id %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @location.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @location.longitude %>
+</p>
+
+<p>
+  <strong>Altitude:</strong>
+  <%= @location.altitude %>
+</p>
+
+<p>
+  <strong>Bearing:</strong>
+  <%= @location.bearing %>
+</p>
+
+<p>
+  <strong>Speed:</strong>
+  <%= @location.speed %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= local_time(@location.created_at) %>
+</p>
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

@@ -1,0 +1,45 @@
+<%= form_for(@mat) do |f| %>
+  <% if @mat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mat.errors.count, "error") %> prohibited this mat from being saved:</h2>
+
+      <ul>
+      <% @mat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :individual_id %><br>
+    <%= f.number_field :individual_id %>
+  </div>
+  <div class="field">
+    <%= f.label :vocal_id %><br>
+    <%= f.number_field :vocal_id %>
+  </div>
+  <div class="field">
+    <%= f.label :attachment_id %><br>
+    <%= f.number_field :attachment_id %>
+  </div>
+  <div class="field">
+    <%= f.label :algorithm_id %><br>
+    <%= f.number_field :algorithm_id %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br>
+    <%= f.text_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.datetime_select :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.datetime_select :updated_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

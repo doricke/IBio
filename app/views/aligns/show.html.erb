@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Msa:</strong>
+  <%= @align.msa_id %>
+</p>
+
+<p>
+  <strong>Biosequence:</strong>
+  <%= @align.biosequence_id %>
+</p>
+
+<p>
+  <strong>Align rank:</strong>
+  <%= @align.align_rank %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @align.updated_at %>
+</p>
+
+<p>
+  <strong>Align sequence:</strong>
+  <%= @align.align_sequence %>
+</p>
+
+<%= link_to 'Edit', edit_align_path(@align) %> |
+<%= link_to 'Back', aligns_path %>

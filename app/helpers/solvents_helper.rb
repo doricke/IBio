@@ -1,0 +1,2 @@
+module SolventsHelper
+end

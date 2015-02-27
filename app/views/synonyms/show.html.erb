@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Itype:</strong>
+  <%= @synonym.itype_id %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @synonym.source_id %>
+</p>
+
+<p>
+  <strong>Synonym name:</strong>
+  <%= @synonym.synonym_name %>
+</p>
+
+<p>
+  <strong>Table name:</strong>
+  <%= @synonym.table_name %>
+</p>
+
+<%= link_to 'Edit', edit_synonym_path(@synonym) %> |
+<%= link_to 'Back', synonyms_path %>

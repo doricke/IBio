@@ -1,0 +1,34 @@
+<%= form_for(@sick_symptom) do |f| %>
+  <% if @sick_symptom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sick_symptom.errors.count, "error") %> prohibited this sick_symptom from being saved:</h2>
+
+      <ul>
+      <% @sick_symptom.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sick_id %><br>
+    <%= f.number_field :sick_id %>
+  </div>
+  <div class="field">
+    <%= f.label :symptom_id %><br>
+    <%= f.number_field :symptom_id %>
+    <%= f.collection_select(:symptom_id, @symptoms, :id, :name, {:include_blank => "No symptoms"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.datetime_select :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br>
+    <%= f.datetime_select :end_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

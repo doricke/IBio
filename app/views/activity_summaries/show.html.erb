@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Image:</strong>
+  <%= @activity_summary.image_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @itype.name if ! @itype.nil? %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @activity_summary.name %>
+</p>
+
+<p>
+  <strong>Qualifier:</strong>
+  <%= @activity_summary.qualifier %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @activity_summary.amount %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= local_time(@activity_summary.start_time) %>
+</p>
+
+<p>
+  <strong>End type:</strong>
+  <%= local_time(@activity_summary.end_time) %>
+</p>
+
+<%= link_to 'Edit', edit_activity_summary_path(@activity_summary) %> |
+<%= link_to 'Back', activity_summaries_path %>

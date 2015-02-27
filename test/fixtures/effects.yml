@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  biosequence_id: 1
+  variant_id: 1
+  name: MyString
+  impact: MyString
+  function_class: MyString
+  codon_change: MyString
+  aa_change: MyString
+
+two:
+  biosequence_id: 1
+  variant_id: 1
+  name: MyString
+  impact: MyString
+  function_class: MyString
+  codon_change: MyString
+  aa_change: MyString

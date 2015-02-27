@@ -1,0 +1,18 @@
+[
+  <% @activities.each do |event| %>
+    {
+      id: <%= event.id %>,
+      url: '<%= activity_path(event) %>',
+      title: '<%= event.activity_name.delete( '"' ) %>',
+      start: '<%= event.start_time.to_i %>',
+      end: '<%= event.end_time.to_i %>',
+      allDay: false,
+      // className: ["event", "greenEvent"],
+      // backgroundColor: '#378006',
+      // color: 'blue',
+      textColor: 'black',
+      borderColor: 'green',
+      <!-- % puts "_events partial: activity: #{event.activity_name}, start: #{event.start_time}, end: #{event.end_time}" % -->
+    },
+  <% end -%>
+]

@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to('Bland-Altman', {:controller => :monitor_data, :action => :bland_altman}, {:method => :get}) %>
+
+<%= link_to('Zephyr', {:controller => :monitor_data, :action => :zephyr}, {:method => :get}) %>
+
+<%= link_to('Surface Map', {:controller => :monitor_data, :action => :surface_map}, {:method => :get}) %>
+
+<%= render 'index', locals: {instruments_hash: @instruments_hash, monitor_data: @monitor_data, chart: @chart, selected: @selected} %>
+
+<%= javascript_include_tag 'highcharts' %>

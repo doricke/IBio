@@ -1,0 +1,29 @@
+<h1>Vocal recordings</h1>
+
+<%= render :partial => 'fullcal', :locals => {:activities => @activities} %>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>attachment_id</th>
+      <th>Name</th>
+      <th>Start time</th>
+      <th>Play</th>
+      <th>Download</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vocals.each do |vocal| -%>
+      <% attachment = @attachments_hash[ vocal.attachment_id ] if ! vocal.attachment_id.nil? -%>
+      <tr>
+        <td><%= vocal.attachment_id %></td>
+        <td><%= attachment.name if ! attachment.nil? %></td>
+        <td><%= vocal.start_time %></td>
+        <td><%= link_to 'Play', :controller => :attachments, :id => attachment.id, :method => :show_image, :action => :show_image if (! attachment.nil?) && (! attachment.content_type.nil?) && attachment.content_type.include?( "audio" ) %></td>
+        <td><%= link_to 'Download', :controller => :attachments, :id => attachment.id, :method => :download, :action => :download if ! attachment.nil? %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+

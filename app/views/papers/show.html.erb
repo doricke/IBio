@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pmid:</strong>
+  <%= @paper.pmid %>
+</p>
+
+<p>
+  <strong>Doi:</strong>
+  <%= @paper.doi %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @paper.title %>
+</p>
+
+<p>
+  <strong>Authors:</strong>
+  <%= @paper.authors %>
+</p>
+
+<p>
+  <strong>Reference:</strong>
+  <%= @paper.reference %>
+</p>
+
+<%= link_to 'Edit', edit_paper_path(@paper) %> |
+<%= link_to 'Back', papers_path %>

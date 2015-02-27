@@ -1,0 +1,31 @@
+<h1>Variants</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Sequence</th>
+      <th>Disease</th>
+      <th>Sequence type</th>
+      <th>Mutation type</th>
+      <th>Sequence start</th>
+      <th>Sequence end</th>
+      <th>Mutation</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @variants.each do |variant| %>
+      <tr>
+        <td><%= link_to "#{@biosequences_hash[variant.biosequence_id].name}", {:controller => "biosequences", :action => :show, :id => variant.biosequence_id}, {:method => :get} %></td>
+        <td><%= link_to "#{@diseases_hash[variant.disease_id].name}", {:controller => "diseases", :action => :show, :id => variant.disease_id}, {:method => :get} if ! variant.disease_id.nil? %></td>
+        <td align="center"><%= variant.sequence_type %></td>
+        <td><%= variant.mutation_type %></td>
+        <td align="center"><%= variant.sequence_start %></td>
+        <td align="center"><%= variant.sequence_end %></td>
+        <td align="center"><%= variant.mutation %></td>
+        <td><%= link_to 'Show', variant %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

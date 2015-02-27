@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  locus_id: 1
+  experiment_id: 1
+  allele_name: MyString
+  allele_count: 1
+  guid2: MyString
+  allele_call: MyString
+  created_at: 2013-12-17 14:46:23
+
+two:
+  locus_id: 1
+  experiment_id: 1
+  allele_name: MyString
+  allele_count: 1
+  guid2: MyString
+  allele_call: MyString
+  created_at: 2013-12-17 14:46:23

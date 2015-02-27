@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  individual_id: 1
+  unit_id: 1
+  name: MyString
+  category: MyString
+  amount: 1.5
+  measured_at: 2013-12-17 14:45:27
+
+two:
+  individual_id: 1
+  unit_id: 1
+  name: MyString
+  category: MyString
+  amount: 1.5
+  measured_at: 2013-12-17 14:45:27

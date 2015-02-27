@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @epoch.year %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @epoch.month %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @epoch.day %>
+</p>
+
+<p>
+  <strong>Hour:</strong>
+  <%= @epoch.hour %>
+</p>
+
+<p>
+  <strong>Minute:</strong>
+  <%= @epoch.minute %>
+</p>
+
+<p>
+  <strong>Second:</strong>
+  <%= @epoch.second %>
+</p>
+
+<p>
+  <strong>Usec:</strong>
+  <%= @epoch.usec %>
+</p>
+
+<%= link_to 'Edit', edit_epoch_path(@epoch) %> |
+<%= link_to 'Back', epoches_path %>

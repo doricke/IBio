@@ -1,0 +1,39 @@
+<br />
+ <% if ! session[:individual_id].nil? -%>
+<div id="menu">
+	<ul class="menu">
+      <li><%= link_to 'Activity', {:controller => "activities",  :method => "index"}, {:method => :get} %></li>
+      <li><%= link_to 'Events', {:controller => "ievents", :method => "index"},  {:method => :get} %></li>
+      <li><%= link_to 'Summaries', {:controller => "activity_summaries",  :method => "index"}, {:method => :get} %></li>
+      <li><%= link_to 'Sleep', {:controller => "sleeps", :method => "index"},  {:method => :get} %></li>
+      <li><%= link_to 'Vocal', {:controller => "vocals",  :method => "index"}, {:method => :get} %></li>
+      <li><%= link_to "Food", {:controller => "foods", :action => "index"}, {:method => :get} %></li>
+      <li><%= link_to 'Meals', {:controller => "meals",  :method => "index"}, {:method => :get} %></li>
+      <!-- li><%= link_to 'Drinks', {:controller => "drinks",  :method => "index"},  {:method => :get} %></li -->
+      <li><%= link_to "Attributes", {:controller => "attributes", :action => "index"}, {:method => :get} %></li>    
+      <li><%= link_to 'Panels', {:controller => "panels",  :method => "index"},  {:method => :get} %></li>
+      <li><%= link_to 'Wellness', {:controller => "sicks", :method => "index"}, {:method => :get} %></li>
+      <li><%= link_to 'Medicine', {:controller => "prescriptions", :method => "index"}, {:method => :get} %></li>
+       <li><%= link_to "Logout", {:controller => "logins", :action => "logout"}, {:method => :get} %></li>
+	</ul>
+</div>
+<hr />
+<div id="menu">
+  <ul class="menu">
+    <li><%= link_to 'Genes', {:controller => "genes",  :method => "index"},  {:method => :get} %></li>
+    <li><%= link_to 'Pathways', {:controller => "pathways",  :method => "index"},  {:method => :get} %></li>
+    <li><%= link_to 'Diseases', {:controller => "diseases", :action => :index}, {:method => :get} %></li>
+    <li><%= link_to 'Disease Genes', {:controller => "disease_genes",  :method => "index"}, {:method => :get} %></li>
+    <li><%= link_to "Drugs", {:controller => "drugs", :action => "index"}, {:method => :get} %></li>
+    <li><%= link_to "Loci", {:controller => "locus", :action => "index"}, {:method => :get} %></li>    
+    <li><%= link_to 'Variants', {:controller => "variants", :method => "index"}, {:method => :get} %></li>
+    <!-- li><%= link_to "Experiments", {:controller => "experiments", :action => "index"}, {:method => :get} %></li -->    
+    <li><%= link_to "Ancestry", {:controller => "ancestries", :action => "index"}, {:method => :get} %></li>    
+    <!-- li><%= link_to "Ethnic", {:controller => "ethnics", :action => "index"}, {:method => :get} %></li -->    
+    <!-- li><%= link_to "Relatives", {:controller => "relateds", :action => "index"}, {:method => :get} %></li -->
+    <li><%= link_to "Images", {:controller => "images", :action => "index"}, {:method => :get} %></li>
+    <li><%= link_to 'Data Upload', {:controller => "attachments", :method => "index"},  {:method => :get} %></li>
+  </ul>
+</div>
+<% end -%> 
+<br />   

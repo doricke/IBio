@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sick:</strong>
+  <%= @sick_symptom.sick_id %>
+</p>
+
+<p>
+  <strong>Symptom:</strong>
+  <%= @symptom.name if ! @symptom.nil? %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @sick_symptom.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @sick_symptom.end_time %>
+</p>
+
+<%= link_to 'Edit', edit_sick_symptom_path(@sick_symptom) %> |
+<%= link_to 'Back', sick_symptoms_path %>

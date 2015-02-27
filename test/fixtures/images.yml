@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  individual_id: 1
+  name: MyString
+  created_at: 2013-12-17 14:45:23
+  image_type: MyString
+  image_blob: 
+
+two:
+  individual_id: 1
+  name: MyString
+  created_at: 2013-12-17 14:45:23
+  image_type: MyString
+  image_blob: 

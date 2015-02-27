@@ -1,0 +1,16 @@
+[
+  <% @vocals.each do |vocal| -%>
+    <% attachment = @attachments_hash[ vocal.attachment_id ] -%>
+    {
+      id: <%= vocal.id %>,
+      // url: '<%= vocal_path(vocal) %>',
+      url: '/attachments/<%= attachment.id %>/show_image?method=show_image',
+      title: '<%= attachment.name %>',
+      start: '<%= vocal.start_time.to_i %>',
+      end: '<%= vocal.start_time.to_i %>',
+      allDay: false,
+      textColor: 'black',
+      borderColor: 'green'
+    },
+  <% end -%>
+]

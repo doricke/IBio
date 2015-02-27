@@ -1,0 +1,29 @@
+<%= form_for(@gelocation) do |f| %>
+  <% if @gelocation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gelocation.errors.count, "error") %> prohibited this gelocation from being saved:</h2>
+
+      <ul>
+      <% @gelocation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :logitude %><br>
+    <%= f.text_field :logitude %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :timepoint %><br>
+    <%= f.datetime_select :timepoint %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

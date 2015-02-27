@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Itype:</strong>
+  <%= @data_range.itype_id %>
+</p>
+
+<p>
+  <strong>Table name:</strong>
+  <%= @data_range.table_name %>
+</p>
+
+<p>
+  <strong>Lower:</strong>
+  <%= @data_range.lower %>
+</p>
+
+<p>
+  <strong>Upper:</strong>
+  <%= @data_range.upper %>
+</p>
+
+<p>
+  <strong>Qualifier:</strong>
+  <%= @data_range.qualifier %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @data_range.description %>
+</p>
+
+<%= link_to 'Edit', edit_data_range_path(@data_range) %> |
+<%= link_to 'Back', data_ranges_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pathway:</strong>
+  <%= @gene_reaction.pathway_id %>
+</p>
+
+<p>
+  <strong>Reaction:</strong>
+  <%= @gene_reaction.reaction_id %>
+</p>
+
+<p>
+  <strong>Gene:</strong>
+  <%= @gene_reaction.gene_id %>
+</p>
+
+<p>
+  <strong>Role itype:</strong>
+  <%= @gene_reaction.role_itype_id %>
+</p>
+
+<%= link_to 'Edit', edit_gene_reaction_path(@gene_reaction) %> |
+<%= link_to 'Back', gene_reactions_path %>

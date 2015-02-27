@@ -1,0 +1,48 @@
+<h1>Normals</h1>
+
+<table cellpadding="2" class="display dataTable" id="example">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Ethnic</th>
+      <th>Normal low</th>
+      <th>Normal high</th>
+      <th>Reference range</th>
+      <!-- th>Units</th -->
+      <th>Sex</th>
+      <th>Age low</th>
+      <th>Age high</th>
+      <th>Note</th>
+      <% if session[:is_admin] -%>
+        <th></th>
+        <th></th>
+        <th></th>
+      <% end -%>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @normals.each do |normal| %>
+      <tr>
+        <td><%= @itypes_hash[normal.itype_id].name if ! normal.itype_id.nil? %></td>
+        <td><%= normal.ethnic_id %></td>
+        <td align="center"><%= normal.normal_low %></td>
+        <td align="center"><%= normal.normal_high %></td>
+        <td><%= normal.ref_range %></td>
+         <td><%= normal.sex %></td>
+        <td><%= normal.age_low %></td>
+        <td><%= normal.age_high %></td>
+        <td><%= normal.note_id %></td>
+        <% if session[:is_admin] -%>
+          <td><%= link_to 'Show', normal %></td>
+          <td><%= link_to 'Edit', edit_normal_path(normal) %></td>
+          <td><%= link_to 'Destroy', normal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end -%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Normal', new_normal_path %>

@@ -1,0 +1,2 @@
+module BiosequenceDomainsHelper
+end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Family:</strong>
+  <%= @related.family_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @itype.name if ! @itype.nil? %>
+</p>
+
+<p>
+  <strong>Relation:</strong>
+  <%= @related.relation %>
+</p>
+
+<%= link_to 'Edit', edit_related_path(@related) %> |
+<%= link_to 'Back', relateds_path %>

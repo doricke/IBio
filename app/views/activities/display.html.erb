@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Map and Graph</title>
+    <style>
+        #speed-container { position: absolute; top: 4px; }
+        #speed { height: 0; margin-top: 5px; }
+        #timeSlider {
+            top: 4px;
+        }
+    </style>
+</head>
+<body>
+<%= include_gon %>
+<div class="container-fluid">
+    <div><h1>Maps and Charts</h1></div>
+    <div class="row">
+        <!-- map div -->
+        <div class="col-lg-6" style="height:550px" id="map-canvas"></div>
+
+        <!-- slider and graph div-->
+        <div class="col-lg-6">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="time" class="col-lg-11 col-lg-offset-1 text-center"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1">
+                        <button id="timeCtrlBtn" type="button" class="btn btn-default btn-xs pull-right">
+                            <span id="timeCtrlImg" class="glyphicon glyphicon-play"></span>
+                        </button>
+                    </div>
+
+                    <div class="col-lg-10">
+                        <div id="timeSlider"></div>
+                    </div>
+
+                    <div class="col-lg-1">
+                        <div id="speed-container">
+                            <div id="speed">
+                                <a href="" class="ui-slider-handle">
+                                    <span class="ui-icon ui-icon-signal"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div id="highchartsContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src='https://maps.googleapis.com/maps/api/js?libraries=geometry&v=3'></script>
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<script>
+    var slider = $('#timeSlider');
+    var timeCtrlImg = $('#timeCtrlImg');
+    var isAnimating = false;
+    var speed = .5;
+    var targetTime;
+    var highchart;
+    var highchartLine;
+</script>
+
+<script src="/mapandgraph/mapInit.js"></script>
+<script src="/mapandgraph/highchartsInit.js"></script>
+<script src="/mapandgraph/sliderInit.js"></script>
+
+</body>
+</html>

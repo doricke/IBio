@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  individual_id: 1
+  instrument_id: 1
+  wear_at: MyString
+  serial_no: MyString
+
+two:
+  individual_id: 1
+  instrument_id: 1
+  wear_at: MyString
+  serial_no: MyString

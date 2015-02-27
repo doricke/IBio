@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  note_id: 1
+  name: MyString
+  ncbi_gene_id: MyString
+  chromosome: MyString
+  chromosome_start: 1
+  chromosome_end: 1
+  updated_at: 2013-12-17 14:46:06
+
+two:
+  note_id: 1
+  name: MyString
+  ncbi_gene_id: MyString
+  chromosome: MyString
+  chromosome_start: 1
+  chromosome_end: 1
+  updated_at: 2013-12-17 14:46:06

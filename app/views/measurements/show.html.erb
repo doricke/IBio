@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @itype.name if ! @itype.nil? %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @measurement.name %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @measurement.unit_id %>
+</p>
+
+<p>
+  <strong>Normal:</strong>
+  <%= @measurement.normal_id %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @measurement.note_id %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= local_time(@measurement.created_at) %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @measurement.result %>
+</p>
+
+<%= link_to 'Edit', edit_measurement_path(@measurement) %> |
+<%= link_to 'Back', measurements_path %>
