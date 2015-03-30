@@ -1,11 +1,12 @@
 IBio
 ====
 
-Integrated Biomedical System (IBio)
+<h1>Integrated Biomedical System (IBio)</h1>
 
-  The Integrated Biomedical System is designed for integrating genome, interactome, and exposome data.
+  The Integrated Biomedical System is designed for integrating genome, interactome, and exposome data.  Personal health is a dynamic state affected by genome, interactome, and exposome.  Wearable body sensors enable dynamic physiological and exposome monitoring.  Available solutions for integrating and displaying correlated individual data are either closed/proprietary platforms that provide limited access to sensor data or have limited scope that focuses primarily on one data domain (e.g., steps/calories/activity, etc.).  The Integrated Biomedical System is under development as an adaptable open-source solution for the burden associated with integrating heterogeneous data from a rapidly changing set of body sensors.  The Integrated Biomedical System provides a solution for individuals or a scalable platform for longitudinal research studies.
 
-Setup
+
+<h2>Setup</h2>
 
 1. Install ruby
 2. Install rubygem
