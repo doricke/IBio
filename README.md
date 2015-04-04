@@ -5,6 +5,9 @@ IBio
 
   The Integrated Biomedical System is designed for integrating genome, interactome, and exposome data.  Personal health is a dynamic state affected by genome, interactome, and exposome.  Wearable body sensors enable dynamic physiological and exposome monitoring.  Available solutions for integrating and displaying correlated individual data are either closed/proprietary platforms that provide limited access to sensor data or have limited scope that focuses primarily on one data domain (e.g., steps/calories/activity, etc.).  The Integrated Biomedical System is under development as an adaptable open-source solution for the burden associated with integrating heterogeneous data from a rapidly changing set of body sensors.  The Integrated Biomedical System provides a solution for individuals or a scalable platform for longitudinal research studies.
 
+<h2>IBio Vision</h2>
+
+<img src="https://github.com/doricke/ibio/public/IBio_Vision.png" align="left">
 
 <h2>Setup</h2>
 
