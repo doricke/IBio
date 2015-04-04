@@ -7,7 +7,7 @@ IBio
 
 <h2>IBio Vision</h2>
 
-<img src="https://github.com/doricke/ibio/public/IBio_Vision.png" align="left">
+<a href="https://github.com/doricke/ibio"><img src="https://github.com/doricke/ibio/public/IBio_Vision.png" align="left"></a>
 
 <h2>Setup</h2>
 
