@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.integer  "note_id"
   end
 
-  add_index "airs", ["itype_id", "place_id", "sampled_at"], name: "idx_airs_sample", using: :btree
+  add_index "airs", ["itype_id", "place_id", "sampled_at"], name: "idx_airs_sample"
 
   create_table "algorithms", force: true do |t|
     t.string   "algorithm_name", limit: 80
@@ -111,12 +111,12 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.string   "file_path",     limit: 240
     t.boolean  "is_parsed"
     t.datetime "created_at"
-    t.text     "file_text",     limit: 2147483647
-    t.binary   "file_binary",   limit: 2147483647
+    t.text     "file_text",     limit: 133169152
+    t.binary   "file_binary",   limit: 133169152
   end
 
-  add_index "attachments", ["individual_id", "name"], name: "idx_attachments_both", using: :btree
-  add_index "attachments", ["name"], name: "idx_attachments_name", using: :btree
+  add_index "attachments", ["individual_id", "name"], name: "idx_attachments_both"
+  add_index "attachments", ["name"], name: "idx_attachments_name"
 
   create_table "attributes", force: true do |t|
     t.integer  "individual_id"
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.integer "seq_end"
   end
 
-  add_index "biosequence_domains", ["biosequence_id", "domain_id"], name: "idx_seq_domains_both", using: :btree
+  add_index "biosequence_domains", ["biosequence_id", "domain_id"], name: "idx_seq_domains_both"
 
   create_table "biosequences", force: true do |t|
     t.integer  "source_id"
@@ -149,12 +149,12 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.string   "accession",     limit: 20
   end
 
-  add_index "biosequences", ["organism_id", "gene_id"], name: "idx_biosequences_org_gene", using: :btree
+  add_index "biosequences", ["organism_id", "gene_id"], name: "idx_biosequences_org_gene"
 
   create_table "conservations", force: true do |t|
     t.integer "biosequence_id"
     t.integer "position"
-    t.float   "level"
+    t.float   "level",          limit: 8
   end
 
   create_table "data_ranges", force: true do |t|
@@ -180,15 +180,15 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.string  "serial_no",     limit: 40
   end
 
-  add_index "devices", ["individual_id"], name: "idx_devices_individual", using: :btree
-  add_index "devices", ["serial_no"], name: "idx_devices_serial_no", using: :btree
+  add_index "devices", ["individual_id"], name: "idx_devices_individual"
+  add_index "devices", ["serial_no"], name: "idx_devices_serial_no"
 
   create_table "disease_genes", force: true do |t|
     t.integer "disease_id"
     t.integer "gene_id"
   end
 
-  add_index "disease_genes", ["disease_id", "gene_id"], name: "idx_disease_gene_both", using: :btree
+  add_index "disease_genes", ["disease_id", "gene_id"], name: "idx_disease_gene_both"
 
   create_table "diseases", force: true do |t|
     t.integer "note_id"
@@ -196,7 +196,7 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.string  "name",    limit: 240
   end
 
-  add_index "diseases", ["mim_id"], name: "idx_diseases_mim", using: :btree
+  add_index "diseases", ["mim_id"], name: "idx_diseases_mim"
 
   create_table "domains", force: true do |t|
     t.integer "note_id"
@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.integer "source_id"
   end
 
-  add_index "drug_genes", ["drug_id", "gene_id"], name: "idx_drug_genes_both", using: :btree
+  add_index "drug_genes", ["drug_id", "gene_id"], name: "idx_drug_genes_both"
 
   create_table "drug_reactions", force: true do |t|
     t.integer "drug_id"
@@ -228,8 +228,8 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.integer "source_id"
   end
 
-  add_index "drug_reactions", ["drug_id", "pathway_id"], name: "idx_drug_reactions_both", using: :btree
-  add_index "drug_reactions", ["pathway_id"], name: "idx_drug_reactions_pathway", using: :btree
+  add_index "drug_reactions", ["drug_id", "pathway_id"], name: "idx_drug_reactions_both"
+  add_index "drug_reactions", ["pathway_id"], name: "idx_drug_reactions_pathway"
 
   create_table "drugs", force: true do |t|
     t.integer "note_id"
@@ -336,9 +336,9 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.integer  "organism_id"
   end
 
-  add_index "genes", ["gene_symbol"], name: "idx_genes_symbol", using: :btree
-  add_index "genes", ["ncbi_gene_id"], name: "idx_genes_ncbi_gene_id", using: :btree
-  add_index "genes", ["organism_id", "name"], name: "idx_genes_org_name", using: :btree
+  add_index "genes", ["gene_symbol"], name: "idx_genes_symbol"
+  add_index "genes", ["ncbi_gene_id"], name: "idx_genes_ncbi_gene_id"
+  add_index "genes", ["organism_id", "name"], name: "idx_genes_org_name"
 
   create_table "gos", force: true do |t|
     t.integer "gene_id"
@@ -378,7 +378,7 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.string   "content_type",  limit: 80
     t.datetime "created_at"
     t.string   "image_type",    limit: 32
-    t.binary   "image_blob",    limit: 16777215
+    t.binary   "image_blob",    limit: 15728640
   end
 
   create_table "individuals", force: true do |t|
@@ -393,14 +393,14 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.boolean "is_admin"
   end
 
-  add_index "individuals", ["data_entry_id"], name: "idx_individuals_data_entry_id", using: :btree
+  add_index "individuals", ["data_entry_id"], name: "idx_individuals_data_entry_id"
 
   create_table "instruments", force: true do |t|
     t.string "name",            limit: 80
     t.string "instrument_type", limit: 40
   end
 
-  add_index "instruments", ["name"], name: "idx_instruments_name", using: :btree
+  add_index "instruments", ["name"], name: "idx_instruments_name"
 
   create_table "itypes", force: true do |t|
     t.string  "name",     limit: 80
@@ -408,7 +408,7 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.integer "unit_id"
   end
 
-  add_index "itypes", ["name", "category"], name: "idx_itypes_both", using: :btree
+  add_index "itypes", ["name", "category"], name: "idx_itypes_both"
 
   create_table "locations", force: true do |t|
     t.integer  "individual_id"
@@ -474,13 +474,13 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.datetime "end_time"
     t.integer  "points_per_second"
     t.integer  "points_per_hour"
-    t.text     "data_vector",       limit: 2147483647
+    t.text     "data_vector",       limit: 32505856
     t.integer  "device_id"
     t.integer  "epoch_id"
     t.text     "time_vector"
   end
 
-  add_index "monitor_data", ["individual_id", "itype_id"], name: "idx_monitor_data_device", using: :btree
+  add_index "monitor_data", ["individual_id", "itype_id"], name: "idx_monitor_data_device"
 
   create_table "msas", force: true do |t|
     t.integer  "gene_id"
@@ -508,8 +508,8 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.string "table_name", limit: 40
   end
 
-  add_index "notes", ["comment"], name: "idx_notes_comment", length: {"comment"=>767}, using: :btree
-  add_index "notes", ["table_name", "comment"], name: "idx_notes_both", length: {"table_name"=>nil, "comment"=>767}, using: :btree
+  add_index "notes", ["comment"], name: "idx_notes_comment"
+  add_index "notes", ["table_name", "comment"], name: "idx_notes_both"
 
   create_table "organisms", force: true do |t|
     t.string "name",     limit: 80
@@ -548,8 +548,8 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.integer "site_no"
   end
 
-  add_index "places", ["city", "state"], name: "idx_places_city_state", using: :btree
-  add_index "places", ["site_no"], name: "idx_places_site_no", using: :btree
+  add_index "places", ["city", "state"], name: "idx_places_city_state"
+  add_index "places", ["site_no"], name: "idx_places_site_no"
 
   create_table "prescriptions", force: true do |t|
     t.integer  "drug_id"
@@ -633,12 +633,12 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.integer "aa_end"
   end
 
-  add_index "structure_sequences", ["structure_id", "biosequence_id", "chain"], name: "idx_structure_seq_triple", using: :btree
+  add_index "structure_sequences", ["structure_id", "biosequence_id", "chain"], name: "idx_structure_seq_triple"
 
   create_table "structures", force: true do |t|
     t.string  "name",       limit: 80
     t.integer "pdb_length"
-    t.text    "pdb",        limit: 2147483647
+    t.text    "pdb",        limit: 32505856
   end
 
   create_table "symptoms", force: true do |t|
@@ -653,7 +653,7 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.integer "record_id"
   end
 
-  add_index "synonyms", ["table_name", "record_id", "synonym_name"], name: "idx_synonyms_triple", using: :btree
+  add_index "synonyms", ["table_name", "record_id", "synonym_name"], name: "idx_synonyms_triple"
 
   create_table "units", force: true do |t|
     t.string "name", limit: 32
@@ -677,8 +677,8 @@ ActiveRecord::Schema.define(version: 20150205141548) do
     t.string  "alt",            limit: 20
   end
 
-  add_index "variants", ["biosequence_id", "instrument_id", "guid2", "sequence_start"], name: "idx_variants_find", using: :btree
-  add_index "variants", ["biosequence_id", "mutation", "sequence_start"], name: "idx_variants_triple", using: :btree
+  add_index "variants", ["biosequence_id", "instrument_id", "guid2", "sequence_start"], name: "idx_variants_find"
+  add_index "variants", ["biosequence_id", "mutation", "sequence_start"], name: "idx_variants_triple"
 
   create_table "vocals", force: true do |t|
     t.integer  "individual_id"

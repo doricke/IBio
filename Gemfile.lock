@@ -93,7 +93,6 @@ GEM
     minitest (4.7.5)
     multi_json (1.10.1)
     multi_xml (0.5.5)
-    mysql2 (0.3.16)
     netrc (0.10.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
@@ -172,15 +171,15 @@ PLATFORMS
 
 DEPENDENCIES
   bson_ext
-  coffee-rails (~> 4.0.0)
+  coffee-rails
   d3-rails
-  fullcalendar-rails (~> 1.6.4.0)
+  fullcalendar-rails
   gmaps4rails
   gon
-  highcharts-rails (~> 4.0.0)
+  highcharts-rails
   highstock-rails
-  jbuilder (~> 1.2)
-  jquery-datatables-rails (~> 3.1.1)
+  jbuilder
+  jquery-datatables-rails
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
@@ -188,16 +187,18 @@ DEPENDENCIES
   lazy_high_charts
   local_time
   mediawiki-gateway
-  mysql2 (= 0.3.16)
   openlayers-rails
-  rails (~> 4.0.0)
+  rails
   rails3-jquery-autocomplete
   roo
   rubyzip
-  sass-rails (~> 4.0.0)
+  sass-rails
   sdoc
   sqlite3
   thin
   topojson-rails
   turbolinks
-  uglifier (>= 1.3.0)
+  uglifier
+
+BUNDLED WITH
+   1.10.6

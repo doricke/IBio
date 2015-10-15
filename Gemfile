@@ -26,7 +26,7 @@ gem 'thin'
 gem 'fullcalendar-rails'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '4.0.3'
+gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-ui-themes'
 gem 'rails3-jquery-autocomplete'
