@@ -28,7 +28,7 @@ class DiseasesController < ApplicationController
   def index
     @diseases = Disease.all
     @disease_genes = DiseaseGene.disease_to_genes
-    @genes_hash = Tools::to_hash(Gene.all(:select => 'id,gene_symbol'))
+    @genes_hash = Tools::to_hash(Gene.all.select('id,gene_symbol'))
     @notes_hash = Tools::to_hash(Note.all)
     @loci = Locu.by_disease
   end  # index

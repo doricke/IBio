@@ -28,8 +28,8 @@ class ActivitySummariesController < ApplicationController
   # GET /activity_summaries.json
   def index
     @activity_summaries = ActivitySummary.where(individual_id: session['individual_id']).order(:start_time).to_a
-    @itypes_hash = Tools::to_hash(Itype.where(true).to_a)
-    @instruments_hash = Tools::to_hash(Instrument.where(true).to_a)
+    @itypes_hash = Tools::to_hash(Itype.all.to_a)
+    @instruments_hash = Tools::to_hash(Instrument.all.to_a)
     
     data = data_setup( @activity_summaries )
     @selected = {}

@@ -27,10 +27,10 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.json
   def index
-    @foods = Food.where(true).to_a
+    @foods = Food.all.to_a
     @food = Food.new
     @itypes_hash = Tools::to_hash(Itype.where(category: 'food').to_a)
-    @units_hash = Tools::to_hash(Unit.where(true).to_a)
+    @units_hash = Tools::to_hash(Unit.all.to_a)
   end  # index
 
   # GET /foods/1

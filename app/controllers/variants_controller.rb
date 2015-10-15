@@ -29,8 +29,12 @@ class VariantsController < ApplicationController
     # @variants = Variant.all
     @variants = Variant.where(guid2: session['guid2']).to_a
     human = Organism.where(name: "Human").take
-    @biosequences_hash = Tools::to_hash(Biosequence.find_all_by_organism_id(human.id, :select => 'id,name'))
-    @diseases_hash = Tools::to_hash(Disease.all(:select => 'id,name'))
+    @biosequences_hash = {}
+    @diseases_hash = {}
+    if ! human.nil?
+      @biosequences_hash = Tools::to_hash(Biosequence.find_all_by_organism_id(human.id, :select => 'id,name'))
+      @diseases_hash = Tools::to_hash(Disease.all(:select => 'id,name'))
+    end  # if
   end  # index
 
   # GET /variants/1

@@ -29,8 +29,8 @@ class AttachmentsController < ApplicationController
   # GET /attachments.json
   def index
     # @attachments = Attachment.getNames(session['individual_id'])
-    @attachments = Attachment.find_all_by_individual_id(session['individual_id'],
-      :select => 'id,instrument_id,itype_id,name,content_type,created_at,is_parsed')
+    @attachments = Attachment.where(individual_id: session['individual_id'])
+      .select('id,instrument_id,itype_id,name,content_type,created_at,is_parsed')
     @instruments = Instrument.where(instrument_type: 'Health Monitor').order(:name).to_a
     @instruments_hash = Tools::to_hash(Instrument.all)
     @itypes_hash = Tools::to_hash(Itype.all)

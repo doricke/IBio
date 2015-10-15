@@ -26,7 +26,7 @@ class GenesController < ApplicationController
   # GET /genes
   # GET /genes.json
   def index
-    @genes = Gene.all(:select => 'id,name,gene_symbol,ncbi_gene_id')
+    @genes = Gene.all.select('id,name,gene_symbol,ncbi_gene_id').to_a
     # @interactions = Interaction.by_gene
     @loci = Locu.by_gene
     @gene_reactions = GeneReaction.by_gene

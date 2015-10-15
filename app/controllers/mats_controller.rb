@@ -27,7 +27,7 @@ class MatsController < ApplicationController
   # GET /mats.json
   def index
     @mats = Mat.where(individual_id: session['individual_id']).to_a
-    @attachments_hash = Tools::to_hash(Attachment.find_all_by_individual_id(session['individual_id'], :select => 'id,instrument_id,itype_id,name,content_type,created_at,is_parsed'))
+    @attachments_hash = Tools::to_hash(Attachment.where(individual_id: session['individual_id']).select('id,instrument_id,itype_id,name,content_type,created_at,is_parsed'))
   end  # index
 
   # GET /mats/1

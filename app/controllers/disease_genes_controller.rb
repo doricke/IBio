@@ -26,9 +26,9 @@ class DiseaseGenesController < ApplicationController
   # GET /disease_genes
   # GET /disease_genes.json
   def index
-    @disease_genes = DiseaseGene.where(true).to_a
-    @genes_hash = Tools::to_hash(Gene.all(:select => 'id,gene_symbol,name'))
-    @diseases_hash = Tools::to_hash(Disease.all(:select => 'id,mim_id,name'))
+    @disease_genes = DiseaseGene.all.to_a
+    @genes_hash = Tools::to_hash(Gene.all.select('id,gene_symbol,name'))
+    @diseases_hash = Tools::to_hash(Disease.all.select('id,mim_id,name'))
   end  # index
 
   # GET /disease_genes/1
